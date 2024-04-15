@@ -966,10 +966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2601a6a0d9ce4154b83d53b9b05925ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  patrolPoints:
-  - {fileID: 365731436}
-  - {fileID: 610074484}
+  speed: 3
+  pointA: {fileID: 365731436}
+  pointB: {fileID: 610074484}
 --- !u!1001 &4035084517631737022
 PrefabInstance:
   m_ObjectHideFlags: 0

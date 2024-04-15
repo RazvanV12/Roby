@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -10,7 +12,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
     private Vector2 _currentTarget;
+    private bool _isMoving = true;
 
     // Start is called before the first frame update
     private void Start()
@@ -19,25 +23,49 @@ public class EnemyMovement : MonoBehaviour
         _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         _animator = GetComponent<Animator>();
         _currentTarget = pointA.position;
+        StartCoroutine(MoveBetweenPoints());
     }
 
     // Update is called once per frame
     private void Update()
     {
-        MoveToTarget();
-
-        // Check if we've reached the current target
-        if (Vector2.Distance(transform.position, _currentTarget) < 0.1f)
-        {
-            // Switch target
-            _currentTarget = _currentTarget == (Vector2)pointA.position ? pointB.position : pointA.position;
-        }
         _animator.SetFloat(XVelocity, _rb.velocity.x);
     }
-    
+
+    private IEnumerator MoveBetweenPoints()
+    {
+        while (true) // Loop to move continuously
+        {
+            while (_isMoving)
+            {
+                MoveToTarget();
+                // Check if we've reached the current target
+                if (Vector2.Distance(transform.position, _currentTarget) < 0.1f)
+                {
+                    // Switch target
+                    _currentTarget = _currentTarget == (Vector2)pointA.position ? pointB.position : pointA.position;
+                    _isMoving = false;
+                }
+                yield return null;
+            }
+
+            _rb.velocity = Vector2.zero; // Stop the enemy's movement
+            yield return new WaitForSeconds(5); // Wait for 5 seconds
+            _isMoving = true; // Resume moving after the pause
+        }
+    }
+
     private void MoveToTarget()
     {
         var direction = ((Vector2)_currentTarget - (Vector2)transform.position).normalized;
         _rb.velocity = direction * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player hit by enemy");
+        }
     }
 }

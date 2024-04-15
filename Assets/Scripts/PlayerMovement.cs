@@ -56,7 +56,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _isGrounded = true;
-        _animator.SetBool(IsJumping, !_isGrounded);
+        if(other.CompareTag("Floor"))
+        {
+            _isGrounded = true;
+            _animator.SetBool(IsJumping, !_isGrounded);
+        }
     }
 }

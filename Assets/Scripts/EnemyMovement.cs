@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private CapsuleCollider2D capsuleCollider;
     private Vector2 _currentTarget;
     private bool _isMoving = true;
+    
+    [SerializeField] private PlayerInteractions playerInteractions;
 
     // Start is called before the first frame update
     private void Start()
@@ -65,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player hit by enemy");
+            PlayerInteractions.OnPlayerDeath?.Invoke();
         }
     }
 }

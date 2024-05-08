@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,11 +9,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
-    private bool _isGrounded = true;
+    [SerializeField, ReadOnly] private bool _isGrounded = true;
     private Rigidbody2D _rb;
     private Animator _animator;
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private float _horizontalInput;
+    private bool _isJumping;
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
 
@@ -38,18 +40,21 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
             speed = 5f;
         }
+
+        if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);
+        if (_isJumping && Input.GetKeyUp(KeyCode.W)) _isJumping = false;
     }
 
     private void FixedUpdate()
     {
         _rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
+        if (_isJumping && _isGrounded)
         {
+            _isJumping = false;
             _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
             _isGrounded = false;
             _animator.SetBool(IsJumping, !_isGrounded);
         }
-        _rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
         _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
         _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
     }
@@ -61,10 +66,5 @@ public class PlayerMovement : MonoBehaviour
             _isGrounded = true;
             _animator.SetBool(IsJumping, !_isGrounded);
         }
-    }
-
-    private void PlayerKilled()
-    {
-        Debug.Log("Player killed");
     }
 }

@@ -15,4 +15,12 @@ public class Spike : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerInteractions.OnPlayerDeath?.Invoke();
+        }
+    }
 }

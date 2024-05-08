@@ -62,4 +62,9 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool(IsJumping, !_isGrounded);
         }
     }
+
+    private void PlayerKilled()
+    {
+        Debug.Log("Player killed");
+    }
 }

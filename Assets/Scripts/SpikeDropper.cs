@@ -27,7 +27,7 @@ public class SpikeDropper : MonoBehaviour
         if (Time.time > nextDropTime)
         {
             // Casts a box against colliders in the scene, returning all colliders that contact or overlap the box
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCastSize, 0, Vector2.down, 1f, playerLayer);
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCastSize, 0f, Vector2.down, 1f, playerLayer, -10f, 10f);
             if (hit.collider is not null && hit.collider.CompareTag("Player"))
             {
                 DropSpikes();

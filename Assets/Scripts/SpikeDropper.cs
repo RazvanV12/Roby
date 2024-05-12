@@ -11,8 +11,9 @@ public class SpikeDropper : MonoBehaviour
 
     [SerializeField] private float dropCooldown = 2f;
     [SerializeField] private float nextDropTime;
+    [SerializeField] private float distance = 0.5f;
 
-    [SerializeField] private Vector2 boxCastSize = new Vector2(1f, 10f);
+    [SerializeField] private Vector2 boxCastSize = new Vector2(1f, 13f);
     
     [SerializeField] private LayerMask playerLayer;
     // Start is called before the first frame update
@@ -27,7 +28,9 @@ public class SpikeDropper : MonoBehaviour
         if (Time.time > nextDropTime)
         {
             // Casts a box against colliders in the scene, returning all colliders that contact or overlap the box
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCastSize, 0f, Vector2.down, 1f, playerLayer, -10f, 10f);
+            // The distance determines how far the box is cast ( making it 1f, the entire boxCast will be cast downwards)
+            // If we want the cast to be as the drawing, we need to set the distance to 0.5f
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCastSize, 0f, Vector2.down, distance, playerLayer);
             if (hit.collider is not null && hit.collider.CompareTag("Player"))
             {
                 DropSpikes();
@@ -45,8 +48,9 @@ public class SpikeDropper : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        // Draws a wire cube with the given position, rotation, and scale
-        Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.identity, new Vector3(boxCastSize.x, boxCastSize.y, 1));
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(1, 1, 1));
+        Vector3 castPoint = transform.position + Vector3.down * (0.5f); // Adjust this based on your BoxCast settings
+        Vector3 castSize = new Vector3(boxCastSize.x, boxCastSize.y, 1);
+        Gizmos.DrawWireCube(castPoint, castSize);
     }
+
 }

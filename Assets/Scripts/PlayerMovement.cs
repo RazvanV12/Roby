@@ -7,14 +7,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField, ReadOnly] private bool _isGrounded = true;
-    private Rigidbody2D _rb;
-    private Animator _animator;
-    private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    [SerializeField] private float normalDrag;
+    [SerializeField] private float lowDrag = 0.1f;
+    [SerializeField] private float normalAngularDrag = 0.05f;
+    [SerializeField] private float lowAngularDrag = 0.01f;
+    [SerializeField] private float moveForce = 100f;
     private float _horizontalInput;
+    
+    [SerializeField, ReadOnly] private bool _isGrounded = true;
     private bool _isJumping;
+    [SerializeField] private bool isOnIce;
+     
+    private Rigidbody2D _rb;
+    
+    private Animator _animator;
+    
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
 
@@ -33,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && _isGrounded)
         {
             transform.localScale = new Vector3(1, 0.5f, 1);
-            speed = 0f;
+            //moveForce = 0f;
         }
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
-            speed = 5f;
+            //moveForce = 0.5f;
         }
 
         if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);
@@ -47,7 +57,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
+        //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
+        if (Mathf.Abs(_horizontalInput) > 0)
+        {
+            _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
+        }
+        else if (!isOnIce)
+        {
+            // Stop the player if not on ice and no input is detected
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
+        if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
+        {
+            _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
+        }
         if (_isJumping && _isGrounded)
         {
             _isJumping = false;
@@ -61,10 +84,54 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Floor"))
+        if(other.CompareTag("Floor") || other.CompareTag("Ice Ground"))
         {
             _isGrounded = true;
             _animator.SetBool(IsJumping, !_isGrounded);
         }
+        if (other.CompareTag("Ice Ground"))
+        {
+            isOnIce = true;
+            _rb.drag = lowDrag;
+            _rb.angularDrag = lowAngularDrag;
+        }
+
+        if (other.CompareTag("Floor"))
+        {
+            isOnIce = false;
+            _rb.drag = normalDrag;
+            _rb.angularDrag = normalAngularDrag;
+        }
     }
+
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Ice Ground"))
+    //     {
+    //         isOnIce = false;
+    //         _rb.drag = normalDrag;
+    //         _rb.angularDrag = normalAngularDrag;
+    //     }
+    // }
+
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Ice Ground"))
+    //     {
+    //         isOnIce = true;
+    //         _rb.drag = lowDrag;
+    //         _rb.angularDrag = lowAngularDrag;
+    //     }
+    // }
+    //
+    // private void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ice Ground"))
+    //     {
+    //         isOnIce = false;
+    //         _rb.drag = normalDrag;
+    //         _rb.angularDrag = normalAngularDrag;
+    //     }
+    // }
+
 }

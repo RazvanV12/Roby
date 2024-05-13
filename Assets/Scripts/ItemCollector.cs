@@ -19,4 +19,9 @@ public class ItemCollector : MonoBehaviour
         // Update your UI here, for example:
         Debug.Log("Coins: " + _coins);
     }
+    // Getter for _coins
+    public int GetCoins()
+    {
+        return _coins;
+    }
 }

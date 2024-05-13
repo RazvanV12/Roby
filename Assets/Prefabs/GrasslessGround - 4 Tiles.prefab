@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3216106297153293682}
   m_Layer: 0
   m_Name: TopGround
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.01, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &4762749225857055186
 GameObject:

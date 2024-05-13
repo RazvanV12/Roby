@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float timeSinceGameStarted;
+    [SerializeField] private float coinsCollected;
+    [SerializeField] private ItemCollector itemCollector;
 
     [SerializeField] private TextMeshProUGUI uiTimer;
     // Start is called before the first frame update
@@ -21,5 +23,6 @@ public class GameManager : MonoBehaviour
         // Show said timer on the screen
         timeSinceGameStarted += Time.deltaTime;
         uiTimer.text = "Timer: " + timeSinceGameStarted.ToString("F2");
+        coinsCollected = itemCollector.GetCoins();
     }
 }

@@ -95,24 +95,23 @@ public class PlayerMovement : MonoBehaviour
             _rb.drag = lowDrag;
             _rb.angularDrag = lowAngularDrag;
         }
+    }
 
-        if (other.CompareTag("Floor"))
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ice Ground"))
         {
             isOnIce = false;
             _rb.drag = normalDrag;
             _rb.angularDrag = normalAngularDrag;
         }
-    }
 
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Ice Ground"))
-    //     {
-    //         isOnIce = false;
-    //         _rb.drag = normalDrag;
-    //         _rb.angularDrag = normalAngularDrag;
-    //     }
-    // }
+        if (other.CompareTag("Floor"))
+        {
+            _isGrounded = false;
+            _animator.SetBool(IsJumping, !_isGrounded);
+        }
+    }
 
     // private void OnCollisionEnter2D(Collision2D other)
     // {

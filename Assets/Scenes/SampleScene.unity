@@ -997,7 +997,9 @@ MonoBehaviour:
   normalAngularDrag: 0.05
   lowAngularDrag: 0
   moveForce: 100
+  _horizontalInput: 0
   _isGrounded: 1
+  _isJumping: 0
   isOnIce: 0
 --- !u!50 &564574879
 Rigidbody2D:

@@ -8,16 +8,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 4f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float normalDrag;
     [SerializeField] private float lowDrag = 0.1f;
     [SerializeField] private float normalAngularDrag = 0.05f;
     [SerializeField] private float lowAngularDrag = 0.01f;
     [SerializeField] private float moveForce = 100f;
-    private float _horizontalInput;
+    [SerializeField] private float _horizontalInput;
     
     [SerializeField, ReadOnly] private bool _isGrounded = true;
-    private bool _isJumping;
+    [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
      
     private Rigidbody2D _rb;
@@ -39,16 +39,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.S) && _isGrounded)
         {
             transform.localScale = new Vector3(1, 0.5f, 1);
-            //moveForce = 0f;
+            moveForce = 0f;
         }
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
-            //moveForce = 0.5f;
+            moveForce = 100f;
         }
 
         if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);

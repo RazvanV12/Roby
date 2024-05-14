@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
     private int numberOfCollisionsWithIce = 0;
+    private int numberOfCollisionsWithFloor;
 
     // Start is called before the first frame update
     private void Start()
@@ -87,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.CompareTag("Floor") || other.CompareTag("Ice Ground"))
         {
+            numberOfCollisionsWithFloor++;
             _isGrounded = true;
             _animator.SetBool(IsJumping, !_isGrounded);
         }
@@ -114,8 +116,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("Floor"))
         {
-            _isGrounded = false;
-            _animator.SetBool(IsJumping, !_isGrounded);
+            numberOfCollisionsWithFloor--;
+            if (numberOfCollisionsWithFloor == 0)
+            {
+                _isGrounded = false;
+                _animator.SetBool(IsJumping, !_isGrounded);
+            }
         }
     }
 

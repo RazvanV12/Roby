@@ -32,4 +32,12 @@ public class LaunchingSaw : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + -transform.right * distance);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerInteractions.OnPlayerDeath?.Invoke();
+        }
+    }
 }

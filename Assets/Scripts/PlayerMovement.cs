@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
+    private int numberOfCollisionsWithIce = 0;
 
     // Start is called before the first frame update
     private void Start()
@@ -91,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (other.CompareTag("Ice Ground"))
         {
+            numberOfCollisionsWithIce++;
             isOnIce = true;
             _rb.drag = lowDrag;
             _rb.angularDrag = lowAngularDrag;
@@ -101,9 +103,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Ice Ground"))
         {
-            isOnIce = false;
-            _rb.drag = normalDrag;
-            _rb.angularDrag = normalAngularDrag;
+            numberOfCollisionsWithIce--;
+            if (numberOfCollisionsWithIce == 0)
+            {
+                isOnIce = false;
+                _rb.drag = normalDrag;
+                _rb.angularDrag = normalAngularDrag;
+            }
         }
 
         if (other.CompareTag("Floor"))
@@ -112,25 +118,5 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool(IsJumping, !_isGrounded);
         }
     }
-
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Ice Ground"))
-    //     {
-    //         isOnIce = true;
-    //         _rb.drag = lowDrag;
-    //         _rb.angularDrag = lowAngularDrag;
-    //     }
-    // }
-    //
-    // private void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Ice Ground"))
-    //     {
-    //         isOnIce = false;
-    //         _rb.drag = normalDrag;
-    //         _rb.angularDrag = normalAngularDrag;
-    //     }
-    // }
 
 }

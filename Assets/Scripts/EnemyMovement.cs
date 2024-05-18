@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         _animator = GetComponent<Animator>();
-        _currentTarget = pointA.position;
+        _currentTarget = pointB.position;
         StartCoroutine(MoveBetweenPoints());
     }
 

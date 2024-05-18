@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SwingingMace : MonoBehaviour
 {
-    [SerializeField] private float angle = 45f;
+    [SerializeField] private float angle = 75f;
     [SerializeField] private float rotationSpeed = 100f;
     [SerializeField] private float currentAngle;
     

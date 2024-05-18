@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float lowAngularDrag = 0.01f;
     [SerializeField] private float moveForce = 100f;
     [SerializeField] private float _horizontalInput;
+    [SerializeField] private float _verticalInput;
     
     [SerializeField, ReadOnly] private bool _isGrounded = true;
     [SerializeField] private bool _isJumping;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        _verticalInput = Input.GetAxisRaw("Vertical");
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetKey(KeyCode.S) && _isGrounded)
         {
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, 1f, 1);
             moveForce = 100f;
         }
 
@@ -114,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Floor"))
+        if (other.CompareTag("Floor") && !Input.GetKey(KeyCode.S))
         {
             numberOfCollisionsWithFloor--;
             if (numberOfCollisionsWithFloor == 0)

@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
-    [SerializeField] private CapsuleCollider2D capsuleCollider;
     private Vector2 _currentTarget;
     private bool _isMoving = true;
     

@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform pointB;
     private Vector2 _currentTarget;
     private bool _isMoving = true;
+    [SerializeField] private float waitingTime;
     
     [SerializeField] private PlayerInteractions playerInteractions;
 
@@ -51,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
             }
 
             _rb.velocity = Vector2.zero; // Stop the enemy's movement
-            yield return new WaitForSeconds(5); // Wait for 5 seconds
+            yield return new WaitForSeconds(waitingTime); // Wait for 5 seconds
             _isMoving = true; // Resume moving after the pause
         }
     }

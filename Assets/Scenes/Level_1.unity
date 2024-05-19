@@ -3203,6 +3203,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 138135336}
     - target: {fileID: 371429196565049119, guid: 395d44768cf03bf48a01ce52a0f57163, type: 3}
+      propertyPath: waitingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 371429196565049119, guid: 395d44768cf03bf48a01ce52a0f57163, type: 3}
       propertyPath: playerInteractions
       value: 
       objectReference: {fileID: 478569901}
@@ -6256,6 +6260,10 @@ PrefabInstance:
       propertyPath: pointB
       value: 
       objectReference: {fileID: 1352437271}
+    - target: {fileID: 371429196565049119, guid: 395d44768cf03bf48a01ce52a0f57163, type: 3}
+      propertyPath: waitingTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 371429196565049119, guid: 395d44768cf03bf48a01ce52a0f57163, type: 3}
       propertyPath: playerInteractions
       value: 

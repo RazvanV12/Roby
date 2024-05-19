@@ -283,5 +283,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSinceGameStarted: 0
   coinsCollected: 0
-  itemCollector: {fileID: 0}
+  itemCollector: {fileID: 5382443642153805825, guid: 88bb6897eb19dc341a56f7bb1ae05b82, type: 3}
   uiTimer: {fileID: 7898651660507294222}

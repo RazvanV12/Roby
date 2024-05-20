@@ -14,12 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform pointB;
     private Vector2 _currentTarget;
     private bool _isMoving = true;
-<<<<<<< Updated upstream
     [SerializeField] private float waitingTime;
-    
-    [SerializeField] private PlayerInteractions playerInteractions;
-=======
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     private void Start()

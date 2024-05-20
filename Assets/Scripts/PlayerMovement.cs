@@ -61,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!_isGrounded && transform.position.y < -1.5f)
+        {
+            moveForce = 0f;
+        }
         //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
         if (Mathf.Abs(_horizontalInput) > 0)
         {

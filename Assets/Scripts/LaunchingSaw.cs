@@ -9,7 +9,7 @@ public class LaunchingSaw : MonoBehaviour
 
     [SerializeField] private float speed = 5f;
 
-    [SerializeField] private float distance = 1f;
+    [SerializeField] private float distance = 6f;
     // Start is called before the first frame update
     void Start()
     {

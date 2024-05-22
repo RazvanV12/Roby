@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
     [SerializeField] private bool invertedControls = false;
+    //[SerializeField] private bool invertVerticals = true;
+    // To do: Logic for when the player is upside-down; 
      
     private Rigidbody2D _rb;
     
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
-    private int numberOfCollisionsWithIce = 0;
+    private int numberOfCollisionsWithIce;
     private int numberOfCollisionsWithFloor;
 
     // Start is called before the first frame update

@@ -10,6 +10,8 @@ public class LaunchingSaw : MonoBehaviour
     [SerializeField] private float speed = 5f;
 
     [SerializeField] private float distance = 6f;
+
+    [SerializeField] private bool launched = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,12 @@ public class LaunchingSaw : MonoBehaviour
         if (hit.collider is not null && hit.collider.CompareTag("Player"))
         {
             rb.velocity = new Vector2(-speed, 0);
+            launched = true;
+        }
+
+        if (launched)
+        {
+            Destroy(this, 3f);
         }
     }
 

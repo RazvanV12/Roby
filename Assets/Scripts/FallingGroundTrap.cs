@@ -23,8 +23,11 @@ public class FallingGroundTrap : MonoBehaviour
         var hit = Physics2D.Raycast(RaycastOrigin.position, transform.up, distance);
         if (hit.collider is not null && hit.collider.CompareTag("Player"))
         {
-            rbFirstTile.bodyType = RigidbodyType2D.Dynamic;
-            rbSecondTile.bodyType = RigidbodyType2D.Dynamic;
+            rbFirstTile.bodyType = RigidbodyType2D.Kinematic;
+            rbSecondTile.bodyType = RigidbodyType2D.Kinematic;
+            rbFirstTile.velocity = new Vector2(0, -7);
+            rbSecondTile.velocity = new Vector2(0, -7);
+            Destroy(this, 3f);
         }
     }
 

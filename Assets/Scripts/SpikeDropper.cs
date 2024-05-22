@@ -12,6 +12,11 @@ public class SpikeDropper : MonoBehaviour
 
     [SerializeField] private float dropCooldown = 2f;
     [SerializeField] private float nextDropTime;
+    [SerializeField] private float dropSpeedMultiplier = 1f;
+
+    [SerializeField] private GameObject firstSpike;
+    [SerializeField] private GameObject secondSpike;
+    [SerializeField] private GameObject thirdSpike;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +39,20 @@ public class SpikeDropper : MonoBehaviour
 
     private void DropSpikes()
     {
-        Instantiate(spike, firstSpikePos.position, Quaternion.identity);
-        Instantiate(spike, secondSpikePos.position, Quaternion.identity);
-        Instantiate(spike, thirdSpikePos.position, Quaternion.identity);
+        firstSpike = Instantiate(spike, firstSpikePos.position, Quaternion.identity);
+        secondSpike = Instantiate(spike, secondSpikePos.position, Quaternion.identity);
+        thirdSpike = Instantiate(spike, thirdSpikePos.position, Quaternion.identity);
+        SetDropSpeed(firstSpike, dropSpeedMultiplier);
+        SetDropSpeed(secondSpike, dropSpeedMultiplier);
+        SetDropSpeed(thirdSpike, dropSpeedMultiplier);
+    }
+    
+    private void SetDropSpeed(GameObject droppedSpike, float speedMultiplier)
+    {
+        var rb = droppedSpike.gameObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale *= speedMultiplier;
+        }
     }
 }

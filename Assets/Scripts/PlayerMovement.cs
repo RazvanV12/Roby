@@ -16,10 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveForce = 100f;
     [SerializeField] private float _horizontalInput;
     [SerializeField] private float _verticalInput;
+    [SerializeField] private int jumpCount = 0;
+    [SerializeField] private int maxJumpCount = 1; // Allow for double jump when power-up is active
     
     [SerializeField, ReadOnly] private bool _isGrounded = true;
     [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
+    [SerializeField] private bool invertedControls = false;
      
     private Rigidbody2D _rb;
     
@@ -39,12 +42,68 @@ public class PlayerMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    // // Update is called once per frame
+    // private void Update()
+    // {
+    //     _verticalInput = Input.GetAxisRaw("Vertical");
+    //     _horizontalInput = Input.GetAxisRaw("Horizontal");
+    //     if (Input.GetKey(KeyCode.S) && _isGrounded)
+    //     {
+    //         transform.localScale = new Vector3(1, 0.5f, 1);
+    //         moveForce = 0f;
+    //     }
+    //     else
+    //     {
+    //         transform.localScale = new Vector3(1, 1f, 1);
+    //         moveForce = 100f;
+    //     }
+    //
+    //     if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);
+    //     if (_isJumping && Input.GetKeyUp(KeyCode.W)) _isJumping = false;
+    // }
+    //
+    // private void FixedUpdate()
+    // {
+    //     if(!_isGrounded && transform.position.y < -1.5f)
+    //     {
+    //         moveForce = 0f;
+    //     }
+    //     //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
+    //     if (Mathf.Abs(_horizontalInput) > 0)
+    //     {
+    //         _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
+    //     }
+    //     else if (!isOnIce)
+    //     {
+    //         // Stop the player if not on ice and no input is detected
+    //         _rb.velocity = new Vector2(0, _rb.velocity.y);
+    //     }
+    //     if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
+    //     {
+    //         _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
+    //     }
+    //     if (_isJumping && _isGrounded)
+    //     {
+    //         _isJumping = false;
+    //         _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+    //         _isGrounded = false;
+    //         _animator.SetBool(IsJumping, !_isGrounded);
+    //     }
+    //     _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
+    //     _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
+    // }
+    
     // Update is called once per frame
     private void Update()
     {
         _verticalInput = Input.GetAxisRaw("Vertical");
         _horizontalInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKey(KeyCode.S) && _isGrounded)
+        if (invertedControls)
+        {
+            _verticalInput *= -1;
+            _horizontalInput *= -1;
+        }
+        if (Mathf.Approximately(_verticalInput, -1) && _isGrounded)
         {
             transform.localScale = new Vector3(1, 0.5f, 1);
             moveForce = 0f;
@@ -55,10 +114,14 @@ public class PlayerMovement : MonoBehaviour
             moveForce = 100f;
         }
 
-        if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);
-        if (_isJumping && Input.GetKeyUp(KeyCode.W)) _isJumping = false;
+        // Check for jump input and increment jump count
+        if ((invertedControls ? Input.GetKeyDown(KeyCode.S) : Input.GetKeyDown(KeyCode.W)) && jumpCount < maxJumpCount)
+        {
+            _isJumping = true;
+            jumpCount++;
+        }
     }
-
+    
     private void FixedUpdate()
     {
         if(!_isGrounded && transform.position.y < -1.5f)
@@ -79,12 +142,12 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
         }
-        if (_isJumping && _isGrounded)
+        if (_isJumping)
         {
-            _isJumping = false;
             _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            _isJumping = false;
             _isGrounded = false;
-            _animator.SetBool(IsJumping, !_isGrounded);
+            _animator.SetBool(IsJumping, true);
         }
         _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
         _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
@@ -96,7 +159,8 @@ public class PlayerMovement : MonoBehaviour
         {
             numberOfCollisionsWithFloor++;
             _isGrounded = true;
-            _animator.SetBool(IsJumping, !_isGrounded);
+            jumpCount = 0; // Reset jump count when grounded
+            _animator.SetBool(IsJumping, false);
         }
         if (other.CompareTag("Ice Ground"))
         {
@@ -120,15 +184,42 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Floor") && !Input.GetKey(KeyCode.S))
+        if (other.CompareTag("Floor") && !(Mathf.Approximately(_verticalInput, -1)))
         {
             numberOfCollisionsWithFloor--;
             if (numberOfCollisionsWithFloor == 0)
             {
                 _isGrounded = false;
-                _animator.SetBool(IsJumping, !_isGrounded);
+                _animator.SetBool(IsJumping, true);
             }
         }
     }
+    
+    // Getter setter for maxSpeed   
+    public float MaxSpeed
+    {
+        get => maxSpeed;
+        set => maxSpeed = value;
+    }
+    
+    // getter setter for jump force
+    public float JumpForce
+    {
+        get => jumpForce;
+        set => jumpForce = value;
+    }
+    
+    // getter setter for inverted controls
+    public bool InvertedControls
+    {
+        get => invertedControls;
+        set => invertedControls = value;
+    }
 
+    // getter setter for maxJumpCount
+    public int MaxJumpCount
+    {
+        get => maxJumpCount;
+        set => maxJumpCount = value;
+    }
 }

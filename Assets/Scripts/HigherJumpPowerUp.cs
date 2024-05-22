@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPowerUp : MonoBehaviour
+public class HigherJumpPowerUp : MonoBehaviour
 {
-
     [SerializeField] private PlayerMovement playerMovement;
     
     [SerializeField] private float boostAmount = 5f;
@@ -30,25 +28,25 @@ public class SpeedPowerUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ApplySpeedBoost();
+            ApplyJumpBoost();
         }
     }
     
-    private void ApplySpeedBoost()
+    private void ApplyJumpBoost()
     {
         if (playerMovement != null)
         {
-            playerMovement.MaxSpeed += boostAmount;
+            playerMovement.JumpForce += boostAmount;
             GetComponent<Renderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(RemoveSpeedBoost());
+            StartCoroutine(RemoveJumpBoost());
         }
     }
 
-    private IEnumerator RemoveSpeedBoost()
+    private IEnumerator RemoveJumpBoost()
     {
         yield return new WaitForSeconds(duration);
-        playerMovement.MaxSpeed -= boostAmount;
+        playerMovement.JumpForce -= boostAmount;
         Destroy(gameObject);
     }
 }

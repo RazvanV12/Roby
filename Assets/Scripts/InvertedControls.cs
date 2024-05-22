@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPowerUp : MonoBehaviour
+public class InvertedControls : MonoBehaviour
 {
-
     [SerializeField] private PlayerMovement playerMovement;
     
-    [SerializeField] private float boostAmount = 5f;
     [SerializeField] private float duration = 5f;
     // Start is called before the first frame update
     void Start()
@@ -30,25 +27,25 @@ public class SpeedPowerUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ApplySpeedBoost();
+            InvertControls();
         }
     }
     
-    private void ApplySpeedBoost()
+    private void InvertControls()
     {
         if (playerMovement != null)
         {
-            playerMovement.MaxSpeed += boostAmount;
+            playerMovement.InvertedControls = true;
             GetComponent<Renderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(RemoveSpeedBoost());
+            StartCoroutine(RestoreNormalControls());
         }
     }
 
-    private IEnumerator RemoveSpeedBoost()
+    private IEnumerator RestoreNormalControls()
     {
         yield return new WaitForSeconds(duration);
-        playerMovement.MaxSpeed -= boostAmount;
+        playerMovement.InvertedControls = false;
         Destroy(gameObject);
     }
 }

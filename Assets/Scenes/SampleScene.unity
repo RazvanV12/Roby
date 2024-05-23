@@ -11752,7 +11752,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 963490406716220986, guid: 1314e3b9a86cc064ebc5c112f932bb45, type: 3}
       propertyPath: m_Name
-      value: cloud_shape2_1
+      value: Cloud
       objectReference: {fileID: 0}
     - target: {fileID: 4295957396468824678, guid: 1314e3b9a86cc064ebc5c112f932bb45, type: 3}
       propertyPath: m_LocalPosition.x

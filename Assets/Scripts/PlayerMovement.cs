@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, ReadOnly] private bool _isGrounded = true;
     [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
-    [SerializeField] private bool invertedControls = false;
-    //[SerializeField] private bool invertVerticals = true;
+    [SerializeField] private bool invertedControls;
+    [SerializeField] private bool invertedVerticals;
     // To do: Logic for when the player is upside-down; 
      
     private Rigidbody2D _rb;
@@ -146,7 +146,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if (_isJumping)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            if(invertedVerticals)
+                _rb.velocity = new Vector2(_rb.velocity.x, -jumpForce);
+            else
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            }
             _isJumping = false;
             _isGrounded = false;
             _animator.SetBool(IsJumping, true);
@@ -223,5 +228,18 @@ public class PlayerMovement : MonoBehaviour
     {
         get => maxJumpCount;
         set => maxJumpCount = value;
+    }
+    
+    //getter setter for rb
+    public Rigidbody2D Rigidbody
+    {
+        get => _rb;
+        set => _rb = value;
+    }
+
+    public bool InvertedVerticals
+    {
+        get => invertedVerticals;
+        set => invertedVerticals = value;
     }
 }

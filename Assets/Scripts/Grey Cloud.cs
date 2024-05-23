@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GreyCloud : MonoBehaviour
 {
-    [SerializeField] private GameObject lightning2;
-
     [SerializeField] private GameObject lightning1;
 
-    [SerializeField] private GameObject lightning4;
+    [SerializeField] private GameObject lightning2;
+
+    [SerializeField] private GameObject lightning3;
 
     [SerializeField] private float lightningTime = 0.35f;
 
@@ -29,13 +29,13 @@ public class GreyCloud : MonoBehaviour
     {
         while (true)
         {
-            lightning2.SetActive(true);
             lightning1.SetActive(true);
-            lightning4.SetActive(true);
+            lightning2.SetActive(true);
+            lightning3.SetActive(true);
             yield return new WaitForSeconds(lightningTime);
-            lightning2.SetActive(false);
             lightning1.SetActive(false);
-            lightning4.SetActive(false);
+            lightning2.SetActive(false);
+            lightning3.SetActive(false);
             yield return new WaitForSeconds(timeBetweenLightnings);
         }
     }

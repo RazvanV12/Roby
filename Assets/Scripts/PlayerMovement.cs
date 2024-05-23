@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Floor") || other.CompareTag("Ice Ground"))
+        if(other.CompareTag("Floor") || other.CompareTag("Ice Ground") || other.CompareTag("Cloud"))
         {
             numberOfCollisionsWithFloor++;
             _isGrounded = true;
@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ice Ground"))
+        if (other.CompareTag("Ice Ground") && !Mathf.Approximately(_verticalInput, -1))
         {
             numberOfCollisionsWithIce--;
             if (numberOfCollisionsWithIce == 0)
@@ -191,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Floor") && !(Mathf.Approximately(_verticalInput, -1)))
+        if ((other.CompareTag("Floor") || other.CompareTag("Cloud")) && !Mathf.Approximately(_verticalInput, -1))
         {
             numberOfCollisionsWithFloor--;
             if (numberOfCollisionsWithFloor == 0)

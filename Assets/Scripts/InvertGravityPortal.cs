@@ -9,8 +9,6 @@ public class InvertGravityPortal : MonoBehaviour
 
     [SerializeField] private Transform playerTransform;
 
-    [SerializeField] private bool playerIsUpsideDown;
-
     [SerializeField] private CapsuleCollider2D capsuleCollider2d;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +28,7 @@ public class InvertGravityPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!playerIsUpsideDown)
+            if (!playerMovement.InvertedVerticals)
             {
                 playerMovement.Rigidbody.gravityScale *= -1;
                 playerMovement.InvertedVerticals = true;

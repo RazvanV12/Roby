@@ -914,7 +914,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5601110308310301571}
-  - component: {fileID: 9193977106734739592}
   m_Layer: 0
   m_Name: Swinging Mace
   m_TagString: Untagged
@@ -939,18 +938,6 @@ Transform:
   - {fileID: 4952363571675868786}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0}
---- !u!114 &9193977106734739592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7609541521130966555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0539e6b1a2d848342b37d34342117af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7742234516313054859
 GameObject:
   m_ObjectHideFlags: 0

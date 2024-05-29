@@ -36,4 +36,11 @@ public class SwingingMace : MonoBehaviour
                 swingingRight = true;
         }
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerInteractions.OnPlayerDeath?.Invoke();
+        }
+    }
 }

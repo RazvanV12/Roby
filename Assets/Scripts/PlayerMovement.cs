@@ -130,6 +130,11 @@ public class PlayerMovement : MonoBehaviour
         {
             moveForce = 0f;
         }
+        if(!_isGrounded && transform.position.y > 11)
+        {
+            moveForce = 0f;
+            PlayerInteractions.OnPlayerDeath?.Invoke();
+        }
         //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
         if (Mathf.Abs(_horizontalInput) > 0)
         {

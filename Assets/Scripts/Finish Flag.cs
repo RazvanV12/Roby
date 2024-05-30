@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class FinishFlag : MonoBehaviour
 {
+    [SerializeField] private GameObject FinishedLevelMenuUI;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class FinishFlag : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            FinishedLevelMenuUI.SetActive(true);
             Debug.Log("Player reached the finish line");
         }
     }

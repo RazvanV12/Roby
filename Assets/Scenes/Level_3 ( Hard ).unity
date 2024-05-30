@@ -1551,6 +1551,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcacc53ff7ff8144d90bc0339ceee36e, type: 3}
+--- !u!1 &286004324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7176015286437970419, guid: dcacc53ff7ff8144d90bc0339ceee36e, type: 3}
+  m_PrefabInstance: {fileID: 286004323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &292430857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8839,9 +8844,17 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6683186460428573105, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
+      propertyPath: DiedMenuUI
+      value: 
+      objectReference: {fileID: 286004324}
+    - target: {fileID: 6683186460428573105, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
       propertyPath: itemCollector
       value: 
       objectReference: {fileID: 478569902}
+    - target: {fileID: 6683186460428573105, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
+      propertyPath: playerPosition
+      value: 
+      objectReference: {fileID: 478569908}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI uiTimer;
     [SerializeField] private TextMeshProUGUI uiCoins;
+
+    [SerializeField] private GameObject DiedMenuUI;
+    [SerializeField] private Transform playerPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +27,9 @@ public class GameManager : MonoBehaviour
         uiTimer.text = "Timer: " + timeSinceGameStarted.ToString("F2");
         coinsCollected = itemCollector.GetCoins();
         uiCoins.text = "Coins: " + coinsCollected;
+        if(playerPosition.position.y < -3f)
+        {
+            DiedMenuUI.SetActive(true);
+        }
     }
 }

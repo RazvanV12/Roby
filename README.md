@@ -45,13 +45,11 @@ Navigate through levels, defeat enemies, and collect power-ups to reach the end 
 - **Obstacles**: Avoid obstacles to progess.
 
 ## Features
-- 10 unique levels
+- 8 unique levels
 - Various enemies with different behaviors
 - Power-ups to collect
-- Engaging background music and sound effects
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Various obstacles to avoid 
+- Unique animations for each enemy and for the player character 
 
 ## Credits and Acknowledgements
 - Game developed by [Velciu Razvan Gabriel](https://github.com/RazvanV12).

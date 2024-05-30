@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int _coins = 0; // To keep track of the number of coins collected
+    [SerializeField] private int _coins = 0; // To keep track of the number of coins collected
 
     private void OnTriggerEnter2D(Collider2D other)
     {

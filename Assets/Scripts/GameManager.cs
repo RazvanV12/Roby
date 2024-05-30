@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemCollector itemCollector;
 
     [SerializeField] private TextMeshProUGUI uiTimer;
+    [SerializeField] private TextMeshProUGUI uiCoins;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +20,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Create a timer to keep track of the time since the game started
-        // Show said timer on the screen
         timeSinceGameStarted += Time.deltaTime;
         uiTimer.text = "Timer: " + timeSinceGameStarted.ToString("F2");
         coinsCollected = itemCollector.GetCoins();
+        uiCoins.text = "Coins: " + coinsCollected;
     }
 }

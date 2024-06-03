@@ -11,12 +11,17 @@ public class BlueBird : MonoBehaviour
     [SerializeField] private float distance = 10f;
 
     [SerializeField] private Transform rayCastPosition;
+
+    [SerializeField] private GameObject flappingWings;
+
+    private Renderer _renderer;
     
     private bool isFlapping = false;
     //private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+        _renderer = GetComponent<Renderer>();
         //rb = GetComponent<Rigidbody2D>();
     }
 
@@ -29,6 +34,20 @@ public class BlueBird : MonoBehaviour
         {
             StartCoroutine(StartFlapping());
             isFlapping = true;
+        }
+
+        if (_renderer.isVisible)
+        {
+            if (isFlapping)
+                flappingWings.SetActive(true);
+            else
+            {
+                flappingWings.SetActive(false);
+            }
+        }
+        else
+        {
+            flappingWings.SetActive(false);
         }
     }
     

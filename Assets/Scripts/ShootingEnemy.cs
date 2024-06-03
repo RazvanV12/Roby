@@ -8,10 +8,17 @@ public class ShootingEnemy : MonoBehaviour
 
     [SerializeField] private Transform bulletPos;
     private float timeBtwShots;
+    private Renderer _renderer;
+    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        _renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -27,6 +34,8 @@ public class ShootingEnemy : MonoBehaviour
 
     void shoot()
     {
+        if(_renderer.isVisible)
+            audioManager.PlaySfx(audioManager.ShootingBulletClip);
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 }

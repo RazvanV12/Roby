@@ -13,9 +13,17 @@ public class GreyCloud : MonoBehaviour
     [SerializeField] private float lightningTime = 0.35f;
 
     [SerializeField] private float timeBetweenLightnings = 2f;
+    
+    [SerializeField] private AudioManager audioManager;
+    private Renderer _renderer;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        _renderer = GetComponent<Renderer>();
         StartCoroutine(EnableLightnings());
     }
 
@@ -29,6 +37,8 @@ public class GreyCloud : MonoBehaviour
     {
         while (true)
         {
+            if(_renderer.isVisible)
+                audioManager.PlaySfx(audioManager.ThunderClip);
             lightning1.SetActive(true);
             lightning2.SetActive(true);
             lightning3.SetActive(true);

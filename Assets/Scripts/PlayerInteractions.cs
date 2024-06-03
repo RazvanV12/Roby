@@ -6,7 +6,11 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public static Action OnPlayerDeath;
     private void OnEnable()
     {
@@ -33,5 +37,6 @@ public class PlayerInteractions : MonoBehaviour
     private void KillPlayer()
     {
         Debug.Log("Player killed");
+        audioManager.PlaySfx(audioManager.PlayerHitClip);
     }
 }

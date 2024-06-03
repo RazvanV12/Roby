@@ -10,15 +10,27 @@ public class SwingingMace : MonoBehaviour
     [SerializeField] private float currentAngle;
     
     [SerializeField] private bool swingingRight = true;
+
+    private Renderer _renderer;
+
+    [SerializeField] private GameObject swingingClip;
+
+    [SerializeField] private GameObject squareSprite;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _renderer = squareSprite.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_renderer.isVisible)
+            swingingClip.SetActive(true);
+        else
+        {
+            swingingClip.SetActive(false);
+        }
         if(swingingRight)
         {
             //var currentAngle = Quaternion.Angle(Quaternion.Euler(Vector3.forward), transform.rotation);

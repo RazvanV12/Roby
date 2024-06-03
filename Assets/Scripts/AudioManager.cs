@@ -18,6 +18,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip waterSplashClip;
     [SerializeField] private AudioClip landingClip;
+    [SerializeField] private AudioClip playerHitClip;
+    [SerializeField] private AudioClip enemyDeathClip;
+    [SerializeField] private AudioClip thunderClip;
+    [SerializeField] private AudioClip shootingBulletClip;
 
     private void Start()
     {
@@ -72,6 +76,26 @@ public class AudioManager : MonoBehaviour
     public AudioClip LandingClip
     {
         get => landingClip;
+    }
+    
+    public AudioClip PlayerHitClip
+    {
+        get => playerHitClip;
+    }
+    
+    public AudioClip EnemyDeathClip
+    {
+        get => enemyDeathClip;
+    }
+    
+    public AudioClip ThunderClip
+    {
+        get => thunderClip;
+    }
+    
+    public AudioClip ShootingBulletClip
+    {
+        get => shootingBulletClip;
     }
     
 }

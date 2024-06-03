@@ -8,6 +8,12 @@ public class InvertedControls : MonoBehaviour
     
     [SerializeField] private float duration = 5f;
     // Start is called before the first frame update
+    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -28,6 +34,7 @@ public class InvertedControls : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             InvertControls();
+            audioManager.PlaySfx(audioManager.InvertedControlsClip);
         }
     }
     

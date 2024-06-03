@@ -9,6 +9,11 @@ public class HigherJumpPowerUp : MonoBehaviour
     [SerializeField] private float boostAmount = 5f;
     [SerializeField] private float duration = 5f;
     // Start is called before the first frame update
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -29,6 +34,7 @@ public class HigherJumpPowerUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ApplyJumpBoost();
+            audioManager.PlaySfx(audioManager.HigherJumpClip);
         }
     }
     

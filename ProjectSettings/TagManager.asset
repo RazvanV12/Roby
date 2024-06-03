@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ice Ground
   - Cloud
+  - Audio
   layers:
   - Default
   - TransparentFX

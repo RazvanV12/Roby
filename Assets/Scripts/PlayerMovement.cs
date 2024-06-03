@@ -36,6 +36,14 @@ public class PlayerMovement : MonoBehaviour
     private int numberOfCollisionsWithIce;
     private int numberOfCollisionsWithFloor;
 
+    [SerializeField] private GameObject footsteps;
+    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -100,6 +108,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _verticalInput = Input.GetAxisRaw("Vertical");
         _horizontalInput = Input.GetAxisRaw("Horizontal");
+        if(_horizontalInput != 0 && _isGrounded)
+        {
+            footsteps.SetActive(true);
+        }
+        else
+        {
+            footsteps.SetActive(false);
+        }
         if (invertedControls)
         {
             _verticalInput *= -1;
@@ -157,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
             }
+            audioManager.PlaySfx(audioManager.JumpClip);
             _isJumping = false;
             _isGrounded = false;
             _animator.SetBool(IsJumping, true);
@@ -180,6 +197,10 @@ public class PlayerMovement : MonoBehaviour
             isOnIce = true;
             _rb.drag = lowDrag;
             _rb.angularDrag = lowAngularDrag;
+        }
+        if((other.CompareTag("Floor") || other.CompareTag("Ice Ground") || other.CompareTag("Cloud")) && numberOfCollisionsWithFloor == 1)
+        {
+            audioManager.PlaySfx(audioManager.LandingClip);
         }
     }
 

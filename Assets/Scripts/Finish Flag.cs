@@ -6,6 +6,12 @@ using UnityEngine;
 public class FinishFlag : MonoBehaviour
 {
     [SerializeField] private GameObject FinishedLevelMenuUI;
+    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,7 @@ public class FinishFlag : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioManager.StopBGM();
             FinishedLevelMenuUI.SetActive(true);
             Debug.Log("Player reached the finish line");
         }

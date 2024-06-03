@@ -10,6 +10,11 @@ public class InvertGravityPortal : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     [SerializeField] private CapsuleCollider2D capsuleCollider2d;
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,7 @@ public class InvertGravityPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            audioManager.PlaySfx(audioManager.TeleportClip);
             if (!playerMovement.InvertedVerticals)
             {
                 playerMovement.Rigidbody.gravityScale *= -1;

@@ -14,11 +14,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip higherJumpClip;
     [SerializeField] private AudioClip invertedControlsClip;
     [SerializeField] private AudioClip doubleJumpClip;
+    [SerializeField] private AudioClip teleportClip;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip waterSplashClip;
+    [SerializeField] private AudioClip landingClip;
 
     private void Start()
     {
         musicSource.clip = backgroundMusic;
         musicSource.Play();
+    }
+
+    public void StopBGM()
+    {
+        musicSource.Stop();
     }
     
     public void PlaySfx(AudioClip clip)
@@ -44,4 +53,25 @@ public class AudioManager : MonoBehaviour
     {
         get => doubleJumpClip;
     }
+    
+    public AudioClip TeleportClip
+    {
+        get => teleportClip;
+    }
+    
+    public AudioClip JumpClip
+    {
+        get => jumpClip;
+    }
+    
+    public AudioClip WaterSplashClip
+    {
+        get => waterSplashClip;
+    }
+    
+    public AudioClip LandingClip
+    {
+        get => landingClip;
+    }
+    
 }

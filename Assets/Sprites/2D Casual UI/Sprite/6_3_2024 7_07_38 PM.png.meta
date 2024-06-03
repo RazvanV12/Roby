@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,7 +53,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -95,18 +95,2121 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1447
+        width: 95
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3158d602e14dcef4b841fb481d9cf836
+      internalID: -1568913385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_1
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1459
+        width: 77
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16f7bbfcb7a2224d95d95eebaa214a7
+      internalID: 681421860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_2
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1463
+        width: 76
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d12c5899e644e4cb1fc5c5013e772b
+      internalID: -110268301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_3
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1460
+        width: 81
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7ecabe650838a4699c9ae8a24f4722
+      internalID: -636698335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_4
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 1366
+        width: 149
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d38f0e191417a4794a6aedb3176c00
+      internalID: -1335503318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_5
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 1366
+        width: 149
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c4eee59306877648a90b5189fce83db
+      internalID: -267617036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_6
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 1366
+        width: 149
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74be50142cfecbb40adf9ed1477eb180
+      internalID: 1074615061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_7
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 1387
+        width: 182
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a831d1aec3f7f469dbd374cb2503b1
+      internalID: 337856066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_8
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 1387
+        width: 183
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cc0121724559245b1451f06356e40f
+      internalID: -275792099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_9
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1445
+        width: 370
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4651209341ca8f0419d1a87f5aa1d34a
+      internalID: 1741833080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_10
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 1445
+        width: 359
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c25d65f00c57d54d9515a77648fa6b8
+      internalID: -1122906753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_11
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 1445
+        width: 359
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c1af841c55aa64887dfd842a33aab7
+      internalID: -1551155190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_12
+      rect:
+        serializedVersion: 2
+        x: 2341
+        y: 1504
+        width: 233
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c67f3f3c4ba69d42a19cde85197b00c
+      internalID: 1770056845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_13
+      rect:
+        serializedVersion: 2
+        x: 2341
+        y: 1444
+        width: 233
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da9051e20a5946488611b41f54def57
+      internalID: 2022020608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_14
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 1368
+        width: 108
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90b383686c0ef34c9c4249b8ef6acf9
+      internalID: -1541058306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_15
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 1360
+        width: 258
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9ade7c0da50474097b578ec2c08cfa
+      internalID: 339591583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_16
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 1315
+        width: 359
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9863531079581644c989e8dcfcfcc6c2
+      internalID: 1396805217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_17
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 1315
+        width: 359
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24cc27becbdc76649b8c319a534f64cf
+      internalID: 2097984158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_18
+      rect:
+        serializedVersion: 2
+        x: 2342
+        y: 1388
+        width: 274
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc03542fbe80ef4d946aa70e9f5e14e
+      internalID: -93644133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_19
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1200
+        width: 165
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129fe09d24cc8f5498e6abdbe5a6f0bc
+      internalID: -554588164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_20
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 1191
+        width: 165
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdef167a5e5973f42bcfa40b40f1c176
+      internalID: -564193148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_21
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1188
+        width: 172
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5147c9ae7f5c82443aec99016e555437
+      internalID: 158953039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_22
+      rect:
+        serializedVersion: 2
+        x: 2338
+        y: 1333
+        width: 282
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd426721cf7823940ba88e9aedfab29f
+      internalID: 93402238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_23
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1010
+        width: 169
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b060e9ce80a10a247aa248f82ae172f6
+      internalID: 1758655470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_24
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1010
+        width: 168
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128bb7d846cfeac49a1b6c5e6543d9aa
+      internalID: -479105350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_25
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 1010
+        width: 138
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf750bef47c3f2141ab73accc77e56bb
+      internalID: -1719941270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_26
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 476
+        width: 1257
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88247de7c1a6c47479f47cb301344f0c
+      internalID: -789393209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_27
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 594
+        width: 556
+        height: 719
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b04a5f9c631d54cb1189bace0ac12d
+      internalID: 1036496919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_28
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 890
+        width: 97
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6bd2ce4574decd41a0e8a6fede56777
+      internalID: 1431517360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_29
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 885
+        width: 91
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e770211939cb160449aa4ddb6f527a98
+      internalID: -1574303145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_30
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 885
+        width: 97
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17118341bf5697249a925d7ec201ed2b
+      internalID: -1252704297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_31
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 890
+        width: 122
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 410726f739b36354fa2b017dc1df2400
+      internalID: 879584680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_32
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 750
+        width: 67
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e67d09a735cf5b4c994e5ee247a033e
+      internalID: -577745059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_33
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 751
+        width: 80
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c701a6bbdc48db94c9077a3e65946ea6
+      internalID: 1069557131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_34
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 752
+        width: 116
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1950424744d31499f3525c3a3496dc
+      internalID: -1040085548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_35
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 757
+        width: 103
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8534bdda3b4e4c14daa874642d1cd9d7
+      internalID: -836911320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_36
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 604
+        width: 50
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98bc838744b3fa142be345f2cbcc47d3
+      internalID: -940581057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_37
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 600
+        width: 124
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be5d0f976f600c4ba9c2c5d0a1249f1
+      internalID: 1872901408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_38
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 615
+        width: 114
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9f8c34bf066d84cba319a9eb5a6f2f
+      internalID: 1290073394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_39
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 616
+        width: 114
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0bcf9a2d133cc143a58acbb74c67540
+      internalID: -1483108297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_40
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 477
+        width: 72
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87225cd6a3a6ea240aa44f698fed9151
+      internalID: 130516650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_41
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 468
+        width: 91
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d822c019debec840875bc3ae1f2e66d
+      internalID: 977248896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_42
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 477
+        width: 113
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe6df98e6df2044ebf2f5a890864cdf
+      internalID: 1327835790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_43
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 469
+        width: 116
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9791c6e4ec060944b80feccd2ac32b8f
+      internalID: -483938122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_44
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 346
+        width: 244
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27596df943be06649b6617874724aea5
+      internalID: 1132609063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_45
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 346
+        width: 244
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92ef918e4d2d6d4bb7bc272f066d0b0
+      internalID: 280214805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_46
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 322
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12179568ac2c16246856999774fccd93
+      internalID: 642283870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_47
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 331
+        width: 118
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9abaac1724bf711438a097200d89e747
+      internalID: 1200064408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_48
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 330
+        width: 127
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca91a7ae4c0696b46860dc6344277daa
+      internalID: 1984210498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_49
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 324
+        width: 71
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c77ce75796a3dc418d52c250ca73a14
+      internalID: -1416849729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_50
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 145
+        width: 1166
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556c1194ebec80d40aaf47cb73f024a0
+      internalID: 1828291344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_51
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 165
+        width: 608
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8633097769a2c04fa1ad1e3df875503
+      internalID: -852359561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_52
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 199
+        width: 105
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e17150a93edd948b7ba535a3b02987
+      internalID: 1874560724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_53
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 222
+        width: 92
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d56a75bdec6c341ad7a251d51d3e21
+      internalID: 593549774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_54
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 203
+        width: 107
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60c4af66fc007049b1dbabf2f3025b1
+      internalID: -176609779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_55
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 202
+        width: 110
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b1996d358fd76e4782355997c4a8aa4
+      internalID: 1681917409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_56
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 75
+        width: 42
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a77c81c63d1324b86ab5a178453c58
+      internalID: 752728444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_57
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 66
+        width: 113
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18157a6580e5814895eac1e5b7b63e8
+      internalID: -1310421509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_58
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 66
+        width: 100
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2606a75fc5a6c00449fd1c80ace115d7
+      internalID: -1417479560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_59
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 68
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c716ef58d9fa57b4690f0bee000d0a18
+      internalID: -784138865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6_3_2024 7_07_38 PM_60
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 13
+        width: 607
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7cc77d79209ed449422a7f94026a99
+      internalID: -1764137908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 679.33594, y: -626.8238}
+      - {x: 620.15137, y: -669.2985}
+      - {x: 620.15137, y: -776.12885}
+      - {x: 1223.5767, y: -776.12885}
+      - {x: 1223.5767, y: -657.71454}
+      - {x: 1201.7041, y: -626.8238}
+    - - {x: -1118.0737, y: -633.2594}
+      - {x: -1118.0737, y: -718.2088}
+      - {x: -1012.5708, y: -718.2088}
+      - {x: -1012.5708, y: -608.80426}
+      - {x: -1062.749, y: -608.80426}
+      - {x: -1109.0674, y: -617.814}
+    - - {x: -873.6157, y: -631.9723}
+      - {x: -896.7749, y: -644.8434}
+      - {x: -943.09326, y: -666.7243}
+      - {x: -957.2461, y: -679.5954}
+      - {x: -957.2461, y: -698.9021}
+      - {x: -939.2334, y: -718.2088}
+      - {x: -919.9341, y: -718.2088}
+      - {x: -865.896, y: -671.87274}
+      - {x: -865.896, y: -634.5465}
+      - {x: -869.75586, y: -631.9723}
+    - - {x: -797.7051, y: -629.398}
+      - {x: -797.7051, y: -705.33765}
+      - {x: -795.13184, y: -716.9217}
+      - {x: -721.79443, y: -716.9217}
+      - {x: -711.50146, y: -710.48615}
+      - {x: -711.50146, y: -638.40784}
+      - {x: -716.64795, y: -629.398}
+    - - {x: -1221.0034, y: -678.3083}
+      - {x: -1224.8633, y: -683.4568}
+      - {x: -1224.8633, y: -705.33765}
+      - {x: -1215.8569, y: -710.48615}
+      - {x: -1200.4175, y: -710.48615}
+      - {x: -1192.6978, y: -701.4763}
+      - {x: -1192.6978, y: -680.8825}
+      - {x: -1199.1309, y: -678.3083}
+    - - {x: -1040.8765, y: -644.8434}
+      - {x: -1052.456, y: -640.98206}
+      - {x: -1058.8892, y: -679.5954}
+      - {x: -1058.8892, y: -683.4568}
+      - {x: -1051.1694, y: -689.89233}
+    - - {x: -1221.0034, y: -619.10114}
+      - {x: -1226.1499, y: -625.5367}
+      - {x: -1226.1499, y: -653.85315}
+      - {x: -1221.0034, y: -673.15985}
+      - {x: -1215.8569, y: -677.0212}
+      - {x: -1206.8506, y: -677.0212}
+      - {x: -1197.8442, y: -673.15985}
+      - {x: -1191.4111, y: -665.4372}
+      - {x: -1191.4111, y: -628.1109}
+      - {x: -1193.9844, y: -619.10114}
+    - - {x: -328.08838, y: -339.7977}
+      - {x: -613.71826, y: -395.14355}
+      - {x: -613.71826, y: -612.6656}
+      - {x: -611.145, y: -615.2398}
+      - {x: -486.34277, y: -643.5563}
+      - {x: 549.3872, y: -643.5563}
+      - {x: 549.3872, y: -431.1827}
+      - {x: 298.4961, y: -339.7977}
+    - - {x: 684.4824, y: -446.62805}
+      - {x: 639.4507, y: -476.23163}
+      - {x: 620.15137, y: -521.2806}
+      - {x: 620.15137, y: -624.2496}
+      - {x: 1224.8633, y: -624.2496}
+      - {x: 1224.8633, y: -450.48938}
+      - {x: 1182.4048, y: -446.62805}
+    - - {x: -1219.7168, y: -486.52853}
+      - {x: -1257.0288, y: -517.41925}
+      - {x: -1257.0288, y: -552.17126}
+      - {x: -1237.7295, y: -586.92334}
+      - {x: -1193.9844, y: -586.92334}
+      - {x: -1160.5322, y: -566.3295}
+      - {x: -1160.5322, y: -518.70636}
+      - {x: -1191.4111, y: -486.52853}
+    - - {x: -953.3862, y: -487.81564}
+      - {x: -961.10596, y: -491.677}
+      - {x: -961.10596, y: -554.7455}
+      - {x: -946.9531, y: -583.062}
+      - {x: -880.0488, y: -583.062}
+      - {x: -863.32275, y: -549.59705}
+      - {x: -863.32275, y: -505.83524}
+      - {x: -873.6157, y: -487.81564}
+    - - {x: -805.4248, y: -501.9739}
+      - {x: -805.4248, y: -583.062}
+      - {x: -743.667, y: -583.062}
+      - {x: -741.09375, y: -580.48773}
+      - {x: -741.09375, y: -501.9739}
+    - - {x: -783.55225, y: -565.0424}
+      - {x: -783.55225, y: -567.61664}
+      - {x: -782.2656, y: -568.90375}
+      - {x: -773.2593, y: -568.90375}
+      - {x: -769.3994, y: -567.61664}
+      - {x: -769.3994, y: -566.3295}
+      - {x: -770.68604, y: -566.3295}
+    - - {x: -1092.3413, y: -521.2806}
+      - {x: -1107.7808, y: -538.01306}
+      - {x: -1107.7808, y: -558.6069}
+      - {x: -1106.4941, y: -562.4682}
+      - {x: -1035.73, y: -562.4682}
+      - {x: -1021.57715, y: -540.5873}
+      - {x: -1021.57715, y: -523.8548}
+      - {x: -1022.8638, y: -521.2806}
+    - - {x: -716.64795, y: -516.13214}
+      - {x: -733.374, y: -516.13214}
+      - {x: -737.2339, y: -517.41925}
+      - {x: -747.52686, y: -535.43884}
+      - {x: -747.52686, y: -548.30994}
+      - {x: -734.66064, y: -559.894}
+      - {x: -720.5078, y: -559.894}
+      - {x: -703.78174, y: -543.1615}
+      - {x: -703.78174, y: -530.29034}
+    - - {x: -775.8325, y: -530.29034}
+      - {x: -777.11914, y: -522.5677}
+      - {x: -775.8325, y: -519.99347}
+      - {x: -773.2593, y: -522.5677}
+      - {x: -773.2593, y: -530.29034}
+      - {x: -774.5459, y: -531.57745}
+    - - {x: -1208.1372, y: -362.96573}
+      - {x: -1232.583, y: -362.96573}
+      - {x: -1242.876, y: -368.1142}
+      - {x: -1248.0225, y: -377.12396}
+      - {x: -1248.0225, y: -454.35074}
+      - {x: -1227.4365, y: -462.0734}
+      - {x: -1214.5703, y: -462.0734}
+      - {x: -1173.3984, y: -426.03424}
+      - {x: -1170.8252, y: -420.8858}
+      - {x: -1170.8252, y: -404.15335}
+    - - {x: -777.11914, y: -361.67862}
+      - {x: -786.1255, y: -370.68842}
+      - {x: -786.1255, y: -462.0734}
+      - {x: -723.08105, y: -462.0734}
+      - {x: -723.08105, y: -361.67862}
+    - - {x: -953.3862, y: -368.1142}
+      - {x: -968.8257, y: -370.68842}
+      - {x: -971.3989, y: -379.6982}
+      - {x: -971.3989, y: -445.34094}
+      - {x: -953.3862, y: -454.35074}
+      - {x: -882.6221, y: -454.35074}
+      - {x: -851.74316, y: -415.73737}
+      - {x: -851.74316, y: -382.27243}
+      - {x: -878.7622, y: -368.1142}
+    - - {x: -1112.9272, y: -355.24307}
+      - {x: -1112.9272, y: -438.90536}
+      - {x: -1085.9082, y: -453.06363}
+      - {x: -1042.1631, y: -453.06363}
+      - {x: -1009.99756, y: -410.5889}
+      - {x: -1009.99756, y: -383.55954}
+      - {x: -1025.437, y: -355.24307}
+    - - {x: 630.44434, y: -198.21533}
+      - {x: 630.44434, y: -433.75693}
+      - {x: 631.73096, y: -440.1925}
+      - {x: 850.45654, y: -440.1925}
+      - {x: 869.75586, y: -422.1729}
+      - {x: 869.75586, y: -199.50244}
+      - {x: 858.1763, y: -198.21533}
+    - - {x: 895.4883, y: -198.21533}
+      - {x: 895.4883, y: -433.75693}
+      - {x: 905.78125, y: -440.1925}
+      - {x: 1133.5132, y: -440.1925}
+      - {x: 1133.5132, y: -198.21533}
+    - - {x: -1096.2012, y: -217.52202}
+      - {x: -1106.4941, y: -274.15497}
+      - {x: -1106.4941, y: -310.19412}
+      - {x: -1092.3413, y: -317.9168}
+      - {x: -1061.4624, y: -317.9168}
+      - {x: -1022.8638, y: -270.29364}
+      - {x: -1022.8638, y: -232.96738}
+      - {x: -1043.4497, y: -217.52202}
+    - - {x: -766.8262, y: -217.52202}
+      - {x: -807.99805, y: -240.69005}
+      - {x: -809.28467, y: -250.98695}
+      - {x: -809.28467, y: -285.73898}
+      - {x: -789.98535, y: -316.6297}
+      - {x: -753.95996, y: -316.6297}
+      - {x: -701.2085, y: -262.57095}
+      - {x: -701.2085, y: -234.25449}
+      - {x: -724.3677, y: -217.52202}
+    - - {x: -642.0239, y: 521.2806}
+      - {x: -642.0239, y: -299.89722}
+      - {x: -630.44434, y: -310.19412}
+      - {x: 609.8584, y: -310.19412}
+      - {x: 609.8584, y: 518.70636}
+      - {x: 598.2788, y: 521.2806}
+    - - {x: -1218.4302, y: -276.7292}
+      - {x: -1227.4365, y: -284.45187}
+      - {x: -1227.4365, y: -302.47144}
+      - {x: -1221.0034, y: -308.907}
+      - {x: -1202.9907, y: -308.907}
+      - {x: -1193.9844, y: -305.0457}
+      - {x: -1193.9844, y: -285.73898}
+      - {x: -1200.4175, y: -276.7292}
+    - - {x: -925.08057, y: -227.81892}
+      - {x: -958.5327, y: -249.69983}
+      - {x: -963.6792, y: -257.42252}
+      - {x: -963.6792, y: -284.45187}
+      - {x: -925.08057, y: -308.907}
+      - {x: -913.501, y: -308.907}
+      - {x: -908.3545, y: -306.3328}
+      - {x: -908.3545, y: -230.39314}
+      - {x: -913.501, y: -227.81892}
+    - - {x: -885.1953, y: -223.95758}
+      - {x: -885.1953, y: -303.75858}
+      - {x: -883.9087, y: -305.0457}
+      - {x: -877.4756, y: -305.0457}
+      - {x: -867.1826, y: -299.89722}
+      - {x: -858.1763, y: -289.6003}
+      - {x: -858.1763, y: -244.55138}
+      - {x: -865.896, y: -223.95758}
+    - - {x: -899.34814, y: -240.69005}
+      - {x: -901.9214, y: -241.97716}
+      - {x: -901.9214, y: -289.6003}
+      - {x: -886.48193, y: -289.6003}
+      - {x: -882.6221, y: -279.30344}
+      - {x: -882.6221, y: -250.98695}
+      - {x: -894.20166, y: -240.69005}
+    - - {x: -1224.8633, y: -217.52202}
+      - {x: -1241.5894, y: -222.67047}
+      - {x: -1241.5894, y: -252.27406}
+      - {x: -1221.0034, y: -276.7292}
+      - {x: -1202.9907, y: -276.7292}
+      - {x: -1177.2583, y: -252.27406}
+      - {x: -1177.2583, y: -227.81892}
+      - {x: -1190.1245, y: -217.52202}
+    - - {x: -783.55225, y: -270.29364}
+      - {x: -786.1255, y: -270.29364}
+      - {x: -787.4121, y: -271.58075}
+      - {x: -784.83887, y: -269.00653}
+      - {x: -784.83887, y: -266.4323}
+      - {x: -787.4121, y: -262.57095}
+      - {x: -787.4121, y: -263.85806}
+      - {x: -783.55225, y: -267.71942}
+      - {x: -782.2656, y: -267.71942}
+      - {x: -778.40576, y: -265.14517}
+      - {x: -777.11914, y: -263.85806}
+      - {x: -782.2656, y: -269.00653}
+      - {x: -782.2656, y: -270.29364}
+      - {x: -779.6924, y: -274.15497}
+      - {x: -779.6924, y: -272.86786}
+    - - {x: 633.0176, y: 523.8548}
+      - {x: 633.0176, y: -190.49266}
+      - {x: 1184.978, y: -190.49266}
+      - {x: 1184.978, y: 523.8548}
+    - - {x: -1119.3604, y: -66.929855}
+      - {x: -1123.2202, y: -68.216965}
+      - {x: -1123.2202, y: -169.89885}
+      - {x: -1120.647, y: -184.0571}
+      - {x: -1034.4434, y: -184.0571}
+      - {x: -1006.1377, y: -159.60196}
+      - {x: -1006.1377, y: -84.949425}
+      - {x: -1033.1567, y: -66.929855}
+    - - {x: -1217.1436, y: -99.107666}
+      - {x: -1219.7168, y: -100.394775}
+      - {x: -1231.2964, y: -104.25612}
+      - {x: -1231.2964, y: -176.33441}
+      - {x: -1230.0098, y: -180.19576}
+      - {x: -1193.9844, y: -180.19576}
+      - {x: -1187.5513, y: -173.7602}
+      - {x: -1187.5513, y: -149.30505}
+      - {x: -1193.9844, y: -99.107666}
+    - - {x: -927.6538, y: -148.01794}
+      - {x: -932.8003, y: -151.87929}
+      - {x: -932.8003, y: -163.46329}
+      - {x: -928.9404, y: -171.18597}
+      - {x: -916.0742, y: -171.18597}
+      - {x: -910.92773, y: -167.32463}
+      - {x: -910.92773, y: -155.74062}
+      - {x: -913.501, y: -148.01794}
+    - - {x: -963.6792, y: -73.36542}
+      - {x: -963.6792, y: -88.81077}
+      - {x: -949.52637, y: -145.44371}
+      - {x: -909.6411, y: -169.89885}
+      - {x: -873.6157, y: -169.89885}
+      - {x: -872.3291, y: -168.61174}
+      - {x: -859.4629, y: -129.99837}
+      - {x: -859.4629, y: -82.375206}
+      - {x: -923.79395, y: -73.36542}
+    - - {x: -764.2529, y: -65.64274}
+      - {x: -809.28467, y: -92.672104}
+      - {x: -809.28467, y: -128.71126}
+      - {x: -798.9917, y: -163.46329}
+      - {x: -796.41846, y: -169.89885}
+      - {x: -706.355, y: -169.89885}
+      - {x: -702.4951, y: -133.85971}
+      - {x: -702.4951, y: -97.82056}
+      - {x: -741.09375, y: -65.64274}
+    - - {x: -1074.3286, y: -135.14682}
+      - {x: -1078.1885, y: -128.71126}
+      - {x: -1078.1885, y: -120.98858}
+      - {x: -1074.3286, y: -114.55302}
+      - {x: -1067.8955, y: -110.69168}
+      - {x: -1060.1758, y: -110.69168}
+      - {x: -1056.3159, y: -113.26591}
+      - {x: -1049.8828, y: -120.98858}
+      - {x: -1049.8828, y: -128.71126}
+      - {x: -1056.3159, y: -136.43393}
+      - {x: -1060.1758, y: -139.00815}
+      - {x: -1067.8955, y: -139.00815}
+      - {x: -1069.1821, y: -137.72104}
+    - - {x: -1218.4302, y: -70.79119}
+      - {x: -1230.0098, y: -77.22675}
+      - {x: -1230.0098, y: -100.394775}
+      - {x: -1199.1309, y: -100.394775}
+      - {x: -1193.9844, y: -88.81077}
+      - {x: -1193.9844, y: -75.939644}
+      - {x: -1199.1309, y: -70.79119}
+    - - {x: -1235.1562, y: 64.35563}
+      - {x: -1239.0161, y: 55.34584}
+      - {x: -1239.0161, y: -30.890701}
+      - {x: -1233.8696, y: -34.752037}
+      - {x: -1217.1436, y: -34.752037}
+      - {x: -1179.8315, y: -12.871125}
+      - {x: -1179.8315, y: 24.45514}
+      - {x: -1201.7041, y: 64.35563}
+    - - {x: -1093.6279, y: 66.929855}
+      - {x: -1100.061, y: 60.49429}
+      - {x: -1100.061, y: -29.603588}
+      - {x: -1092.3413, y: -34.752037}
+      - {x: -1075.6152, y: -34.752037}
+      - {x: -1065.3223, y: -27.029364}
+      - {x: -1065.3223, y: 63.068516}
+      - {x: -1075.6152, y: 66.929855}
+    - - {x: -1057.6025, y: 66.929855}
+      - {x: -1064.0356, y: 60.49429}
+      - {x: -1064.0356, y: -33.464928}
+      - {x: -1056.3159, y: -34.752037}
+      - {x: -1031.8701, y: -34.752037}
+      - {x: -1029.2969, y: -28.316477}
+      - {x: -1029.2969, y: 64.35563}
+      - {x: -1038.3032, y: 66.929855}
+    - - {x: -966.25244, y: 64.35563}
+      - {x: -966.25244, y: -11.584013}
+      - {x: -954.67285, y: -30.890701}
+      - {x: -877.4756, y: -30.890701}
+      - {x: -858.1763, y: -21.880913}
+      - {x: -858.1763, y: 51.4845}
+      - {x: -860.7495, y: 59.207176}
+      - {x: -880.0488, y: 64.35563}
+    - - {x: -783.55225, y: -3.8613377}
+      - {x: -793.8452, y: -3.8613377}
+      - {x: -802.85156, y: -6.4355626}
+      - {x: -802.85156, y: -23.168026}
+      - {x: -793.8452, y: -28.316477}
+      - {x: -787.4121, y: -28.316477}
+      - {x: -783.55225, y: -27.029364}
+      - {x: -778.40576, y: -20.593801}
+      - {x: -778.40576, y: -9.009788}
+    - - {x: -759.10645, y: -2.5742252}
+      - {x: -766.8262, y: -6.4355626}
+      - {x: -771.97266, y: -11.584013}
+      - {x: -771.97266, y: -21.880913}
+      - {x: -770.68604, y: -25.74225}
+      - {x: -707.6416, y: -25.74225}
+      - {x: -707.6416, y: -5.1484504}
+      - {x: -715.3613, y: -2.5742252}
+    - - {x: -795.13184, y: 27.029364}
+      - {x: -802.85156, y: 20.593801}
+      - {x: -802.85156, y: 10.296901}
+      - {x: -797.7051, y: 2.5742252}
+      - {x: -783.55225, y: 2.5742252}
+      - {x: -778.40576, y: 7.7226753}
+      - {x: -778.40576, y: 19.306688}
+      - {x: -780.979, y: 27.029364}
+    - - {x: -716.64795, y: 27.029364}
+      - {x: -768.1128, y: 27.029364}
+      - {x: -771.97266, y: 19.306688}
+      - {x: -771.97266, y: 9.009788}
+      - {x: -768.1128, y: 5.1484504}
+      - {x: -710.21484, y: 5.1484504}
+      - {x: -707.6416, y: 9.009788}
+      - {x: -707.6416, y: 19.306688}
+      - {x: -708.9282, y: 25.74225}
+    - - {x: -796.41846, y: 57.920063}
+      - {x: -802.85156, y: 52.771614}
+      - {x: -802.85156, y: 34.752037}
+      - {x: -800.2783, y: 33.464928}
+      - {x: -780.979, y: 33.464928}
+      - {x: -778.40576, y: 39.90049}
+      - {x: -778.40576, y: 54.058727}
+      - {x: -784.83887, y: 57.920063}
+    - - {x: -766.8262, y: 57.920063}
+      - {x: -771.97266, y: 54.058727}
+      - {x: -771.97266, y: 42.474712}
+      - {x: -768.1128, y: 36.03915}
+      - {x: -711.50146, y: 36.03915}
+      - {x: -707.6416, y: 39.90049}
+      - {x: -707.6416, y: 52.771614}
+      - {x: -708.9282, y: 57.920063}
+    - - {x: -943.09326, y: 189.20555}
+      - {x: -955.9595, y: 172.47308}
+      - {x: -957.2461, y: 167.32463}
+      - {x: -957.2461, y: 120.98858}
+      - {x: -935.37354, y: 99.107666}
+      - {x: -889.0552, y: 99.107666}
+      - {x: -867.1826, y: 126.13703}
+      - {x: -867.1826, y: 180.19576}
+      - {x: -887.76855, y: 189.20555}
+    - - {x: -1106.4941, y: 182.76999}
+      - {x: -1106.4941, y: 100.394775}
+      - {x: -1022.8638, y: 100.394775}
+      - {x: -1022.8638, y: 182.76999}
+    - - {x: -795.13184, y: 184.0571}
+      - {x: -813.14453, y: 149.30505}
+      - {x: -813.14453, y: 105.54323}
+      - {x: -802.85156, y: 104.25612}
+      - {x: -701.2085, y: 104.25612}
+      - {x: -697.34863, y: 108.117455}
+      - {x: -697.34863, y: 160.88907}
+      - {x: -703.78174, y: 184.0571}
+    - - {x: -1254.4556, y: 172.47308}
+      - {x: -1254.4556, y: 113.26591}
+      - {x: -1253.169, y: 105.54323}
+      - {x: -1200.4175, y: 105.54323}
+      - {x: -1168.252, y: 108.117455}
+      - {x: -1164.3921, y: 109.404564}
+      - {x: -1164.3921, y: 172.47308}
+    - - {x: -1096.2012, y: 150.59216}
+      - {x: -1034.4434, y: 150.59216}
+      - {x: -1047.3096, y: 124.849915}
+      - {x: -1051.1694, y: 120.98858}
+      - {x: -1051.1694, y: 110.69168}
+      - {x: -1048.5962, y: 113.26591}
+      - {x: -1048.5962, y: 120.98858}
+      - {x: -1052.456, y: 124.849915}
+      - {x: -1062.749, y: 124.849915}
+      - {x: -1066.6089, y: 120.98858}
+      - {x: -1066.6089, y: 110.69168}
+      - {x: -1064.0356, y: 113.26591}
+      - {x: -1064.0356, y: 120.98858}
+      - {x: -1067.8955, y: 124.849915}
+      - {x: -1076.9019, y: 124.849915}
+      - {x: -1080.7617, y: 120.98858}
+      - {x: -1080.7617, y: 110.69168}
+      - {x: -1078.1885, y: 113.26591}
+      - {x: -1078.1885, y: 120.98858}
+      - {x: -1082.0483, y: 124.849915}
+      - {x: -1092.3413, y: 124.849915}
+      - {x: -1096.2012, y: 120.98858}
+      - {x: -1096.2012, y: 113.26591}
+      - {x: -1092.3413, y: 109.404564}
+      - {x: -1091.0547, y: 110.69168}
+      - {x: -1096.2012, y: 111.97879}
+    - - {x: -925.08057, y: 117.12724}
+      - {x: -930.22705, y: 119.70147}
+      - {x: -937.9468, y: 127.42414}
+      - {x: -941.80664, y: 136.43393}
+      - {x: -941.80664, y: 153.1664}
+      - {x: -940.52, y: 155.74062}
+      - {x: -939.2334, y: 162.17618}
+      - {x: -927.6538, y: 172.47308}
+      - {x: -918.64746, y: 175.0473}
+      - {x: -918.64746, y: 176.33441}
+      - {x: -904.4946, y: 175.0473}
+      - {x: -892.91504, y: 169.89885}
+      - {x: -886.48193, y: 163.46329}
+      - {x: -882.6221, y: 154.4535}
+      - {x: -880.0488, y: 142.86949}
+      - {x: -881.33545, y: 141.58238}
+      - {x: -883.9087, y: 132.57259}
+      - {x: -886.48193, y: 127.42414}
+      - {x: -890.3418, y: 122.27569}
+      - {x: -899.34814, y: 115.840126}
+      - {x: -913.501, y: 113.26591}
+      - {x: -914.7876, y: 114.55302}
+    - - {x: -792.5586, y: 119.70147}
+      - {x: -796.41846, y: 123.562805}
+      - {x: -796.41846, y: 126.13703}
+      - {x: -797.7051, y: 127.42414}
+      - {x: -797.7051, y: 133.85971}
+      - {x: -793.8452, y: 139.00815}
+      - {x: -787.4121, y: 141.58238}
+      - {x: -780.979, y: 148.01794}
+      - {x: -779.6924, y: 155.74062}
+      - {x: -775.8325, y: 157.02773}
+      - {x: -770.68604, y: 153.1664}
+      - {x: -766.8262, y: 151.87929}
+      - {x: -762.9663, y: 153.1664}
+      - {x: -759.10645, y: 158.31485}
+      - {x: -756.5332, y: 163.46329}
+      - {x: -747.52686, y: 168.61174}
+      - {x: -741.09375, y: 168.61174}
+      - {x: -739.8071, y: 167.32463}
+      - {x: -734.66064, y: 166.03752}
+      - {x: -730.8008, y: 160.88907}
+      - {x: -728.22754, y: 157.02773}
+      - {x: -728.22754, y: 148.01794}
+      - {x: -721.79443, y: 141.58238}
+      - {x: -716.64795, y: 140.29527}
+      - {x: -714.0747, y: 137.72104}
+      - {x: -712.7881, y: 132.57259}
+      - {x: -711.50146, y: 128.71126}
+      - {x: -712.7881, y: 127.42414}
+      - {x: -714.0747, y: 122.27569}
+      - {x: -720.5078, y: 118.41435}
+      - {x: -788.6987, y: 118.41435}
+      - {x: -789.98535, y: 119.70147}
+    - - {x: -1094.9146, y: 137.72104}
+      - {x: -1094.9146, y: 123.562805}
+      - {x: -1079.4751, y: 123.562805}
+      - {x: -1079.4751, y: 136.43393}
+      - {x: -1083.335, y: 137.72104}
+    - - {x: -1076.9019, y: 137.72104}
+      - {x: -1079.4751, y: 135.14682}
+      - {x: -1079.4751, y: 126.13703}
+      - {x: -1076.9019, y: 123.562805}
+      - {x: -1067.8955, y: 123.562805}
+      - {x: -1065.3223, y: 126.13703}
+      - {x: -1065.3223, y: 135.14682}
+      - {x: -1067.8955, y: 137.72104}
+    - - {x: -1061.4624, y: 150.59216}
+      - {x: -1065.3223, y: 149.30505}
+      - {x: -1065.3223, y: 123.562805}
+      - {x: -1049.8828, y: 123.562805}
+      - {x: -1049.8828, y: 149.30505}
+      - {x: -1051.1694, y: 150.59216}
+    - - {x: -1049.8828, y: 150.59216}
+      - {x: -1049.8828, y: 123.562805}
+      - {x: -1035.73, y: 123.562805}
+      - {x: -1035.73, y: 149.30505}
+      - {x: -1037.0166, y: 150.59216}
+    - - {x: -1219.7168, y: 145.44371}
+      - {x: -1241.5894, y: 149.30505}
+      - {x: -1235.1562, y: 145.44371}
+      - {x: -1208.1372, y: 133.85971}
+      - {x: -1201.7041, y: 135.14682}
+    - - {x: -905.78125, y: 175.0473}
+      - {x: -921.2207, y: 175.0473}
+      - {x: -921.2207, y: 137.72104}
+      - {x: -887.76855, y: 137.72104}
+      - {x: -883.9087, y: 139.00815}
+      - {x: -883.9087, y: 146.73083}
+      - {x: -885.1953, y: 151.87929}
+    - - {x: -1213.2837, y: 389.9951}
+      - {x: -1268.6084, y: 341.08484}
+      - {x: -1271.1816, y: 333.36215}
+      - {x: -1271.1816, y: 225.24469}
+      - {x: -1107.7808, y: 225.24469}
+      - {x: -1107.7808, y: 378.4111}
+      - {x: -1110.354, y: 389.9951}
+    - - {x: -957.2461, y: 389.9951}
+      - {x: -1002.27783, y: 389.9951}
+      - {x: -1069.1821, y: 351.3817}
+      - {x: -1069.1821, y: 254.84828}
+      - {x: -1060.1758, y: 225.24469}
+      - {x: -917.36084, y: 225.24469}
+      - {x: -907.0679, y: 288.3132}
+      - {x: -907.0679, y: 347.5204}
+    - - {x: -847.8833, y: 383.55954}
+      - {x: -871.0425, y: 307.6199}
+      - {x: -871.0425, y: 231.68025}
+      - {x: -869.75586, y: 225.24469}
+      - {x: -826.01074, y: 225.24469}
+      - {x: -737.2339, y: 278.0163}
+      - {x: -737.2339, y: 383.55954}
+    - - {x: -853.0298, y: 570.19086}
+      - {x: -882.6221, y: 527.7161}
+      - {x: -882.6221, y: 489.10275}
+      - {x: -837.59033, y: 414.45023}
+      - {x: -806.7114, y: 402.86624}
+      - {x: -775.8325, y: 402.86624}
+      - {x: -716.64795, y: 456.92496}
+      - {x: -716.64795, y: 541.8744}
+      - {x: -723.08105, y: 570.19086}
+    - - {x: -927.6538, y: 561.1811}
+      - {x: -961.10596, y: 567.61664}
+      - {x: -1037.0166, y: 567.61664}
+      - {x: -1070.4688, y: 547.0228}
+      - {x: -1070.4688, y: 418.31158}
+      - {x: -1037.0166, y: 405.44046}
+      - {x: -932.8003, y: 405.44046}
+      - {x: -912.21436, y: 414.45023}
+      - {x: -910.92773, y: 424.74713}
+      - {x: -910.92773, y: 544.4486}
+    - - {x: -1269.895, y: 556.0326}
+      - {x: -1271.1816, y: 547.0228}
+      - {x: -1271.1816, y: 459.49918}
+      - {x: -1199.1309, y: 417.02448}
+      - {x: -1175.9717, y: 417.02448}
+      - {x: -1110.354, y: 462.0734}
+      - {x: -1110.354, y: 550.88416}
+      - {x: -1119.3604, y: 556.0326}
+    - - {x: 294.63623, y: 652.56604}
+      - {x: 294.63623, y: 535.43884}
+      - {x: 295.92285, y: 529.00323}
+      - {x: 648.45703, y: 529.00323}
+      - {x: 648.45703, y: 652.56604}
+    - - {x: 661.32324, y: 652.56604}
+      - {x: 657.4634, y: 642.26917}
+      - {x: 657.4634, y: 543.1615}
+      - {x: 670.3296, y: 529.00323}
+      - {x: 1011.2842, y: 529.00323}
+      - {x: 1011.2842, y: 652.56604}
+    - - {x: 1030.5835, y: 592.0718}
+      - {x: 1020.2905, y: 580.48773}
+      - {x: 1020.2905, y: 550.88416}
+      - {x: 1024.1504, y: 543.1615}
+      - {x: 1303.3472, y: 543.1615}
+      - {x: 1303.3472, y: 579.2006}
+      - {x: 1291.7676, y: 592.0718}
+    - - {x: 41.171875, y: 619.10114}
+      - {x: 38.598633, y: 613.9527}
+      - {x: 38.598633, y: 610.0914}
+      - {x: 38.598633, y: 612.6656}
+      - {x: 34.73877, y: 619.10114}
+      - {x: -28.305664, y: 619.10114}
+      - {x: -28.305664, y: 574.0522}
+      - {x: 223.87207, y: 574.0522}
+      - {x: 223.87207, y: 619.10114}
+    - - {x: -1231.2964, y: 630.6851}
+      - {x: -1244.1626, y: 624.2496}
+      - {x: -1244.1626, y: 590.78467}
+      - {x: -1242.876, y: 588.21045}
+      - {x: -1236.4429, y: 580.48773}
+      - {x: -1200.4175, y: 580.48773}
+      - {x: -1191.4111, y: 583.062}
+      - {x: -1191.4111, y: 621.67535}
+      - {x: -1197.8442, y: 630.6851}
+    - - {x: -1184.978, y: 630.6851}
+      - {x: -1190.1245, y: 617.814}
+      - {x: -1190.1245, y: 588.21045}
+      - {x: -1179.8315, y: 581.77484}
+      - {x: -1174.685, y: 580.48773}
+      - {x: -1138.6597, y: 580.48773}
+      - {x: -1137.373, y: 585.6362}
+      - {x: -1137.373, y: 626.8238}
+      - {x: -1147.666, y: 630.6851}
+    - - {x: -798.9917, y: 778.70306}
+      - {x: -818.291, y: 779.9902}
+      - {x: -883.9087, y: 779.9902}
+      - {x: -927.6538, y: 754.2479}
+      - {x: -931.5137, y: 749.0995}
+      - {x: -931.5137, y: 629.398}
+      - {x: -898.0615, y: 581.77484}
+      - {x: -818.291, y: 581.77484}
+      - {x: -788.6987, y: 670.58563}
+      - {x: -788.6987, y: 728.5057}
+    - - {x: -638.16406, y: 773.5546}
+      - {x: -678.0493, y: 779.9902}
+      - {x: -730.8008, y: 779.9902}
+      - {x: -771.97266, y: 752.9608}
+      - {x: -774.5459, y: 733.6542}
+      - {x: -774.5459, y: 671.87274}
+      - {x: -742.3804, y: 581.77484}
+      - {x: -672.90283, y: 581.77484}
+      - {x: -669.04297, y: 588.21045}
+      - {x: -631.73096, y: 680.8825}
+      - {x: -631.73096, y: 731.07996}
+    - - {x: -607.28516, y: 779.9902}
+      - {x: -616.2915, y: 767.1191}
+      - {x: -616.2915, y: 656.42737}
+      - {x: -593.1323, y: 581.77484}
+      - {x: -509.50195, y: 581.77484}
+      - {x: -476.0498, y: 669.2985}
+      - {x: -473.47656, y: 682.1697}
+      - {x: -473.47656, y: 779.9902}
+    - - {x: 178.84033, y: 589.49756}
+      - {x: 178.84033, y: 602.36865}
+      - {x: 176.26709, y: 606.23}
+      - {x: 174.98047, y: 585.6362}
+      - {x: 176.26709, y: 585.6362}
+    - - {x: 154.39453, y: 593.3589}
+      - {x: 154.39453, y: 595.9331}
+      - {x: 153.10791, y: 597.2202}
+      - {x: 153.10791, y: 602.36865}
+      - {x: 154.39453, y: 601.08154}
+      - {x: 154.39453, y: 598.5073}
+      - {x: 155.68115, y: 597.2202}
+      - {x: 155.68115, y: 590.78467}
+      - {x: 156.96777, y: 590.78467}
+    - - {x: 12.866211, y: 599.79443}
+      - {x: 14.152832, y: 601.08154}
+      - {x: 12.866211, y: 606.23}
+      - {x: 14.152832, y: 595.9331}
+      - {x: 15.439453, y: 597.2202}
+    - - {x: 1031.8701, y: 638.40784}
+      - {x: 1024.1504, y: 628.1109}
+      - {x: 1024.1504, y: 610.0914}
+      - {x: 1030.5835, y: 598.5073}
+      - {x: 1289.1943, y: 598.5073}
+      - {x: 1299.4873, y: 604.9429}
+      - {x: 1299.4873, y: 628.1109}
+      - {x: 1293.0542, y: 638.40784}
+    - - {x: -413.00537, y: 782.56445}
+      - {x: -452.89062, y: 768.4062}
+      - {x: -452.89062, y: 629.398}
+      - {x: -402.7124, y: 601.08154}
+      - {x: -313.93555, y: 601.08154}
+      - {x: -275.3369, y: 612.6656}
+      - {x: -275.3369, y: 764.54486}
+      - {x: -303.64258, y: 782.56445}
+    - - {x: -253.46436, y: 782.56445}
+      - {x: -268.9038, y: 747.8124}
+      - {x: -268.9038, y: 620.38824}
+      - {x: -256.0376, y: 611.3785}
+      - {x: -232.87842, y: 601.08154}
+      - {x: -111.936035, y: 601.08154}
+      - {x: -91.3501, y: 647.4176}
+      - {x: -91.3501, y: 750.3866}
+      - {x: -126.08887, y: 782.56445}
+    - - {x: 1245.4492, y: 713.06036}
+      - {x: 1039.5898, y: 713.06036}
+      - {x: 1024.1504, y: 704.05054}
+      - {x: 1024.1504, y: 662.863}
+      - {x: 1025.437, y: 655.14026}
+      - {x: 1246.7358, y: 655.14026}
+      - {x: 1257.0288, y: 668.0114}
+      - {x: 1257.0288, y: 704.05054}
+    - - {x: -1278.9014, y: 657.71454}
+      - {x: -1204.2773, y: 657.71454}
+      - {x: -1191.4111, y: 671.87274}
+      - {x: -1191.4111, y: 740.0897}
+      - {x: -1209.4238, y: 769.6933}
+      - {x: -1257.0288, y: 769.6933}
+      - {x: -1287.9077, y: 751.6737}
+      - {x: -1287.9077, y: 664.1501}
+    - - {x: -75.910645, y: 773.5546}
+      - {x: -78.48389, y: 764.54486}
+      - {x: -78.48389, y: 659.00165}
+      - {x: 286.9165, y: 659.00165}
+      - {x: 286.9165, y: 724.64435}
+      - {x: 274.0503, y: 773.5546}
+    - - {x: 302.35596, y: 773.5546}
+      - {x: 294.63623, y: 764.54486}
+      - {x: 294.63623, y: 664.1501}
+      - {x: 304.9292, y: 659.00165}
+      - {x: 648.45703, y: 659.00165}
+      - {x: 648.45703, y: 772.2675}
+      - {x: 645.8838, y: 773.5546}
+    - - {x: 657.4634, y: 773.5546}
+      - {x: 657.4634, y: 659.00165}
+      - {x: 1011.2842, y: 659.00165}
+      - {x: 1011.2842, y: 773.5546}
+    - - {x: -1179.8315, y: 669.2985}
+      - {x: -1102.6343, y: 669.2985}
+      - {x: -1102.6343, y: 758.1093}
+      - {x: -1114.2139, y: 768.4062}
+      - {x: -1164.3921, y: 768.4062}
+      - {x: -1179.8315, y: 761.97064}
+    - - {x: -1020.2905, y: 773.5546}
+      - {x: -1025.437, y: 758.1093}
+      - {x: -1025.437, y: 670.58563}
+      - {x: -995.8447, y: 670.58563}
+      - {x: -944.3799, y: 713.06036}
+      - {x: -944.3799, y: 764.54486}
+      - {x: -954.67285, y: 773.5546}
+    - - {x: -1070.4688, y: 768.4062}
+      - {x: -1097.4878, y: 755.53503}
+      - {x: -1097.4878, y: 724.64435}
+      - {x: -1073.042, y: 674.44696}
+      - {x: -1052.456, y: 674.44696}
+      - {x: -1022.8638, y: 732.36707}
+      - {x: -1022.8638, y: 747.8124}
+      - {x: -1043.4497, y: 768.4062}
+    - - {x: 1034.4434, y: 773.5546}
+      - {x: 1024.1504, y: 764.54486}
+      - {x: 1024.1504, y: 723.35724}
+      - {x: 1030.5835, y: 714.3475}
+      - {x: 1242.876, y: 714.3475}
+      - {x: 1257.0288, y: 715.6346}
+      - {x: 1257.0288, y: 763.25775}
+      - {x: 1249.3091, y: 773.5546}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      6_3_2024 7_07_38 PM_0: -1568913385
+      6_3_2024 7_07_38 PM_1: 681421860
+      6_3_2024 7_07_38 PM_10: -1122906753
+      6_3_2024 7_07_38 PM_11: -1551155190
+      6_3_2024 7_07_38 PM_12: 1770056845
+      6_3_2024 7_07_38 PM_13: 2022020608
+      6_3_2024 7_07_38 PM_14: -1541058306
+      6_3_2024 7_07_38 PM_15: 339591583
+      6_3_2024 7_07_38 PM_16: 1396805217
+      6_3_2024 7_07_38 PM_17: 2097984158
+      6_3_2024 7_07_38 PM_18: -93644133
+      6_3_2024 7_07_38 PM_19: -554588164
+      6_3_2024 7_07_38 PM_2: -110268301
+      6_3_2024 7_07_38 PM_20: -564193148
+      6_3_2024 7_07_38 PM_21: 158953039
+      6_3_2024 7_07_38 PM_22: 93402238
+      6_3_2024 7_07_38 PM_23: 1758655470
+      6_3_2024 7_07_38 PM_24: -479105350
+      6_3_2024 7_07_38 PM_25: -1719941270
+      6_3_2024 7_07_38 PM_26: -789393209
+      6_3_2024 7_07_38 PM_27: 1036496919
+      6_3_2024 7_07_38 PM_28: 1431517360
+      6_3_2024 7_07_38 PM_29: -1574303145
+      6_3_2024 7_07_38 PM_3: -636698335
+      6_3_2024 7_07_38 PM_30: -1252704297
+      6_3_2024 7_07_38 PM_31: 879584680
+      6_3_2024 7_07_38 PM_32: -577745059
+      6_3_2024 7_07_38 PM_33: 1069557131
+      6_3_2024 7_07_38 PM_34: -1040085548
+      6_3_2024 7_07_38 PM_35: -836911320
+      6_3_2024 7_07_38 PM_36: -940581057
+      6_3_2024 7_07_38 PM_37: 1872901408
+      6_3_2024 7_07_38 PM_38: 1290073394
+      6_3_2024 7_07_38 PM_39: -1483108297
+      6_3_2024 7_07_38 PM_4: -1335503318
+      6_3_2024 7_07_38 PM_40: 130516650
+      6_3_2024 7_07_38 PM_41: 977248896
+      6_3_2024 7_07_38 PM_42: 1327835790
+      6_3_2024 7_07_38 PM_43: -483938122
+      6_3_2024 7_07_38 PM_44: 1132609063
+      6_3_2024 7_07_38 PM_45: 280214805
+      6_3_2024 7_07_38 PM_46: 642283870
+      6_3_2024 7_07_38 PM_47: 1200064408
+      6_3_2024 7_07_38 PM_48: 1984210498
+      6_3_2024 7_07_38 PM_49: -1416849729
+      6_3_2024 7_07_38 PM_5: -267617036
+      6_3_2024 7_07_38 PM_50: 1828291344
+      6_3_2024 7_07_38 PM_51: -852359561
+      6_3_2024 7_07_38 PM_52: 1874560724
+      6_3_2024 7_07_38 PM_53: 593549774
+      6_3_2024 7_07_38 PM_54: -176609779
+      6_3_2024 7_07_38 PM_55: 1681917409
+      6_3_2024 7_07_38 PM_56: 752728444
+      6_3_2024 7_07_38 PM_57: -1310421509
+      6_3_2024 7_07_38 PM_58: -1417479560
+      6_3_2024 7_07_38 PM_59: -784138865
+      6_3_2024 7_07_38 PM_6: 1074615061
+      6_3_2024 7_07_38 PM_60: -1764137908
+      6_3_2024 7_07_38 PM_7: 337856066
+      6_3_2024 7_07_38 PM_8: -275792099
+      6_3_2024 7_07_38 PM_9: 1741833080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

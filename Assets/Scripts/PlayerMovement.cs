@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int XVelocity = Animator.StringToHash("xVelocity");
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
     private int numberOfCollisionsWithIce;
-    private int numberOfCollisionsWithFloor;
+    [SerializeField] private int numberOfCollisionsWithFloor;
 
     [SerializeField] private GameObject footsteps;
     

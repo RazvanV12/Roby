@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip enemyDeathClip;
     [SerializeField] private AudioClip thunderClip;
     [SerializeField] private AudioClip shootingBulletClip;
+    [SerializeField] private AudioClip spikeDropperClip;
+    [SerializeField] private AudioClip coinCollectClip;
+    [SerializeField] private AudioClip fallingGroundClip;
 
     private void Start()
     {
@@ -98,4 +102,18 @@ public class AudioManager : MonoBehaviour
         get => shootingBulletClip;
     }
     
+    public AudioClip SpikeDropperClip
+    {
+        get => spikeDropperClip;
+    }
+    
+    public AudioClip CoinCollectClip
+    {
+        get => coinCollectClip;
+    }
+    
+    public AudioClip FallingGroundClip
+    {
+        get => fallingGroundClip;
+    }
 }

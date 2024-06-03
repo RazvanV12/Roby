@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    [SerializeField] private int _coins = 0; // To keep track of the number of coins collected
+    [SerializeField] private int _coins = 0;
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Coin")) return;
         _coins++; // Increase the coin count
+        audioManager.PlaySfx(audioManager.CoinCollectClip);
         Destroy(other.gameObject); // Remove the coin from the scene
         UpdateCoinUI(); // Optional: Update the UI to reflect the new coin count
     }

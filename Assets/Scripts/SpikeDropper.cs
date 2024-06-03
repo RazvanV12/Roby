@@ -17,6 +17,12 @@ public class SpikeDropper : MonoBehaviour
     [SerializeField] private GameObject firstSpike;
     [SerializeField] private GameObject secondSpike;
     [SerializeField] private GameObject thirdSpike;
+    
+    [SerializeField] private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +45,7 @@ public class SpikeDropper : MonoBehaviour
 
     private void DropSpikes()
     {
+        audioManager.PlaySfx(audioManager.SpikeDropperClip);
         firstSpike = Instantiate(spike, firstSpikePos.position, Quaternion.identity);
         secondSpike = Instantiate(spike, secondSpikePos.position, Quaternion.identity);
         thirdSpike = Instantiate(spike, thirdSpikePos.position, Quaternion.identity);

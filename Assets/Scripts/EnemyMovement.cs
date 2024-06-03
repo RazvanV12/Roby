@@ -14,9 +14,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform pointB;
     private Vector2 _currentTarget;
     private bool _isMoving = true;
+    private Renderer _renderer;
     [SerializeField] private float waitingTime;
 
-    // Start is called before the first frame update
+    [SerializeField] private GameObject footsteps;
+
+// Start is called before the first frame update
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -24,12 +27,19 @@ public class EnemyMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _currentTarget = pointB.position;
         StartCoroutine(MoveBetweenPoints());
+        _renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         _animator.SetFloat(XVelocity, _rb.velocity.x);
+        if(_isMoving && _renderer.isVisible)
+            footsteps.SetActive(true);
+        else
+        {
+            footsteps.SetActive(false);
+        }
     }
 
     private IEnumerator MoveBetweenPoints()

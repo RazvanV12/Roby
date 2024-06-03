@@ -9,6 +9,12 @@ public class FallingGroundTrap : MonoBehaviour
 
     [SerializeField] private float distance = 1f;
     [SerializeField] private Transform RaycastOrigin;
+    [SerializeField] private AudioManager audioManager;
+    private bool clipIsplayed = false;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,12 @@ public class FallingGroundTrap : MonoBehaviour
             rbSecondTile.bodyType = RigidbodyType2D.Kinematic;
             rbFirstTile.velocity = new Vector2(0, -7);
             rbSecondTile.velocity = new Vector2(0, -7);
+            if (!clipIsplayed)
+            {
+                audioManager.PlaySfx(audioManager.FallingGroundClip);
+                clipIsplayed = true;
+            }
+
             Destroy(this, 3f);
         }
     }

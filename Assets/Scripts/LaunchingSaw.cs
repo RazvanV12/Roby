@@ -12,10 +12,13 @@ public class LaunchingSaw : MonoBehaviour
     [SerializeField] private float distance = 6f;
 
     [SerializeField] private bool launched = false;
+    [SerializeField] private GameObject launchingSawClip;
+    private Renderer _renderer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,14 @@ public class LaunchingSaw : MonoBehaviour
 
         if (launched)
         {
+            if (_renderer.isVisible)
+            {
+                launchingSawClip.SetActive(true);
+            }
+            else
+            {
+                launchingSawClip.SetActive(false);
+            }
             Destroy(this, 3f);
         }
     }

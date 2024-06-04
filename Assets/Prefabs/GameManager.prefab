@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 6683186460428573105}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,3 +421,5 @@ MonoBehaviour:
   itemCollector: {fileID: 0}
   uiTimer: {fileID: 7898651660507294222}
   uiCoins: {fileID: 7493875281310362442}
+  DiedMenuUI: {fileID: 0}
+  playerPosition: {fileID: 0}

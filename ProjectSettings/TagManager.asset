@@ -10,6 +10,7 @@ TagManager:
   - Ice Ground
   - Cloud
   - Audio
+  - GameManager
   layers:
   - Default
   - TransparentFX

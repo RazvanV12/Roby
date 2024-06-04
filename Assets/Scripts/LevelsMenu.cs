@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,11 @@ public class LevelsMenu : MonoBehaviour
     private Image lockedImage;
     
     private void Awake()
+    {
+        ReloadLevelsPanel();
+    }
+
+    public void ReloadLevelsPanel()
     {
         var unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         foreach (var button in buttons)
@@ -38,16 +44,23 @@ public class LevelsMenu : MonoBehaviour
             star2Image = buttons[i].GameObject().transform.GetChild(2).GetComponent<Image>();
             star3Image = buttons[i].GameObject().transform.GetChild(3).GetComponent<Image>();
             lockedImage = buttons[i].GameObject().transform.GetChild(4).GetComponent<Image>();
-            star1Image.sprite = fullStar;
-            star2Image.sprite = fullStar;
-            star3Image.sprite = fullStar;
+            switch(PlayerPrefs.GetInt("CollectedCoins_Level " + (i + 1), 0))
+            {
+                case 1:
+                    star1Image.sprite = fullStar;
+                    break;
+                case 2:
+                    star1Image.sprite = fullStar;
+                    star2Image.sprite = fullStar;
+                    break;
+                case 3:
+                    star1Image.sprite = fullStar;
+                    star2Image.sprite = fullStar;
+                    star3Image.sprite = fullStar;
+                    break;
+            }
             lockedImage.gameObject.SetActive(false);
         }
-    }
-
-    private void Start()
-    {
-        
     }
 
     public void LoadLevel(int levelId)

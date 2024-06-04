@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float timeSinceGameStarted;
-    [SerializeField] private float coinsCollected;
+    [SerializeField] private int coinsCollected;
     [SerializeField] private ItemCollector itemCollector;
 
     [SerializeField] private TextMeshProUGUI uiTimer;
@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject DiedMenuUI;
     [SerializeField] private Transform playerPosition;
+
+    [SerializeField] private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,13 @@ public class GameManager : MonoBehaviour
         if(playerPosition.position.y < -3f)
         {
             DiedMenuUI.SetActive(true);
+            audioManager.StopBGM();
         }
+    }
+    
+    // getter for coins collected
+    public int GetCollectedCoins()
+    {
+        return coinsCollected;
     }
 }

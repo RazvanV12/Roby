@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float timeSinceGameStarted;
-    [SerializeField] private int coinsCollected;
-    [SerializeField] private ItemCollector itemCollector;
+    [SerializeField] private int coinsCollected = 0;
 
     [SerializeField] private TextMeshProUGUI uiTimer;
     [SerializeField] private TextMeshProUGUI uiCoins;
@@ -44,7 +43,6 @@ public class GameManager : MonoBehaviour
         {
             timeSinceGameStarted += Time.deltaTime;
             uiTimer.text = "Timer: " + timeSinceGameStarted.ToString("F2");
-            coinsCollected = itemCollector.GetCoins();
             uiCoins.text = "Coins: " + coinsCollected;
         }
 
@@ -118,5 +116,15 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex - 1), coinsCollected);
             PlayerPrefs.Save();
         }
+    }
+    // getter and setter for coinsCollected
+    public void AddCollectedCoin()
+    {
+        coinsCollected++;
+        UpdateCoinUI();
+    }
+    private void UpdateCoinUI()
+    {
+        Debug.Log("Coins: " + coinsCollected);
     }
 }

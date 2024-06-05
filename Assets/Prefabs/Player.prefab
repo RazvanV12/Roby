@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 3862210906978395502}
   - component: {fileID: 1722383022726354865}
   - component: {fileID: 3675001062859364261}
-  - component: {fileID: 5382443642153805825}
   - component: {fileID: 1215473211378958515}
   - component: {fileID: 9109099803139267310}
   m_Layer: 6
@@ -275,6 +274,7 @@ MonoBehaviour:
   isOnIce: 0
   invertedControls: 0
   invertedVerticals: 0
+  numberOfCollisionsWithFloor: 0
   footsteps: {fileID: 3012688190229098260}
   audioManager: {fileID: 0}
 --- !u!95 &1722383022726354865
@@ -333,19 +333,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.030413868, y: -0.48303226}
   m_Size: {x: 0.7954302, y: 0.280233}
   m_Direction: 1
---- !u!114 &5382443642153805825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6067941823742532166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d99d2e4d8a63b4a8742e967a1e8c9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coins: 0
 --- !u!114 &1215473211378958515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d2d9638a0ce224b94f1055eb82883b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!61 &9109099803139267310
 BoxCollider2D:
   m_ObjectHideFlags: 0

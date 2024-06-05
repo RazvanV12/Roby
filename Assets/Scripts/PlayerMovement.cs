@@ -17,14 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _horizontalInput;
     [SerializeField] private float _verticalInput;
     [SerializeField] private int jumpCount = 0;
-    [SerializeField] private int maxJumpCount = 1; // Allow for double jump when power-up is active
+    [SerializeField] private int maxJumpCount = 1; 
     
     [SerializeField, ReadOnly] private bool _isGrounded = true;
     [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
     [SerializeField] private bool invertedControls;
     [SerializeField] private bool invertedVerticals;
-    // To do: Logic for when the player is upside-down; 
      
     private Rigidbody2D _rb;
     
@@ -51,59 +50,6 @@ public class PlayerMovement : MonoBehaviour
         _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         _animator = GetComponent<Animator>();
     }
-
-    // // Update is called once per frame
-    // private void Update()
-    // {
-    //     _verticalInput = Input.GetAxisRaw("Vertical");
-    //     _horizontalInput = Input.GetAxisRaw("Horizontal");
-    //     if (Input.GetKey(KeyCode.S) && _isGrounded)
-    //     {
-    //         transform.localScale = new Vector3(1, 0.5f, 1);
-    //         moveForce = 0f;
-    //     }
-    //     else
-    //     {
-    //         transform.localScale = new Vector3(1, 1f, 1);
-    //         moveForce = 100f;
-    //     }
-    //
-    //     if (!_isJumping) _isJumping = Input.GetKeyDown(KeyCode.W);
-    //     if (_isJumping && Input.GetKeyUp(KeyCode.W)) _isJumping = false;
-    // }
-    //
-    // private void FixedUpdate()
-    // {
-    //     if(!_isGrounded && transform.position.y < -1.5f)
-    //     {
-    //         moveForce = 0f;
-    //     }
-    //     //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
-    //     if (Mathf.Abs(_horizontalInput) > 0)
-    //     {
-    //         _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
-    //     }
-    //     else if (!isOnIce)
-    //     {
-    //         // Stop the player if not on ice and no input is detected
-    //         _rb.velocity = new Vector2(0, _rb.velocity.y);
-    //     }
-    //     if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
-    //     {
-    //         _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
-    //     }
-    //     if (_isJumping && _isGrounded)
-    //     {
-    //         _isJumping = false;
-    //         _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
-    //         _isGrounded = false;
-    //         _animator.SetBool(IsJumping, !_isGrounded);
-    //     }
-    //     _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
-    //     _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
-    // }
-    
-    // Update is called once per frame
     private void Update()
     {
         _verticalInput = Input.GetAxisRaw("Vertical");

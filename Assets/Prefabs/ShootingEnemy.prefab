@@ -65,8 +65,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016132154, y: 0.29467505}
-  m_Size: {x: 0.19969383, y: 0.06318864}
+  m_Offset: {x: 0.04647433, y: 0.29467505}
+  m_Size: {x: 0.2603801, y: 0.06318864}
   m_Direction: 1
 --- !u!114 &3248468016889936405
 MonoBehaviour:
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5608980168234200388}
+  audioManager: {fileID: 0}
 --- !u!1 &5087245371352316533
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ GameObject:
   - component: {fileID: 8843517068862786741}
   - component: {fileID: 1414876064070402643}
   - component: {fileID: 1824752351656684323}
-  - component: {fileID: 943588770527070998}
+  - component: {fileID: 659047106544847243}
   m_Layer: 0
   m_Name: ShootingEnemy
   m_TagString: Enemy
@@ -236,8 +237,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7981976696038320758, guid: eee649ea5007ca645b168cd2ec355a7b, type: 3}
   bulletPos: {fileID: 8323970096062485294}
---- !u!61 &943588770527070998
-BoxCollider2D:
+  audioManager: {fileID: 0}
+--- !u!60 &659047106544847243
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -268,7 +270,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00992763, y: -0.045915}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -278,6 +280,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2826075, y: 0.22817}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1024144, y: 0.07231874}
+      - {x: -0.15591232, y: -0.012757054}
+      - {x: -0.15591232, y: -0.07}
+      - {x: -0.1024144, y: -0.16}
+      - {x: 0.12807955, y: -0.16}
+      - {x: 0.1280795, y: -0.037242945}
+      - {x: 0.23941047, y: 0.0017291531}
+      - {x: 0.2394105, y: 0.07231874}
+  m_UseDelaunayMesh: 0

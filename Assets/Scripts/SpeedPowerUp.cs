@@ -13,6 +13,8 @@ public class SpeedPowerUp : MonoBehaviour
     [SerializeField] private float duration = 5f;
     // Start is called before the first frame update
     [SerializeField] private AudioManager audioManager;
+    
+    private bool isCollected;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -34,9 +36,10 @@ public class SpeedPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isCollected)
         {
             ApplySpeedBoost();
+            isCollected = true;
             audioManager.PlaySfx(audioManager.SpeedUpClip);
         }
     }

@@ -10,6 +10,8 @@ public class InvertedControls : MonoBehaviour
     // Start is called before the first frame update
     
     [SerializeField] private AudioManager audioManager;
+    
+    private bool isCollected;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -31,9 +33,10 @@ public class InvertedControls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isCollected)
         {
             InvertControls();
+            isCollected = true;
             audioManager.PlaySfx(audioManager.InvertedControlsClip);
         }
     }

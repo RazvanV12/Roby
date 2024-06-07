@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         initialPositionOnX = playerPosition.position.x;
-        totalDistanceToTravel = GameObject.Find("Finish").transform.position.x - initialPositionOnX;
+        totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
     }
 
     // Update is called once per frame

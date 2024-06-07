@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip spikeDropperClip;
     [SerializeField] private AudioClip coinCollectClip;
     [SerializeField] private AudioClip fallingGroundClip;
+    
+    [SerializeField] private bool sfxEnabled = true;
 
     private void Start()
     {
@@ -33,14 +35,35 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PauseBGM()
+    {
+        musicSource.Pause();
+    }
+
+    public void UnPauseBGM()
+    {
+        musicSource.UnPause();
+    }
+    
     public void StopBGM()
     {
         musicSource.Stop();
     }
+
+    public void EnableSFX()
+    {
+        sfxEnabled = true;
+    }
+    
+    public void DisableSFX()
+    {
+        sfxEnabled = false;
+    }
     
     public void PlaySfx(AudioClip clip)
     {
-        sfxSource.PlayOneShot(clip);
+        if(sfxEnabled)
+            sfxSource.PlayOneShot(clip);
     }
     public AudioClip SpeedUpClip
     {
@@ -115,5 +138,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip FallingGroundClip
     {
         get => fallingGroundClip;
+    }
+    
+    public bool SfxEnabled
+    {
+        get => sfxEnabled;
     }
 }

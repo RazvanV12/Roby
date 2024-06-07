@@ -14,11 +14,14 @@ public class LaunchingSaw : MonoBehaviour
     [SerializeField] private bool launched = false;
     [SerializeField] private GameObject launchingSawClip;
     private Renderer _renderer;
+
+    [SerializeField] private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<Renderer>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class LaunchingSaw : MonoBehaviour
 
         if (launched)
         {
-            if (_renderer.isVisible)
+            if (_renderer.isVisible && audioManager.SfxEnabled)
             {
                 launchingSawClip.SetActive(true);
             }

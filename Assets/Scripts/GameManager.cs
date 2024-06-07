@@ -29,6 +29,25 @@ public class GameManager : MonoBehaviour
     private Image star3Image;
     private TextMeshProUGUI scoreText;
     private bool levelEnded = false;
+
+    [SerializeField] private Image pauseButtonImage;
+    [SerializeField] private Sprite pauseSprite;
+    [SerializeField] private Sprite unpauseSprite;
+    
+    [SerializeField] private Image DropDownBackground; 
+    
+    private bool dropDownPannelIsOpen = false;
+    private bool bgmIsActive = true;
+    private bool sfxIsActive = true;
+
+    private bool isPaused;
+
+    [SerializeField] private GameObject activateBGM;
+    [SerializeField] private GameObject activateSFX;
+    [SerializeField] private GameObject openMainMenu;
+    
+    [SerializeField] private GameObject DisabledBGMImage;
+    [SerializeField] private GameObject DisabledSFXImage;
     
     // Start is called before the first frame update
     void Start()
@@ -126,5 +145,85 @@ public class GameManager : MonoBehaviour
     private void UpdateCoinUI()
     {
         Debug.Log("Coins: " + coinsCollected);
+    }
+    
+    public void PauseGame()
+    {
+        if (!isPaused)
+        {
+            Time.timeScale = 0;
+            pauseButtonImage.sprite = unpauseSprite;
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseButtonImage.sprite = pauseSprite;
+            isPaused = false;
+        }
+        AudioListener.pause = isPaused;
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Game restarted");
+    }
+
+    public void DropDownButton()
+    {
+        if (!dropDownPannelIsOpen)
+        {
+            DropDownBackground.enabled = true;
+            activateBGM.SetActive(true);
+            activateSFX.SetActive(true);
+            openMainMenu.SetActive(true);
+            dropDownPannelIsOpen = true;
+        }
+        else
+        {
+            DropDownBackground.enabled = false;
+            activateBGM.SetActive(false);
+            activateSFX.SetActive(false);
+            openMainMenu.SetActive(false);
+            dropDownPannelIsOpen = false;
+        }
+    }
+
+    public void ActivateBGM()
+    {
+        if (bgmIsActive)
+        {
+            audioManager.PauseBGM();
+            bgmIsActive = false;
+            DisabledBGMImage.SetActive(true);
+        }
+        else
+        {
+            audioManager.UnPauseBGM();
+            bgmIsActive = true;
+            DisabledBGMImage.SetActive(false);
+        }  
+    }
+    
+    public void ActivateSfx()
+    {
+        if (sfxIsActive)
+        {
+            audioManager.DisableSFX();
+            sfxIsActive = false;
+            DisabledSFXImage.SetActive(true);
+        }
+        else
+        {
+            audioManager.EnableSFX();
+            sfxIsActive = true;
+            DisabledSFXImage.SetActive(false);
+        }  
+    }
+
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _verticalInput = Input.GetAxisRaw("Vertical");
         _horizontalInput = Input.GetAxisRaw("Horizontal");
-        if(_horizontalInput != 0 && _isGrounded)
+        if(_horizontalInput != 0 && _isGrounded && audioManager.SfxEnabled)
         {
             footsteps.SetActive(true);
         }

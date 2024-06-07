@@ -16,16 +16,19 @@ public class SwingingMace : MonoBehaviour
     [SerializeField] private GameObject swingingClip;
 
     [SerializeField] private GameObject squareSprite;
+
+    [SerializeField] private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         _renderer = squareSprite.GetComponent<Renderer>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_renderer.isVisible)
+        if(_renderer.isVisible && audioManager.SfxEnabled)
             swingingClip.SetActive(true);
         else
         {

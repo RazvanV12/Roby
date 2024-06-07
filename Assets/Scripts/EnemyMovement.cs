@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float waitingTime;
 
     [SerializeField] private GameObject footsteps;
+    [SerializeField] private AudioManager audioManager;
 
 // Start is called before the first frame update
     private void Start()
@@ -28,13 +29,14 @@ public class EnemyMovement : MonoBehaviour
         _currentTarget = pointB.position;
         StartCoroutine(MoveBetweenPoints());
         _renderer = GetComponent<Renderer>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         _animator.SetFloat(XVelocity, _rb.velocity.x);
-        if(_isMoving && _renderer.isVisible)
+        if(_isMoving && _renderer.isVisible && audioManager.SfxEnabled)
             footsteps.SetActive(true);
         else
         {

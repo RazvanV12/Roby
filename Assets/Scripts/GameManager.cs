@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Slider = UnityEngine.UI.Slider;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,11 +49,18 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameObject DisabledBGMImage;
     [SerializeField] private GameObject DisabledSFXImage;
-    
+
+    [SerializeField] private Slider ProgressBar;
+    private float progress = 0f;
+    private float initialPositionOnX;
+    private float totalDistanceToTravel;
+
     // Start is called before the first frame update
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        initialPositionOnX = playerPosition.position.x;
+        totalDistanceToTravel = GameObject.Find("Finish").transform.position.x - initialPositionOnX;
     }
 
     // Update is called once per frame
@@ -71,6 +79,9 @@ public class GameManager : MonoBehaviour
             levelEnded = true;
             audioManager.StopBGM();
         }
+
+        progress = playerPosition.position.x - initialPositionOnX;
+        ProgressBar.value = progress / totalDistanceToTravel;
     }
     
     public void FinishedLevel()

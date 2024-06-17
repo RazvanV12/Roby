@@ -58,6 +58,7 @@ public class SpeedPowerUp : MonoBehaviour
     private IEnumerator RemoveSpeedBoost()
     {
         yield return new WaitForSeconds(duration);
+        audioManager.PlaySfx(audioManager.ExpireBuffClip);
         playerMovement.MaxSpeed -= boostAmount;
         Destroy(gameObject);
     }

@@ -13,7 +13,7 @@ public class LaunchingSaw : MonoBehaviour
 
     [SerializeField] private bool launched = false;
     [SerializeField] private GameObject launchingSawClip;
-    private Renderer _renderer;
+    [SerializeField] private Renderer _renderer;
 
     [SerializeField] private AudioManager audioManager;
     // Start is called before the first frame update
@@ -45,7 +45,7 @@ public class LaunchingSaw : MonoBehaviour
             {
                 launchingSawClip.SetActive(false);
             }
-            Destroy(this, 3f);
+            Destroy(gameObject, 3f);
         }
     }
 

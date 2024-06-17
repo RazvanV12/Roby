@@ -320,3 +320,9 @@ MonoBehaviour:
   spikeDropperClip: {fileID: 8300000, guid: 91c4c6ed8d19f684995d5338222d4424, type: 3}
   coinCollectClip: {fileID: 8300000, guid: 88693fc17c2174e418d6a60c435cbddf, type: 3}
   fallingGroundClip: {fileID: 8300000, guid: b84d95c34e3edc04aa8d6f4a654cd811, type: 3}
+  expireBuffClip: {fileID: 8300000, guid: e66a0e6f278e0bb4dadee99e00719692, type: 3}
+  hoverButtonClip: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
+  pauseGameClip: {fileID: 8300000, guid: b83bf8726a7fac349a54389f0c57cda6, type: 3}
+  unpauseGameClip: {fileID: 8300000, guid: e58d8bd078f188a4ba314e933b98528b, type: 3}
+  sfxEnabled: 1

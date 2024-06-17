@@ -26,6 +26,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip spikeDropperClip;
     [SerializeField] private AudioClip coinCollectClip;
     [SerializeField] private AudioClip fallingGroundClip;
+    [SerializeField] private AudioClip expireBuffClip;
+    [SerializeField] private AudioClip hoverButtonClip;
+    [SerializeField] private AudioClip buttonClickClip;
+    [SerializeField] private AudioClip pauseGameClip;
+    [SerializeField] private AudioClip unpauseGameClip;
     
     [SerializeField] private bool sfxEnabled = true;
 
@@ -33,6 +38,7 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.clip = backgroundMusic;
         musicSource.Play();
+        sfxSource.ignoreListenerPause = true;
     }
 
     public void PauseBGM()
@@ -140,8 +146,38 @@ public class AudioManager : MonoBehaviour
         get => fallingGroundClip;
     }
     
+    public AudioClip ExpireBuffClip
+    {
+        get => expireBuffClip;
+    }
+    
+    public AudioClip HoverButtonClip
+    {
+        get => hoverButtonClip;
+    }
+    
+    public AudioClip ButtonClickClip
+    {
+        get => buttonClickClip;
+    }
+    
+    public AudioClip PauseGameClip
+    {
+        get => pauseGameClip;
+    }
+    
+    public AudioClip UnpauseGameClip
+    {
+        get => unpauseGameClip;
+    }
+    
     public bool SfxEnabled
     {
         get => sfxEnabled;
+    }
+    
+    public void ClickButton()
+    {
+        PlaySfx(ButtonClickClip);
     }
 }

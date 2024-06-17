@@ -55,6 +55,7 @@ public class InvertedControls : MonoBehaviour
     private IEnumerator RestoreNormalControls()
     {
         yield return new WaitForSeconds(duration);
+        audioManager.PlaySfx(audioManager.ExpireBuffClip);
         playerMovement.InvertedControls = false;
         Destroy(gameObject);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -61,6 +62,18 @@ public class GameManager : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         initialPositionOnX = playerPosition.position.x;
         totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
+        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+        {
+            audioManager.PauseBGM();
+            bgmIsActive = false;
+            DisabledBGMImage.SetActive(true);
+        }
+        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+        {
+            audioManager.DisableSFX();
+            sfxIsActive = false;
+            DisabledSFXImage.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -73,7 +86,7 @@ public class GameManager : MonoBehaviour
             uiCoins.text = "Coins: " + coinsCollected;
         }
 
-        if(playerPosition.position.y < -3f)
+        if(playerPosition.position.y is < -3f or > 11f)
         {
             DiedMenuUI.SetActive(true);
             levelEnded = true;
@@ -162,6 +175,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isPaused)
         {
+            audioManager.PlaySfx(audioManager.PauseGameClip);
             Time.timeScale = 0;
             pauseButtonImage.sprite = unpauseSprite;
             isPaused = true;
@@ -170,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseButtonImage.sprite = pauseSprite;
+            audioManager.PlaySfx(audioManager.UnpauseGameClip);
             isPaused = false;
         }
         AudioListener.pause = isPaused;
@@ -208,12 +223,14 @@ public class GameManager : MonoBehaviour
             audioManager.PauseBGM();
             bgmIsActive = false;
             DisabledBGMImage.SetActive(true);
+            PlayerPrefs.SetString("BgmEnabled", "false");
         }
         else
         {
             audioManager.UnPauseBGM();
             bgmIsActive = true;
             DisabledBGMImage.SetActive(false);
+            PlayerPrefs.SetString("BgmEnabled", "true");
         }  
     }
     
@@ -224,17 +241,29 @@ public class GameManager : MonoBehaviour
             audioManager.DisableSFX();
             sfxIsActive = false;
             DisabledSFXImage.SetActive(true);
+            PlayerPrefs.SetString("SfxEnabled", "false");
         }
         else
         {
             audioManager.EnableSFX();
             sfxIsActive = true;
             DisabledSFXImage.SetActive(false);
+            PlayerPrefs.SetString("SfxEnabled", "true");
         }  
+    }
+
+    public bool IsPaused()
+    {
+        return isPaused;
     }
 
     public void OpenMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ClickButton()
+    {
+        audioManager.PlaySfx(audioManager.ButtonClickClip);
     }
 }

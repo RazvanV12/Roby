@@ -55,6 +55,7 @@ public class HigherJumpPowerUp : MonoBehaviour
     private IEnumerator RemoveJumpBoost()
     {
         yield return new WaitForSeconds(duration);
+        audioManager.PlaySfx(audioManager.ExpireBuffClip);
         playerMovement.JumpForce -= boostAmount;
         Destroy(gameObject);
     }

@@ -38,9 +38,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject footsteps;
     
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private GameManager gameManager;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -52,80 +54,95 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        _verticalInput = Input.GetAxisRaw("Vertical");
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        if(_horizontalInput != 0 && _isGrounded && audioManager.SfxEnabled)
+        if (gameManager.IsPaused() == false)
         {
-            footsteps.SetActive(true);
-        }
-        else
-        {
-            footsteps.SetActive(false);
-        }
-        if (invertedControls)
-        {
-            _verticalInput *= -1;
-            _horizontalInput *= -1;
-        }
-        if (Mathf.Approximately(_verticalInput, -1) && _isGrounded)
-        {
-            transform.localScale = new Vector3(1, 0.5f, 1);
-            moveForce = 0f;
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1f, 1);
-            moveForce = 100f;
-        }
+            _verticalInput = Input.GetAxisRaw("Vertical");
+            _horizontalInput = Input.GetAxisRaw("Horizontal");
+            if (_horizontalInput != 0 && _isGrounded && audioManager.SfxEnabled)
+            {
+                footsteps.SetActive(true);
+            }
+            else
+            {
+                footsteps.SetActive(false);
+            }
 
-        // Check for jump input and increment jump count
-        if ((invertedControls ? Input.GetKeyDown(KeyCode.S) : Input.GetKeyDown(KeyCode.W)) && jumpCount < maxJumpCount)
-        {
-            _isJumping = true;
-            jumpCount++;
+            if (invertedControls)
+            {
+                _verticalInput *= -1;
+                _horizontalInput *= -1;
+            }
+
+            if (Mathf.Approximately(_verticalInput, -1) && _isGrounded)
+            {
+                transform.localScale = new Vector3(1, 0.5f, 1);
+                moveForce = 0f;
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1f, 1);
+                moveForce = 100f;
+            }
+
+            // Check for jump input and increment jump count
+            if ((invertedControls ? Input.GetKeyDown(KeyCode.S) : Input.GetKeyDown(KeyCode.W)) &&
+                jumpCount < maxJumpCount)
+            {
+                _isJumping = true;
+                jumpCount++;
+            }
         }
     }
     
     private void FixedUpdate()
     {
-        if(!_isGrounded && transform.position.y < -1.5f)
+        if (gameManager.IsPaused() == false)
         {
-            moveForce = 0f;
-        }
-        if(!_isGrounded && transform.position.y > 11)
-        {
-            moveForce = 0f;
-            PlayerInteractions.OnPlayerDeath?.Invoke();
-        }
-        //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
-        if (Mathf.Abs(_horizontalInput) > 0)
-        {
-            _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
-        }
-        else if (!isOnIce)
-        {
-            // Stop the player if not on ice and no input is detected
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
-        }
-        if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
-        {
-            _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
-        }
-        if (_isJumping)
-        {
-            if(invertedVerticals)
-                _rb.velocity = new Vector2(_rb.velocity.x, -jumpForce);
-            else
+            if (!_isGrounded && transform.position.y < -1.5f)
             {
-                _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+                moveForce = 0f;
             }
-            audioManager.PlaySfx(audioManager.JumpClip);
-            _isJumping = false;
-            _isGrounded = false;
-            _animator.SetBool(IsJumping, true);
+
+            if (!_isGrounded && transform.position.y > 11)
+            {
+                moveForce = 0f;
+                PlayerInteractions.OnPlayerDeath?.Invoke();
+            }
+
+            //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
+            if (Mathf.Abs(_horizontalInput) > 0)
+            {
+                _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
+            }
+            else if (!isOnIce)
+            {
+                // Stop the player if not on ice and no input is detected
+                _rb.velocity = new Vector2(0, _rb.velocity.y);
+            }
+
+            if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
+            {
+                _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
+            }
+
+            if (_isJumping)
+            {
+                if (invertedVerticals)
+                    _rb.velocity = new Vector2(_rb.velocity.x, -jumpForce);
+                else
+                {
+                    _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+                }
+
+                audioManager.PlaySfx(audioManager.JumpClip);
+                _isJumping = false;
+                _isGrounded = false;
+                _animator.SetBool(IsJumping, true);
+            }
+
+            _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
+            _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
         }
-        _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
-        _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
     }
 
     private void OnTriggerEnter2D(Collider2D other)

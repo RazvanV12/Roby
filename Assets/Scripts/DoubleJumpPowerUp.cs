@@ -55,6 +55,7 @@ public class DoubleJumpPowerUp : MonoBehaviour
     private IEnumerator DisableDoubleJump()
     {
         yield return new WaitForSeconds(duration);
+        audioManager.PlaySfx(audioManager.ExpireBuffClip);
         playerMovement.MaxJumpCount = 1;
         Destroy(gameObject);
     }

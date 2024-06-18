@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
             bgmIsActive = false;
             DisabledBGMImage.SetActive(true);
             PlayerPrefs.SetString("BgmEnabled", "false");
+            PlayerPrefs.Save();
         }
         else
         {
@@ -234,6 +235,7 @@ public class GameManager : MonoBehaviour
             bgmIsActive = true;
             DisabledBGMImage.SetActive(false);
             PlayerPrefs.SetString("BgmEnabled", "true");
+            PlayerPrefs.Save();
         }  
     }
     
@@ -245,6 +247,7 @@ public class GameManager : MonoBehaviour
             sfxIsActive = false;
             DisabledSFXImage.SetActive(true);
             PlayerPrefs.SetString("SfxEnabled", "false");
+            PlayerPrefs.Save();
         }
         else
         {
@@ -252,6 +255,7 @@ public class GameManager : MonoBehaviour
             sfxIsActive = true;
             DisabledSFXImage.SetActive(false);
             PlayerPrefs.SetString("SfxEnabled", "true");
+            PlayerPrefs.Save();
         }  
     }
 

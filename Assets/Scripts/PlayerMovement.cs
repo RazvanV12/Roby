@@ -24,9 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isOnIce;
     [SerializeField] private bool invertedControls;
     [SerializeField] private bool invertedVerticals;
-     
-    private Rigidbody2D _rb;
-    
+
     private Animator _animator;
     
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
@@ -48,8 +46,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         _animator = GetComponent<Animator>();
     }
     private void Update()
@@ -112,26 +110,26 @@ public class PlayerMovement : MonoBehaviour
             //_rb.velocity = new Vector2(_horizontalInput * speed, _rb.velocity.y);
             if (Mathf.Abs(_horizontalInput) > 0)
             {
-                _rb.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
+                Rigidbody.AddForce(new Vector2(_horizontalInput * moveForce, 0), ForceMode2D.Force);
             }
             else if (!isOnIce)
             {
                 // Stop the player if not on ice and no input is detected
-                _rb.velocity = new Vector2(0, _rb.velocity.y);
+                Rigidbody.velocity = new Vector2(0, Rigidbody.velocity.y);
             }
 
-            if (Mathf.Abs(_rb.velocity.x) > maxSpeed)
+            if (Mathf.Abs(Rigidbody.velocity.x) > maxSpeed)
             {
-                _rb.velocity = new Vector2(Mathf.Sign(_rb.velocity.x) * maxSpeed, _rb.velocity.y);
+                Rigidbody.velocity = new Vector2(Mathf.Sign(Rigidbody.velocity.x) * maxSpeed, Rigidbody.velocity.y);
             }
 
             if (_isJumping)
             {
                 if (invertedVerticals)
-                    _rb.velocity = new Vector2(_rb.velocity.x, -jumpForce);
+                    Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, -jumpForce);
                 else
                 {
-                    _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+                    Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, jumpForce);
                 }
 
                 audioManager.PlaySfx(audioManager.JumpClip);
@@ -140,8 +138,8 @@ public class PlayerMovement : MonoBehaviour
                 _animator.SetBool(IsJumping, true);
             }
 
-            _animator.SetFloat(XVelocity, Math.Abs(_rb.velocity.x));
-            _animator.SetFloat(YVelocity, Math.Abs(_rb.velocity.y));
+            _animator.SetFloat(XVelocity, Math.Abs(Rigidbody.velocity.x));
+            _animator.SetFloat(YVelocity, Math.Abs(Rigidbody.velocity.y));
         }
     }
 
@@ -158,8 +156,8 @@ public class PlayerMovement : MonoBehaviour
         {
             numberOfCollisionsWithIce++;
             isOnIce = true;
-            _rb.drag = lowDrag;
-            _rb.angularDrag = lowAngularDrag;
+            Rigidbody.drag = lowDrag;
+            Rigidbody.angularDrag = lowAngularDrag;
         }
         if((other.CompareTag("Floor") || other.CompareTag("Ice Ground") || other.CompareTag("Cloud")) && numberOfCollisionsWithFloor == 1)
         {
@@ -175,8 +173,8 @@ public class PlayerMovement : MonoBehaviour
             if (numberOfCollisionsWithIce == 0)
             {
                 isOnIce = false;
-                _rb.drag = normalDrag;
-                _rb.angularDrag = normalAngularDrag;
+                Rigidbody.drag = normalDrag;
+                Rigidbody.angularDrag = normalAngularDrag;
             }
         }
 
@@ -220,11 +218,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     //getter setter for rb
-    public Rigidbody2D Rigidbody
-    {
-        get => _rb;
-        set => _rb = value;
-    }
+    public Rigidbody2D Rigidbody { get; set; }
 
     public bool InvertedVerticals
     {

@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         initialPositionOnX = playerPosition.position.x;
         totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
@@ -105,6 +106,8 @@ public class GameManager : MonoBehaviour
         ModifyLevelClearPanel();
         LevelClearPanel.SetActive(true);
         audioManager.StopBGM();
+        var playerMovement = playerPosition.GetComponent<PlayerMovement>();
+        playerMovement.Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void ModifyLevelClearPanel()
@@ -259,6 +262,10 @@ public class GameManager : MonoBehaviour
 
     public void OpenMainMenu()
     {
+        if (isPaused)
+        {
+            PauseGame();
+        }
         SceneManager.LoadScene("MainMenu");
     }
 

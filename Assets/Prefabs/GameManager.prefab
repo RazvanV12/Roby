@@ -1481,8 +1481,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300016, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    m_PressedSprite: {fileID: 21300016, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   DiedMenuUI: {fileID: 3690145513509309235}
   FinishedLevelUI: {fileID: 6073281088546658246}
   LevelClearPanel: {fileID: 831549933503330943}
-  playerPosition: {fileID: 746530858248914552, guid: 88bb6897eb19dc341a56f7bb1ae05b82, type: 3}
+  playerPosition: {fileID: 0}
   audioManager: {fileID: 0}
   finishFlag: {fileID: 3934283815822907432, guid: 5d153ce9e9266ed48b6bab24acea68ba, type: 3}
   fullStar: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}

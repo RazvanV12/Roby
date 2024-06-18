@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = backgroundMusic;
         musicSource.Play();
         sfxSource.ignoreListenerPause = true;
+        sfxSource.volume = PlayerPrefs.GetFloat("SfxVolume", 1);
+        musicSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.3f);
     }
 
     public void PauseBGM()

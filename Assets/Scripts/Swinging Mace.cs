@@ -28,19 +28,25 @@ public class SwingingMace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_renderer.isVisible && audioManager.SfxEnabled)
-            swingingClip.SetActive(true);
-        else
-        {
-            swingingClip.SetActive(false);
-        }
+        // currentAngle = transform.eulerAngles.z;
+        // if(_renderer.isVisible && audioManager.SfxEnabled && (Mathf.Approximately(currentAngle, 60) || Mathf.Approximately(currentAngle, 300)))
+        //     //swingingClip.SetActive(true);
+        //     audioManager.PlaySfx(audioManager.SwingingMaceClip);
+        // else
+        // {
+        //     swingingClip.SetActive(false);
+        // }
         if(swingingRight)
         {
             //var currentAngle = Quaternion.Angle(Quaternion.Euler(Vector3.forward), transform.rotation);
             currentAngle = transform.eulerAngles.z;
             transform.Rotate(Vector3.forward * (rotationSpeed * Time.deltaTime));
             if (currentAngle >= angle && currentAngle < 180)
+            {
                 swingingRight = false;
+                if(_renderer.isVisible && audioManager.SfxEnabled)
+                    audioManager.PlaySfx(audioManager.SwingingMaceClip);
+            }
         }
         else
         {
@@ -48,7 +54,11 @@ public class SwingingMace : MonoBehaviour
             currentAngle = transform.eulerAngles.z;
             transform.Rotate(Vector3.back * (rotationSpeed * Time.deltaTime));
             if (currentAngle <= 360 - angle && currentAngle > 180)
+            {
                 swingingRight = true;
+                if(_renderer.isVisible && audioManager.SfxEnabled)
+                    audioManager.PlaySfx(audioManager.SwingingMaceClip);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D other)

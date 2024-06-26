@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameObject DisabledBGMImage;
     [SerializeField] private GameObject DisabledSFXImage;
+    [SerializeField] private GameObject playerDiedPanel;
 
     [SerializeField] private Slider ProgressBar;
     private float progress = 0f;
@@ -277,4 +278,10 @@ public class GameManager : MonoBehaviour
     {
         audioManager.PlaySfx(audioManager.ButtonClickClip);
     }
+
+    public GameObject PlayerDiedPanel => playerDiedPanel;
+
+    public Transform PlayerPosition => playerPosition;
+
+    public GameObject GetDiedMenuUI => DiedMenuUI;
 }

@@ -6285,6 +6285,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690145513509309235, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4975154639820374567, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9940,7 +9944,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 746530858248914552, guid: 88bb6897eb19dc341a56f7bb1ae05b82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 746530858248914552, guid: 88bb6897eb19dc341a56f7bb1ae05b82, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10989,6 +10993,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229435522330865558, guid: 0f6002e8403d52f429908cc40493bc50, type: 3}
+      propertyPath: swingingMaceClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 519d10951ee503c43b14687082eeb75a, type: 3}
     - target: {fileID: 2601797722949897349, guid: 0f6002e8403d52f429908cc40493bc50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12032,6 +12040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2753932835287545515, guid: aea7e0da2ac6bfd4dbcec3fe8594c22d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5601110308310301571, guid: aea7e0da2ac6bfd4dbcec3fe8594c22d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26

@@ -314,6 +314,7 @@ MonoBehaviour:
   waterSplashClip: {fileID: 8300000, guid: 7cad632db8592ba40bb72537fa42bb5a, type: 3}
   landingClip: {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
   playerHitClip: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  swingingMaceClip: {fileID: 8300000, guid: 519d10951ee503c43b14687082eeb75a, type: 3}
   enemyDeathClip: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
   thunderClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
   shootingBulletClip: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}

@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9063799085197251730
 Transform:
   m_ObjectHideFlags: 0
@@ -862,6 +862,7 @@ MonoBehaviour:
   swingingRight: 1
   swingingClip: {fileID: 2753932835287545515}
   squareSprite: {fileID: 7742234516313054859}
+  audioManager: {fileID: 0}
 --- !u!60 &6052027566804732850
 PolygonCollider2D:
   m_ObjectHideFlags: 0

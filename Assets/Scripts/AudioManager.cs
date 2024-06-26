@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip waterSplashClip;
     [SerializeField] private AudioClip landingClip;
     [SerializeField] private AudioClip playerHitClip;
+    [SerializeField] private AudioClip swingingMaceClip;
     [SerializeField] private AudioClip enemyDeathClip;
     [SerializeField] private AudioClip thunderClip;
     [SerializeField] private AudioClip shootingBulletClip;
@@ -172,7 +173,9 @@ public class AudioManager : MonoBehaviour
     {
         get => unpauseGameClip;
     }
-    
+
+    public AudioClip SwingingMaceClip => swingingMaceClip;
+
     public bool SfxEnabled
     {
         get => sfxEnabled;

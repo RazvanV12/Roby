@@ -66,13 +66,11 @@ public class GameManager : MonoBehaviour
         totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
         if (PlayerPrefs.GetString("BgmEnabled") == "false")
         {
-            audioManager.PauseBGM();
             bgmIsActive = false;
             DisabledBGMImage.SetActive(true);
         }
         if (PlayerPrefs.GetString("SfxEnabled") == "false")
         {
-            audioManager.DisableSFX();
             sfxIsActive = false;
             DisabledSFXImage.SetActive(true);
         }

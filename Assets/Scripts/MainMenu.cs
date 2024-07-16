@@ -8,7 +8,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private LevelsMenu levelsMenu;
     public void NewGame()
     {
-        PlayerPrefs.DeleteAll();
+        for(int i = 0; i < 9; i++)
+        {
+            PlayerPrefs.SetInt("CollectedCoins_Level " + (i + 1), 0);
+        }
+        PlayerPrefs.SetInt("UnlockedLevel", 1);
+        PlayerPrefs.Save();
         levelsMenu.ReloadLevelsPanel();
     }
     public void QuitGame()

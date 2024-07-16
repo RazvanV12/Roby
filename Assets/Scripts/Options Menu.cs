@@ -11,6 +11,10 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+            audioManager.transform.GetChild(0).GetComponent<AudioSource>().volume = 0f;
+        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+            audioManager.transform.GetChild(1).GetComponent<AudioSource>().volume = 0f;
         GameObject.Find("BGM Volume Slider").transform.GetChild(0).GetComponent<Slider>().value =
             audioManager.transform.GetChild(0).GetComponent<AudioSource>().volume;
         GameObject.Find("Sfx Volume Slider").transform.GetChild(0).GetComponent<Slider>().value = audioManager.transform.GetChild(1).GetComponent<AudioSource>().volume;

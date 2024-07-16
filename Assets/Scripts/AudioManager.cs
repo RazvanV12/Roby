@@ -32,31 +32,44 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip buttonClickClip;
     [SerializeField] private AudioClip pauseGameClip;
     [SerializeField] private AudioClip unpauseGameClip;
+    private bool bgmEnabled = true;
     
     [SerializeField] private bool sfxEnabled = true;
 
     private void Start()
     {
         musicSource.clip = backgroundMusic;
-        musicSource.Play();
+        if(bgmEnabled)
+            musicSource.Play();
         sfxSource.ignoreListenerPause = true;
         sfxSource.volume = PlayerPrefs.GetFloat("SfxVolume", 1);
         musicSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.3f);
+        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+        {
+            PauseBGM();
+        }
+        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+        {
+            DisableSFX();
+        }
     }
 
     public void PauseBGM()
     {
         musicSource.Pause();
+        bgmEnabled = false;
     }
 
     public void UnPauseBGM()
     {
         musicSource.UnPause();
+        bgmEnabled = true;
     }
     
     public void StopBGM()
     {
         musicSource.Stop();
+        bgmEnabled = false;
     }
 
     public void EnableSFX()

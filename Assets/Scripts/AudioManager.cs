@@ -188,14 +188,15 @@ public class AudioManager : MonoBehaviour
     }
 
     public AudioClip SwingingMaceClip => swingingMaceClip;
-
     public bool SfxEnabled
     {
         get => sfxEnabled;
+        set => sfxEnabled = value;
     }
     
     public void ClickButton()
     {
         PlaySfx(ButtonClickClip);
     }
+    
 }

@@ -280,6 +280,10 @@ public class GameManager : MonoBehaviour
             audioManager.PlaySfx(audioManager.ButtonClickClip);
             audioManager.DisableSFX();
         }
+        else
+        {
+            audioManager.PlaySfx(audioManager.ButtonClickClip);
+        }
     }
 
     public void PreparePlayerDiedPanel()

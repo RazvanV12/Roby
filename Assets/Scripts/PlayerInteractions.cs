@@ -40,9 +40,11 @@ public class PlayerInteractions : MonoBehaviour
     {
         Debug.Log("Player killed");
         audioManager.PlaySfx(audioManager.PlayerHitClip);
-        gameManager.GetDiedMenuUI.SetActive(true);
         audioManager.StopBGM();
-        //audioManager.StopBGM();
-        //gameManager.PlayerDiedPanel.SetActive(true);
+        gameManager.PreparePlayerDiedPanel();
+        gameManager.DisableTopRightButtons();
+        Time.timeScale = 0;
+        audioManager.DisableSFX();
+        gameManager.PlayerDiedPanel.SetActive(true);
     }
 }

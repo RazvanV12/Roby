@@ -86,12 +86,12 @@ public class GameManager : MonoBehaviour
             uiCoins.text = "Coins: " + coinsCollected;
         }
 
-        if(playerPosition.position.y is < -3f or > 11f)
-        {
-            DiedMenuUI.SetActive(true);
-            levelEnded = true;
-            audioManager.StopBGM();
-        }
+        // if(playerPosition.position.y is < -3f or > 11f)
+        // {
+        //     DiedMenuUI.SetActive(true);
+        //     levelEnded = true;
+        //     audioManager.StopBGM();
+        // }
 
         progress = playerPosition.position.x - initialPositionOnX;
         ProgressBar.value = progress / totalDistanceToTravel;
@@ -275,6 +275,50 @@ public class GameManager : MonoBehaviour
     public void ClickButton()
     {
         audioManager.PlaySfx(audioManager.ButtonClickClip);
+    }
+
+    public void PreparePlayerDiedPanel()
+    {
+        if(progress/totalDistanceToTravel > 0f)
+            playerDiedPanel.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                "Progress Done: " +
+                (progress/totalDistanceToTravel).ToString("P");
+        else
+        {
+            playerDiedPanel.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                "Progress Done: 0%";
+        }
+    }
+
+    public void DisableTopRightButtons()
+    {
+        var pauseButton = GameObject.Find("Pause Button");
+        var dropDownBackground = GameObject.Find("DropDown Background");
+        var resetButton = GameObject.Find("Reset Button");
+
+        pauseButton.GetComponent<Button>().interactable = false;
+        dropDownBackground.transform.GetChild(0).GetComponent<Button>().interactable = false;
+        resetButton.GetComponent<Button>().interactable = false;
+    }
+    
+    public void EnableTopRightButtons()
+    {
+        var pauseButton = GameObject.Find("Pause Button");
+        var dropDownBackground = GameObject.Find("DropDown Background");
+        var resetButton = GameObject.Find("Reset Button");
+
+        pauseButton.GetComponent<Button>().interactable = true;
+        dropDownBackground.transform.GetChild(0).GetComponent<Button>().interactable = true;
+        resetButton.GetComponent<Button>().interactable = true;
+    }
+    public void UnFreezeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void TurnOnSfx()
+    {
+        audioManager.EnableSFX();
     }
 
     public GameObject PlayerDiedPanel => playerDiedPanel;

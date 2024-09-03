@@ -26,8 +26,4 @@ public class FinishedLevelMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     
-    public void OptionsMenu()
-    {
-        Debug.Log("Options menu coming soon");
-    }
 }

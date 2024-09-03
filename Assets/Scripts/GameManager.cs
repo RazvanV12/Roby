@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         SaveCollectedCoins();
         ModifyLevelClearPanel();
         LevelClearPanel.SetActive(true);
-        audioManager.StopBGM();
+        audioManager.PauseBGM();
         var playerMovement = playerPosition.GetComponent<PlayerMovement>();
         playerMovement.Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
     }

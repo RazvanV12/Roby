@@ -146,19 +146,19 @@ public class GameManager : MonoBehaviour
     
     private void UnlockNewLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        if(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("UnlockedLevel"))//PlayerPrefs.GetInt("ReachedIndex")))
         {
-            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            //PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", SceneManager.GetActiveScene().buildIndex + 1);
             PlayerPrefs.Save();
         }
     }
 
     private void SaveCollectedCoins()
     {
-        if(coinsCollected > PlayerPrefs.GetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex - 1), 0))
+        if(coinsCollected > PlayerPrefs.GetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex), 0))
         {
-            PlayerPrefs.SetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex - 1), coinsCollected);
+            PlayerPrefs.SetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex), coinsCollected);
             PlayerPrefs.Save();
         }
     }

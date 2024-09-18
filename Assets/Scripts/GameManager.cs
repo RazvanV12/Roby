@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
         }
 
         scoreText.text = "Score: " + CalculateScore().ToString("F2");
+        //PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0) + CalculateScore());
     }
 
     private float CalculateScore()

@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
     
     private void UnlockNewLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("UnlockedLevel"))//PlayerPrefs.GetInt("ReachedIndex")))
+        if(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("UnlockedLevel") && SceneManager.GetActiveScene().buildIndex < 9)//PlayerPrefs.GetInt("ReachedIndex")))
         {
             //PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
             PlayerPrefs.SetInt("UnlockedLevel", SceneManager.GetActiveScene().buildIndex + 1);

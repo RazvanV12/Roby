@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int maxJumpCount = 1; 
     
     [SerializeField, ReadOnly] private bool _isGrounded = true;
+    [SerializeField] private bool isDucked = false;
     [SerializeField] private bool _isJumping;
     [SerializeField] private bool isOnIce;
     [SerializeField] private bool invertedControls;
@@ -71,17 +72,23 @@ public class PlayerMovement : MonoBehaviour
                 _horizontalInput *= -1;
             }
 
-            if (Mathf.Approximately(_verticalInput, -1) && _isGrounded)
+            if (Mathf.Approximately(_verticalInput, -1) && _isGrounded) //&& !isDucked)
             {
                 transform.localScale = new Vector3(1, 0.5f, 1);
                 moveForce = 0f;
+                //isDucked = true;
             }
             else
             {
                 transform.localScale = new Vector3(1, 1f, 1);
                 moveForce = 100f;
+                //isDucked = false;
             }
 
+            if (numberOfCollisionsWithFloor == 0)
+            {
+                jumpCount++;
+            }
             // Check for jump input and increment jump count
             if ((invertedControls ? Input.GetKeyDown(KeyCode.S) : Input.GetKeyDown(KeyCode.W)) &&
                 jumpCount < maxJumpCount)
@@ -178,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if ((other.CompareTag("Floor") || other.CompareTag("Cloud")) && !Mathf.Approximately(_verticalInput, -1))
+        if (other.CompareTag("Floor") || other.CompareTag("Cloud")) //&& !Mathf.Approximately(_verticalInput, -1))
         {
             numberOfCollisionsWithFloor--;
             if (numberOfCollisionsWithFloor == 0)

@@ -23,7 +23,7 @@ public class LevelsMenu : MonoBehaviour
 
     public void ReloadLevelsPanel()
     {
-        var unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        var unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel") == 10 ? 9 : PlayerPrefs.GetInt("UnlockedLevel", 1);
         foreach (var button in buttons)
         {
             button.interactable = false;

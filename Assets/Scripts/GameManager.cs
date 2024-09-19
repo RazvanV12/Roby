@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private Image star2Image;
     private Image star3Image;
     private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI highScoreText;
     private bool levelEnded = false;
 
     [SerializeField] private Image pauseButtonImage;
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
         star2Image = LevelClearPanel.transform.GetChild(3).GetComponent<Image>();
         star3Image = LevelClearPanel.transform.GetChild(4).GetComponent<Image>();
         scoreText = LevelClearPanel.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        highScoreText = LevelClearPanel.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
         
         star1Image.sprite = emptyStar;
         star2Image.sprite = emptyStar;
@@ -135,9 +137,22 @@ public class GameManager : MonoBehaviour
                 star3Image.sprite = fullStar;
                 break;
         }
-
-        scoreText.text = "Score: " + CalculateScore().ToString("F2");
-        //PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0) + CalculateScore());
+        var score = (float)Math.Round(CalculateScore(), 2);
+        scoreText.text = "Score: " + score.ToString("F2");
+        if(score < PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue))
+        {
+            highScoreText.text = "High Score: " + score;
+            if(!Mathf.Approximately(PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue), float.MaxValue))
+                PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0f) - PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, 0f) + score);
+            else 
+                PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0f) + score);
+            PlayerPrefs.SetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, score);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            highScoreText.text = "High Score: " + PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue);
+        }
     }
 
     private float CalculateScore()

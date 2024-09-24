@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -132,12 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (_isJumping)
             {
-                if (invertedVerticals)
-                    Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, -jumpForce);
-                else
-                {
-                    Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, jumpForce);
-                }
+                Rigidbody.velocity = invertedVerticals ? new Vector2(Rigidbody.velocity.x, -jumpForce) : new Vector2(Rigidbody.velocity.x, jumpForce);
 
                 audioManager.PlaySfx(audioManager.JumpClip);
                 _isJumping = false;

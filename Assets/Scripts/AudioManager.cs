@@ -63,6 +63,7 @@ public class AudioManager : MonoBehaviour
     public void UnPauseBGM()
     {
         musicSource.UnPause();
+        musicSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.3f);
         bgmEnabled = true;
     }
     
@@ -75,6 +76,7 @@ public class AudioManager : MonoBehaviour
     public void EnableSFX()
     {
         sfxEnabled = true;
+        sfxSource.volume = PlayerPrefs.GetFloat("SfxVolume", 1);
     }
     
     public void DisableSFX()

@@ -78,14 +78,14 @@ public class PlayerMovement : MonoBehaviour
                 moveForce = 0f;
                 isDucked = true;
             }
-            else
+            if(!Mathf.Approximately(_verticalInput,-1) && isDucked) // && _isGrounded
             {
-                transform.localScale = new Vector3(1, 1f, 1);
+                transform.localScale = new Vector3(1, 1, 1);
                 moveForce = 100f;
                 isDucked = false;
             }
 
-            if (numberOfCollisionsWithFloor == 0)
+            if (numberOfCollisionsWithFloor == 0 && jumpCount == 0)
             {
                 jumpCount++;
             }

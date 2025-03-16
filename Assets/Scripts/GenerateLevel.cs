@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GenerateLevel : MonoBehaviour
 {
@@ -130,5 +131,12 @@ public class GenerateLevel : MonoBehaviour
         AssignPowerUpsPrefabs();
         AssignTrapsPrefabs();
         AssignMapTilesPrefabs();
+    }
+
+    private void GenerateMapTiles()
+    {
+        var lastLevel = 9;
+        var currentTilePosition = Vector3.zero * -2;
+        var currentGapBetweenTiles = 0;
     }
 }

@@ -52,11 +52,40 @@ public static class DbRepository
         }
     }
 
+    internal static bool UsernameExists(String username)
+    {
+        String usernameIsUsedQuery = "SELECT username FROM users WHERE username = @username";
+        
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(usernameIsUsedQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Database error: " + ex.Message);
+            }
+        }
+        return false;
+    }
+
     internal static string HashPassword(String password)
     {
         return BCrypt.Net.BCrypt.HashPassword(password);
     }
-    internal static bool IsPaswordCorrect(String hashedPassword, String password)
+    private static bool IsPaswordCorrect(String hashedPassword, String password)
     {
         return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
     }

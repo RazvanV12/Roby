@@ -33,9 +33,9 @@ public class MainMenu : MonoBehaviour
         levelsCompletedText.GetComponent<TextMeshProUGUI>().text = "Levels Completed:" + (PlayerPrefs.GetInt("UnlockedLevel", 1) - 1);
         levelsMenu.ReloadLevelsPanel();
     }
-    public void QuitGame()
+    public void Logout()
     {
-        SceneManager.LoadScene("OpeningMenu");
+        SceneManager.LoadScene("LoginMenu");
     }
 
     public void OptionsMenu()

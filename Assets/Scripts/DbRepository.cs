@@ -131,4 +131,27 @@ public static class DbRepository
         }
         return hashedPassword;
     }
+    
+    internal static void UpdatePasswordInDatabase(string username, string newPasswordHashed)
+    {
+        string updateQuery = "UPDATE users SET password = @hashedPassword WHERE username = @username";
+
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@hashedPassword", newPasswordHashed);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+    }
 }

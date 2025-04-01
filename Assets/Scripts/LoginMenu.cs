@@ -10,6 +10,8 @@ public class LoginMenu : MonoBehaviour
 {
     private string usernameInputField;
     private string passwordInputField;
+    private string oldPasswordInputField;
+    private string newPasswordInputField;
     private string passwordConfirmInputField;
 
     [SerializeField] private GameObject usernameInput;
@@ -24,6 +26,12 @@ public class LoginMenu : MonoBehaviour
     [SerializeField] private GameObject passwordInputLogin;
     [SerializeField] private GameObject validateCredentialsButton;
     [SerializeField] private GameObject returnFromLoginButton;
+    [SerializeField] private GameObject changePasswordMenuButton;
+    [SerializeField] private GameObject usernameResetPassInput;
+    [SerializeField] private GameObject oldPasswordInput;
+    [SerializeField] private GameObject newPasswordInput;
+    [SerializeField] private GameObject changePasswordInputButton;
+    [SerializeField] private GameObject returnFromChangePasswordButton;
 
     public void OpenRegisterMenu()
     {
@@ -45,6 +53,7 @@ public class LoginMenu : MonoBehaviour
     public void CloseStartMenu()
     {
         loginButton.SetActive(false);
+        changePasswordMenuButton.SetActive(false);
         registerButton.SetActive(false);
         quitButton.SetActive(false);
     }
@@ -52,6 +61,7 @@ public class LoginMenu : MonoBehaviour
     public void OpenStartMenu()
     {
         loginButton.SetActive(true);
+        changePasswordMenuButton.SetActive(true);
         registerButton.SetActive(true);
         quitButton.SetActive(true);
     }
@@ -71,20 +81,43 @@ public class LoginMenu : MonoBehaviour
         validateCredentialsButton.SetActive(false);
         returnFromLoginButton.SetActive(false);
     }
-
+    
+    public void OpenChangePasswordMenu()
+    {
+        usernameResetPassInput.SetActive(true);
+        oldPasswordInput.SetActive(true);
+        newPasswordInput.SetActive(true);
+        changePasswordInputButton.SetActive(true);
+        returnFromChangePasswordButton.SetActive(true);
+    }
+    
+    public void CloseChangePasswordMenu()
+    {
+        usernameResetPassInput.SetActive(false);
+        oldPasswordInput.SetActive(false);
+        newPasswordInput.SetActive(false);
+        changePasswordInputButton.SetActive(false);
+        returnFromChangePasswordButton.SetActive(false);
+    }
     public void UpdateUsernameInputField(string enteredUsername)
     {
         usernameInputField = enteredUsername;
     }
-
     public void UpdatePasswordInputField(string enteredPassword)
     {
         passwordInputField = enteredPassword;
     }
-
     public void UpdatePasswordConfirmInputField(string enteredPasswordConfirm)
     {
         passwordConfirmInputField = enteredPasswordConfirm;
+    }
+    public void UpdateOldPasswordInputField(string enteredOldPassword)
+    {
+        oldPasswordInputField = enteredOldPassword;
+    }
+    public void UpdateNewPasswordInputField(string enteredNewPassword)
+    {
+        newPasswordInputField = enteredNewPassword;
     }
     public void AttemptLogin()
     {
@@ -128,6 +161,28 @@ public class LoginMenu : MonoBehaviour
         OpenLoginMenu();
     }
 
+    public void AttemptChangePassword()
+    {
+        if (string.IsNullOrEmpty(usernameInputField) || string.IsNullOrEmpty(oldPasswordInputField) || 
+            string.IsNullOrEmpty(newPasswordInputField))
+        {
+            Debug.Log("Username, old password or new password is empty");
+            return;
+        }
+        if (DbRepository.UsernameExists(usernameInputField) && DbRepository.AreCredentialsValid(usernameInputField, oldPasswordInputField))
+        {
+            DbRepository.UpdatePasswordInDatabase(usernameInputField, DbRepository.HashPassword(newPasswordInputField));
+            Debug.Log("Password changed successfully");
+            CloseChangePasswordMenu();
+            RestoreChangePasswordInputFields();
+            OpenLoginMenu();
+        }
+        else
+        {
+            Debug.Log("Invalid username or password");
+        }
+    }
+
     public void RestoreRegisterInputFields()
     {
         usernameInput.GetComponent<TMP_InputField>().text = "";
@@ -139,6 +194,13 @@ public class LoginMenu : MonoBehaviour
     {
         usernameInputLogin.GetComponent<TMP_InputField>().text = "";
         passwordInputLogin.GetComponent<TMP_InputField>().text = "";
+    }
+    
+    public void RestoreChangePasswordInputFields()
+    {
+        usernameResetPassInput.GetComponent<TMP_InputField>().text = "";
+        oldPasswordInput.GetComponent<TMP_InputField>().text = "";
+        newPasswordInput.GetComponent<TMP_InputField>().text = "";
     }
 
     private bool PasswordMatch(string password, string confirmPassword)

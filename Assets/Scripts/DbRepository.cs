@@ -24,7 +24,6 @@ public static class DbRepository
     internal static void AddUserToDatabase(String  username, String hashedPassword)
     {
         String addToUsersQuery = "INSERT INTO users (username, password) VALUES (@username, @hashedPassword)";
-        String addToHighScoresQuery = "INSERT INTO high_scores (username) VALUES (@username)";
         
         using (MySqlConnection conn = new MySqlConnection(connectionString))
         {
@@ -35,12 +34,6 @@ public static class DbRepository
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@hashedPassword", hashedPassword); 
-                    cmd.ExecuteNonQuery();
-                }
-
-                using (MySqlCommand cmd = new MySqlCommand(addToHighScoresQuery, conn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
                     cmd.ExecuteNonQuery();
                 }
                 Debug.Log("User registered successfully!");
@@ -146,6 +139,134 @@ public static class DbRepository
                     cmd.Parameters.AddWithValue("@hashedPassword", newPasswordHashed);
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+    }
+    
+    internal static void CreateSession(string username)
+    {
+        UserSession.username = username;
+        UserSession.totalScore = GetTotalScore(username);
+        UserSession.levelsCompleted = GetLevelsCompleted(username);
+        GetBestTimesAndStarsGained(username);
+    }
+
+    private static float GetTotalScore(string username)
+    {
+        string query = "SELECT total_score FROM users WHERE username = @username";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    return Convert.ToSingle(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+
+        return 0.0f;
+    }
+    
+    private static int GetLevelsCompleted(string username)
+    {
+        string query = "SELECT levels_completed FROM users WHERE username = @username";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+
+        return 0;
+    }
+
+    private static void GetBestTimesAndStarsGained(string username)
+    {
+        string query = "SELECT best_time, stars_gained FROM high_score WHERE username = @username";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            UserSession.highScores.Add(reader.GetFloat(0));
+                            UserSession.maxStars.Add(reader.GetInt32(1));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+    }
+
+    internal static void UpdateUserStats()
+    {
+        string updateUsersTable = "UPDATE users SET total_score = @totalScore, levels_completed = @levelsCompleted WHERE username = @username";
+        string updateHighScoreTable = "REPLACE INTO high_score (best_time, stars_gained, level, username) VALUES (@bestTime, @starsGained, @level, @username)";
+        string deleteHighScoreTable = "DELETE FROM high_score WHERE username = @username";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(updateUsersTable, conn))
+                {
+                    cmd.Parameters.AddWithValue("@totalScore", UserSession.totalScore);
+                    cmd.Parameters.AddWithValue("@levelsCompleted", UserSession.levelsCompleted);
+                    cmd.Parameters.AddWithValue("@username", UserSession.username);
+                    cmd.ExecuteNonQuery();
+                }
+                if(UserSession.highScores.Count > 0 || UserSession.maxStars.Count > 0)
+                    using (MySqlCommand cmd = new MySqlCommand(updateHighScoreTable, conn))
+                    {
+                            for (int i = 0; i < UserSession.highScores.Count; i++)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.Parameters.AddWithValue("@bestTime", UserSession.highScores[i]);
+                                cmd.Parameters.AddWithValue("@starsGained", UserSession.maxStars[i]);
+                                cmd.Parameters.AddWithValue("@username", UserSession.username);
+                                cmd.Parameters.AddWithValue("@level", i + 1);
+                                cmd.ExecuteNonQuery();
+                            }
+                    }
+                else
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(deleteHighScoreTable, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", UserSession.username);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)

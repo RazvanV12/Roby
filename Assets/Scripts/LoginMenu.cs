@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginMenu : MonoBehaviour
@@ -129,6 +130,9 @@ public class LoginMenu : MonoBehaviour
         if (DbRepository.AreCredentialsValid(usernameInputField, passwordInputField))
         {
             Debug.Log("Login successful");
+            UserSession.ClearSession();
+            DbRepository.CreateSession(usernameInputField);
+            SceneManager.LoadScene("MainMenu");
             // Load main menu and update UI for logged-in user
         }
         else

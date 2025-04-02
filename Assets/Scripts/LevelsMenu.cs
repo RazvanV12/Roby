@@ -23,7 +23,7 @@ public class LevelsMenu : MonoBehaviour
 
     public void ReloadLevelsPanel()
     {
-        var unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel") == 10 ? 9 : PlayerPrefs.GetInt("UnlockedLevel", 1);
+        var unlockedLevel = UserSession.levelsCompleted == 10 ? 9 : (UserSession.levelsCompleted + 1);
         foreach (var button in buttons)
         {
             button.interactable = false;
@@ -44,21 +44,22 @@ public class LevelsMenu : MonoBehaviour
             star2Image = buttons[i].GameObject().transform.GetChild(2).GetComponent<Image>();
             star3Image = buttons[i].GameObject().transform.GetChild(3).GetComponent<Image>();
             lockedImage = buttons[i].GameObject().transform.GetChild(4).GetComponent<Image>();
-            switch(PlayerPrefs.GetInt("CollectedCoins_Level " + (i + 1), 0))
-            {
-                case 1:
-                    star1Image.sprite = fullStar;
-                    break;
-                case 2:
-                    star1Image.sprite = fullStar;
-                    star2Image.sprite = fullStar;
-                    break;
-                case 3:
-                    star1Image.sprite = fullStar;
-                    star2Image.sprite = fullStar;
-                    star3Image.sprite = fullStar;
-                    break;
-            }
+            if(i < UserSession.maxStars.Count)
+                switch(UserSession.maxStars[i])
+                {
+                    case 1:
+                        star1Image.sprite = fullStar;
+                        break;
+                    case 2:
+                        star1Image.sprite = fullStar;
+                        star2Image.sprite = fullStar;
+                        break;
+                    case 3:
+                        star1Image.sprite = fullStar;
+                        star2Image.sprite = fullStar;
+                        star3Image.sprite = fullStar;
+                        break;
+                }
             lockedImage.gameObject.SetActive(false);
         }
     }

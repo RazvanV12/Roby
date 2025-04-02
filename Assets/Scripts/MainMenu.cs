@@ -15,31 +15,26 @@ public class MainMenu : MonoBehaviour
     {
         totalScoreText = GameObject.Find("Total Score Text");
         levelsCompletedText = GameObject.Find("Levels Completed Text");
-        totalScoreText.GetComponent<TextMeshProUGUI>().text = "Total Score:" + PlayerPrefs.GetFloat("TotalScore", 0);
-        levelsCompletedText.GetComponent<TextMeshProUGUI>().text = "Levels Completed:" + (PlayerPrefs.GetInt("UnlockedLevel", 1) - 1);
+        totalScoreText.GetComponent<TextMeshProUGUI>().text = "Total Score:" + UserSession.totalScore;
+        levelsCompletedText.GetComponent<TextMeshProUGUI>().text = "Levels Completed:" + UserSession.levelsCompleted;
     }
 
     public void NewGame()
     {
-        for(int i = 0; i < 9; i++)
-        {
-            PlayerPrefs.SetInt("CollectedCoins_Level " + (i + 1), 0);
-            PlayerPrefs.SetFloat("HighScore_Level " + (i + 1), float.MaxValue);
-        }
-        PlayerPrefs.SetInt("UnlockedLevel", 1);
-        PlayerPrefs.SetFloat("TotalScore", 0);
-        PlayerPrefs.Save();
-        totalScoreText.GetComponent<TextMeshProUGUI>().text = "Total Score:" + PlayerPrefs.GetFloat("TotalScore", 0);
-        levelsCompletedText.GetComponent<TextMeshProUGUI>().text = "Levels Completed:" + (PlayerPrefs.GetInt("UnlockedLevel", 1) - 1);
+        UserSession.ResetSession();
+        DbRepository.UpdateUserStats();
+        totalScoreText.GetComponent<TextMeshProUGUI>().text = "Total Score:" + UserSession.totalScore;
+        levelsCompletedText.GetComponent<TextMeshProUGUI>().text = "Levels Completed:" + UserSession.levelsCompleted;
         levelsMenu.ReloadLevelsPanel();
     }
     public void Logout()
     {
+        DbRepository.UpdateUserStats();
+        UserSession.ClearSession();
         SceneManager.LoadScene("LoginMenu");
     }
 
-    public void OptionsMenu()
-    {
+    public void OptionsMenu(){
         Debug.Log("Options menu coming soon");
     }
 }

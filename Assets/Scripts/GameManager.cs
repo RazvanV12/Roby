@@ -98,10 +98,13 @@ public class GameManager : MonoBehaviour
     
     public void FinishedLevel()
     {
-        levelEnded = true;
-        UnlockNewLevel();
-        SaveCollectedCoins();
-        ModifyLevelClearPanel();
+        if (!levelEnded)
+        {
+            levelEnded = true;
+            UnlockNewLevel();
+            SaveCollectedCoins();
+            ModifyLevelClearPanel();
+        }
         LevelClearPanel.SetActive(true);
         audioManager.PauseBGM();
         var playerMovement = playerPosition.GetComponent<PlayerMovement>();
@@ -137,19 +140,25 @@ public class GameManager : MonoBehaviour
         }
         var score = (float)Math.Round(CalculateScore(), 2);
         scoreText.text = "Score: " + score.ToString("F2");
-        if(score < PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue))
+        if(UserSession.highScores.Count >= SceneManager.GetActiveScene().buildIndex)
         {
-            highScoreText.text = "High Score: " + score;
-            if(!Mathf.Approximately(PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue), float.MaxValue))
-                PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0f) - PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, 0f) + score);
-            else 
-                PlayerPrefs.SetFloat("TotalScore", PlayerPrefs.GetFloat("TotalScore", 0f) + score);
-            PlayerPrefs.SetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, score);
-            PlayerPrefs.Save();
+            if(score < UserSession.highScores[SceneManager.GetActiveScene().buildIndex - 1]){
+                highScoreText.text = "High Score: " + score;
+                UserSession.totalScore += score - UserSession.highScores[SceneManager.GetActiveScene().buildIndex - 1];
+                UserSession.highScores[SceneManager.GetActiveScene().buildIndex - 1] = score;
+                DbRepository.UpdateUserStats();
+            }
+            else
+            {
+                highScoreText.text = "High Score: " + UserSession.highScores[SceneManager.GetActiveScene().buildIndex - 1];
+            }
         }
         else
         {
-            highScoreText.text = "High Score: " + PlayerPrefs.GetFloat("HighScore_Level " + SceneManager.GetActiveScene().buildIndex, float.MaxValue);
+            UserSession.highScores.Add(score);
+            UserSession.totalScore += score;
+            DbRepository.UpdateUserStats();
+            highScoreText.text = "High Score: " + score;
         }
     }
 
@@ -160,21 +169,28 @@ public class GameManager : MonoBehaviour
     
     private void UnlockNewLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("UnlockedLevel"))//PlayerPrefs.GetInt("ReachedIndex")))
+        if(SceneManager.GetActiveScene().buildIndex == UserSession.levelsCompleted + 1)//PlayerPrefs.GetInt("ReachedIndex")))
         {
             //PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetInt("UnlockedLevel", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.Save();
+            UserSession.levelsCompleted += 1;
+            DbRepository.UpdateUserStats();
         }
     }
 
     private void SaveCollectedCoins()
     {
-        if(coinsCollected > PlayerPrefs.GetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex), 0))
+        if (UserSession.maxStars.Count >= SceneManager.GetActiveScene().buildIndex)
         {
-            PlayerPrefs.SetInt("CollectedCoins_Level " + (SceneManager.GetActiveScene().buildIndex), coinsCollected);
-            PlayerPrefs.Save();
+            if (coinsCollected > UserSession.maxStars[SceneManager.GetActiveScene().buildIndex] - 1)
+            {
+                UserSession.maxStars[SceneManager.GetActiveScene().buildIndex - 1] = coinsCollected;
+            }
         }
+        else
+        {
+            UserSession.maxStars.Add(coinsCollected);
+        }
+        DbRepository.UpdateUserStats();
     }
     // getter and setter for coinsCollected
     public void AddCollectedCoin()

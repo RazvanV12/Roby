@@ -42,13 +42,13 @@ public class AudioManager : MonoBehaviour
         if(bgmEnabled)
             musicSource.Play();
         sfxSource.ignoreListenerPause = true;
-        sfxSource.volume = PlayerPrefs.GetFloat("SfxVolume", 1);
-        musicSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.3f);
-        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+        sfxSource.volume = UserSession.sfxVolume;
+        musicSource.volume = UserSession.bgmVolume;
+        if (!UserSession.isBgmEnabled)
         {
             PauseBGM();
         }
-        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+        if (!UserSession.isSfxEnabled)
         {
             DisableSFX();
         }
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     public void UnPauseBGM()
     {
         musicSource.UnPause();
-        musicSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.3f);
+        musicSource.volume = UserSession.bgmVolume;
         bgmEnabled = true;
     }
     
@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
     public void EnableSFX()
     {
         sfxEnabled = true;
-        sfxSource.volume = PlayerPrefs.GetFloat("SfxVolume", 1);
+        sfxSource.volume = UserSession.sfxVolume;
     }
     
     public void DisableSFX()

@@ -1,11 +1,12 @@
 using UnityEngine;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
+// using MySql.Data.MySqlClient;
 using System;
 public static class DbRepository 
 {
     // All test accounts will have password "1234"
     // Admin account has password "admin"
-    private static readonly String connectionString = "server=localhost;port=3306;database=roby_db;uid=root;pwd=mysqlroot1234;";
+    private static readonly String connectionString = "server=localhost;port=3306;database=roby_db;uid=root;pwd=mysqlroot1234";
 
     internal static void TestConnection()
     {
@@ -153,6 +154,7 @@ public static class DbRepository
         UserSession.username = username;
         UserSession.totalScore = GetTotalScore(username);
         UserSession.levelsCompleted = GetLevelsCompleted(username);
+        GetUserAudioSettings(username);
         GetBestTimesAndStarsGained(username);
     }
 
@@ -201,6 +203,36 @@ public static class DbRepository
 
         return 0;
     }
+    
+    internal static void GetUserAudioSettings(string username)
+    {
+        string query = "SELECT bgm_enabled, sfx_enabled, bgm_volume, sfx_volume FROM users WHERE username = @username";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            UserSession.isBgmEnabled = reader.GetBoolean(0);
+                            UserSession.isSfxEnabled = reader.GetBoolean(1);
+                            UserSession.bgmVolume = reader.GetFloat(2);
+                            UserSession.sfxVolume = reader.GetFloat(3);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+    }
 
     private static void GetBestTimesAndStarsGained(string username)
     {
@@ -221,6 +253,32 @@ public static class DbRepository
                             UserSession.maxStars.Add(reader.GetInt32(1));
                         }
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+    }
+
+    internal static void UpdateUserAudioSettings()
+    {
+        string updateQuery = "UPDATE users SET bgm_enabled = @bgmEnabled, sfx_enabled = @sfxEnabled, bgm_volume = @bgmVolume, sfx_volume = @sfxVolume WHERE username = @username";
+        
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@bgmEnabled", UserSession.isBgmEnabled);
+                    cmd.Parameters.AddWithValue("@sfxEnabled", UserSession.isSfxEnabled);
+                    cmd.Parameters.AddWithValue("@bgmVolume", UserSession.bgmVolume);
+                    cmd.Parameters.AddWithValue("@sfxVolume", UserSession.sfxVolume);
+                    cmd.Parameters.AddWithValue("@username", UserSession.username);
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)

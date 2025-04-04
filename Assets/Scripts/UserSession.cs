@@ -9,6 +9,10 @@ public static class UserSession
     internal static int levelsCompleted;
     internal static List<float> highScores = new();
     internal static List<int> maxStars = new();
+    internal static bool isSfxEnabled = true;
+    internal static bool isBgmEnabled = true;
+    internal static float bgmVolume = 0.2f;
+    internal static float sfxVolume = 0.6f;
     
     internal static void ClearSession()
     {
@@ -17,6 +21,10 @@ public static class UserSession
         levelsCompleted = 0;
         highScores.Clear();
         maxStars.Clear();
+        isSfxEnabled = true;
+        isBgmEnabled = true;
+        bgmVolume = 0.2f;
+        sfxVolume = 0.6f;
     }
     
     internal static void ResetSession()

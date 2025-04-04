@@ -24,9 +24,9 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+        if (!UserSession.isBgmEnabled)
             audioManager.transform.GetChild(0).GetComponent<AudioSource>().volume = 0f;
-        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+        if (!UserSession.isSfxEnabled)
             audioManager.transform.GetChild(1).GetComponent<AudioSource>().volume = 0f;
         GameObject.Find("BGM Volume Slider").transform.GetChild(0).GetComponent<Slider>().value =
             audioManager.transform.GetChild(0).GetComponent<AudioSource>().volume;
@@ -38,13 +38,12 @@ public class OptionsMenu : MonoBehaviour
         var volume = GameObject.Find("BGM Volume Slider").transform.GetChild(0).GetComponent<Slider>().value;
         audioManager.transform.GetChild(0).GetComponent<AudioSource>().volume = volume;
         BGMDisabledImage.SetActive(volume == 0f);
-        PlayerPrefs.SetFloat("BGMVolume", volume);
+        UserSession.bgmVolume = volume;
         if (volume != 0f)
         {
-            PlayerPrefs.SetString("BgmEnabled", "true");
+            UserSession.isBgmEnabled = true;
             audioManager.UnPauseBGM();
         }
-        PlayerPrefs.Save();
     }
     
     public void SetSfxVolume()
@@ -52,17 +51,21 @@ public class OptionsMenu : MonoBehaviour
         var volume = GameObject.Find("Sfx Volume Slider").transform.GetChild(0).GetComponent<Slider>().value;
         audioManager.transform.GetChild(1).GetComponent<AudioSource>().volume = volume;
         SfxDisabledImage.SetActive(volume == 0f);
-        PlayerPrefs.SetFloat("SfxVolume", volume);
+        UserSession.sfxVolume = volume;
         if (volume != 0f)
         {
-            PlayerPrefs.SetString("SfxEnabled", "true");
+            UserSession.isSfxEnabled = true;
             audioManager.EnableSFX();
         }
-        PlayerPrefs.Save();
     }
 
     public void PlaySfxClip()
     {
         audioManager.PlaySfx(audioManager.CoinCollectClip);
+    }
+
+    public void RequestDbToUpdateAudioSettings()
+    {
+        DbRepository.UpdateUserAudioSettings();
     }
 }

@@ -63,12 +63,12 @@ public class GameManager : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         initialPositionOnX = playerPosition.position.x;
         totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
-        if (PlayerPrefs.GetString("BgmEnabled") == "false")
+        if (!UserSession.isBgmEnabled)
         {
             bgmIsActive = false;
             DisabledBGMImage.SetActive(true);
         }
-        if (PlayerPrefs.GetString("SfxEnabled") == "false")
+        if (!UserSession.isSfxEnabled)
         {
             sfxIsActive = false;
             DisabledSFXImage.SetActive(true);
@@ -255,16 +255,16 @@ public class GameManager : MonoBehaviour
             audioManager.PauseBGM();
             bgmIsActive = false;
             DisabledBGMImage.SetActive(true);
-            PlayerPrefs.SetString("BgmEnabled", "false");
-            PlayerPrefs.Save();
+            UserSession.isBgmEnabled = false;
+            DbRepository.UpdateUserAudioSettings();
         }
         else
         {
             audioManager.UnPauseBGM();
             bgmIsActive = true;
             DisabledBGMImage.SetActive(false);
-            PlayerPrefs.SetString("BgmEnabled", "true");
-            PlayerPrefs.Save();
+            UserSession.isBgmEnabled = true;
+            DbRepository.UpdateUserAudioSettings();
         }  
     }
     
@@ -275,16 +275,16 @@ public class GameManager : MonoBehaviour
             audioManager.DisableSFX();
             sfxIsActive = false;
             DisabledSFXImage.SetActive(true);
-            PlayerPrefs.SetString("SfxEnabled", "false");
-            PlayerPrefs.Save();
+            UserSession.isSfxEnabled = false;
+            DbRepository.UpdateUserAudioSettings();
         }
         else
         {
             audioManager.EnableSFX();
             sfxIsActive = true;
             DisabledSFXImage.SetActive(false);
-            PlayerPrefs.SetString("SfxEnabled", "true");
-            PlayerPrefs.Save();
+            UserSession.isSfxEnabled = true;
+            DbRepository.UpdateUserAudioSettings();
         }  
     }
 

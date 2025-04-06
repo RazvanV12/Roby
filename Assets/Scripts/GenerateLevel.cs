@@ -2,66 +2,59 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GenerateLevel : MonoBehaviour
+public static class GenerateLevel 
 {
-    private GameObject backGroundImage;
-    private GameObject coin;
-    private Vector3 playerStart;
-    private GameObject player;
-    private GameObject finishFlag;
+    private static GameObject backGroundImage;
+    private static GameObject coin;
+    private static Vector3 playerStart;
+    private static GameObject player;
+    private static GameObject finishFlag;
     
-    private GameObject spikeObstacle;
-    private GameObject bigSpikeObstacle;
-    private GameObject blackCloudFlatObstacle;
-    private GameObject blackCloudRoundObstacle;
-    private GameObject greyCloudFlatObstacle;
-    private GameObject greyCloudRoundObstacle;
+    private static GameObject spikeObstacle;
+    private static GameObject bigSpikeObstacle;
+    private static GameObject blackCloudFlatObstacle;
+    private static GameObject blackCloudRoundObstacle;
+    private static GameObject greyCloudFlatObstacle;
+    private static GameObject greyCloudRoundObstacle;
     
-    private GameObject patrolEnemy;
-    private GameObject shootingEnemy;
-    private GameObject blueBirdEnemy;
+    private static GameObject patrolEnemy;
+    private static GameObject shootingEnemy;
+    private static GameObject blueBirdEnemy;
     
-    private GameObject higherJumpPowerUp;
-    private GameObject higherSpeedPowerUp;
-    private GameObject invertedControlsPowerUp;
-    private GameObject doubleJumpPowerUp;
-    private GameObject invertGravityPortal;
+    private static GameObject higherJumpPowerUp;
+    private static GameObject higherSpeedPowerUp;
+    private static GameObject invertedControlsPowerUp;
+    private static GameObject doubleJumpPowerUp;
+    private static GameObject invertGravityPortal;
     
-    private GameObject spikeDropperTrap;
-    private GameObject swingingMaceTrap;
-    private GameObject launchingSawTrap;
+    private static GameObject spikeDropperTrap;
+    private static GameObject swingingMaceTrap;
+    private static GameObject launchingSawTrap;
     // length 2, height 3
-    private GameObject fallingGroundTrap;
+    private static GameObject fallingGroundTrap;
     
-    private GameObject waterSize1;
-    private GameObject waterSize2;
-    private GameObject waterSize3;
-    private GameObject waterSize4;
+    private static GameObject waterSize1;
+    private static GameObject waterSize2;
+    private static GameObject waterSize3;
+    private static GameObject waterSize4;
     // default tile height is 3
-    private GameObject leftGroundTile;
-    private GameObject middleGroundTile;
-    private GameObject rightGroundTile;
-    private GameObject grasslessGroundx4Tile;
-    private GameObject slopeLeftx4Tile;
-    private GameObject slopeRightx4Tile;
-    private GameObject slopeLeftx5Tile;
-    private GameObject slopeRightx5Tile;
-    private GameObject whiteCloudFlatTile;
-    private GameObject whiteCloudRoundTile;
-    
-    
-    void Start()
-    {
-        AssignPrefabsForMapGeneration();
-        SetPlayerStartPosition();
-    }
+    private static GameObject leftGroundTile;
+    private static GameObject middleGroundTile;
+    private static GameObject rightGroundTile;
+    private static GameObject grasslessGroundx4Tile;
+    private static GameObject slopeLeftx4Tile;
+    private static GameObject slopeRightx4Tile;
+    private static GameObject slopeLeftx5Tile;
+    private static GameObject slopeRightx5Tile;
+    private static GameObject whiteCloudFlatTile;
+    private static GameObject whiteCloudRoundTile;
 
-    private void SetPlayerStartPosition()
+    private static void SetPlayerStartPosition()
     {
         player.transform.position = playerStart;
     }
 
-    private void AssignGameElementsPrefabs()
+    private static void AssignGameElementsPrefabs()
     {
         playerStart = Vector3.down;
         backGroundImage = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Background.prefab");
@@ -70,7 +63,7 @@ public class GenerateLevel : MonoBehaviour
         finishFlag = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Flag.prefab");
     }
 
-    private void AssignObstaclesPrefabs()
+    private static void AssignObstaclesPrefabs()
     {
         spikeObstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Spike.prefab");
         bigSpikeObstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/BigSpike.prefab");
@@ -80,14 +73,14 @@ public class GenerateLevel : MonoBehaviour
         greyCloudRoundObstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Grey Cloud2.prefab");
     }
 
-    private void AssignEnemiesPrefabs()
+    private static void AssignEnemiesPrefabs()
     {
         patrolEnemy = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/PatrolEnemy.prefab");
         shootingEnemy = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/ShootingEnemy.prefab");
         blueBirdEnemy = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/BlueBird.prefab");
     }
 
-    private void AssignPowerUpsPrefabs()
+    private static void AssignPowerUpsPrefabs()
     {
         higherJumpPowerUp = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/higher_jump.prefab");
         higherSpeedPowerUp = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/higher_speed.prefab");
@@ -96,7 +89,7 @@ public class GenerateLevel : MonoBehaviour
         invertGravityPortal = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/InvertGravityPortal.prefab");
     }
 
-    private void AssignTrapsPrefabs()
+    private static void AssignTrapsPrefabs()
     {
         spikeDropperTrap = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/SpikeDropper.prefab");
         swingingMaceTrap = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Swinging Mace.prefab");
@@ -104,7 +97,7 @@ public class GenerateLevel : MonoBehaviour
         fallingGroundTrap = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Falling Ground Trap.prefab");
     }
 
-    private void AssignMapTilesPrefabs()
+    private static void AssignMapTilesPrefabs()
     {
         waterSize1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Water x1.prefab");
         waterSize2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Water x2.prefab");
@@ -123,7 +116,7 @@ public class GenerateLevel : MonoBehaviour
         whiteCloudRoundTile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Cloud2.prefab");
     }
 
-    private void AssignPrefabsForMapGeneration()
+    private static void AssignPrefabsForMapGeneration()
     {
         AssignGameElementsPrefabs();
         AssignObstaclesPrefabs();
@@ -133,7 +126,7 @@ public class GenerateLevel : MonoBehaviour
         AssignMapTilesPrefabs();
     }
 
-    private void GenerateMapTiles()
+    private static void GenerateMapTiles()
     {
         var lastLevel = 9;
         var currentTilePosition = Vector3.zero * -2;

@@ -126,6 +126,28 @@ public static class DbRepository
         return hashedPassword;
     }
     
+    private static float GetUserLevelGenerationSeed()
+    {
+        string query = "SELECT `value` FROM game_config WHERE `key` = 'seed'";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    return Convert.ToSingle(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("❌ Database error: " + ex.Message);
+            }
+        }
+
+        return 0.0f;
+    }
+    
     internal static void UpdatePasswordInDatabase(string username, string newPasswordHashed)
     {
         string updateQuery = "UPDATE users SET password = @hashedPassword WHERE username = @username";
@@ -156,6 +178,7 @@ public static class DbRepository
         UserSession.levelsCompleted = GetLevelsCompleted(username);
         GetUserAudioSettings(username);
         GetBestTimesAndStarsGained(username);
+        UserSession.levelGenerationSeed = GetUserLevelGenerationSeed();
     }
 
     private static float GetTotalScore(string username)

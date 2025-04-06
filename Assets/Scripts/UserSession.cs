@@ -13,6 +13,7 @@ public static class UserSession
     internal static bool isBgmEnabled = true;
     internal static float bgmVolume = 0.2f;
     internal static float sfxVolume = 0.6f;
+    internal static float levelGenerationSeed;
     
     internal static void ClearSession()
     {

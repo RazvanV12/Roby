@@ -12,6 +12,7 @@ public static class GenerateLevel
     private static GameObject backGroundImage;
     private static GameObject coin;
     private static Vector3 playerStart;
+    private static Vector3 playerEnd;
     private static GameObject player;
     private static GameObject finishFlag;
 
@@ -183,7 +184,32 @@ public static class GenerateLevel
             
             Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
         }
-        
+
+        leftTile = middleTile;
+        middleTile = rightTile;
+
+        if (middleTile.Category == "Ground")
+        {
+            if (middleTile.Height == 3)
+            {
+                rightTile = (middleTile.Position + Vector3.right, middleGroundTile, "Ground", 3);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+            }
+            else
+            {
+                rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                leftTile = middleTile;
+                middleTile = rightTile;
+                rightTile = (middleTile.Position + Vector3.right, leftGroundTile, "Ground", 3);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+            }
+        }
+
         // TO DO: Add the last tiles for the finish flag 
         // Think about the fact that the height of the tile's position when generated needs to be modified for different tiles 
         // Can't generate them all on height 0 

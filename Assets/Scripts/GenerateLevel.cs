@@ -11,8 +11,9 @@ public static class GenerateLevel
 {
     private static GameObject backGroundImage;
     private static GameObject coin;
-    private static Vector3 playerStart;
-    private static Vector3 playerEnd;
+    internal static Vector3 playerStart;
+    internal static Vector3 playerEnd;
+    private static int gapsInARow;
     private static GameObject player;
     private static GameObject finishFlag;
 
@@ -140,9 +141,8 @@ public static class GenerateLevel
     internal static void StartLevelGeneration(int level)
     {
         // To implement
-        var seedNumber = level;
         AssignPrefabsForMapGeneration();
-        GenerateMapTiles(seedNumber);
+        GenerateMapTiles(level);
     }
 
     private static void GenerateMapTiles(int seedNumber)
@@ -162,27 +162,28 @@ public static class GenerateLevel
         UpdateHeightBasedOnType(ref middleTile);
         Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
 
+        gapsInARow = 0;
+
         for (var i = 0; i < mapLength; i++)
         {
             leftTile = middleTile;
             middleTile = rightTile;
             rightTile = GenerateRandomTile(middleTile);
+            
+            if(rightTile.Category == "Gap")
+                gapsInARow++;
+            else
+                gapsInARow = 0;
 
-            if (middleTile.Category == "Ground" && middleTile.Height == 3)
+            if (middleTile is { Category: "Ground", Height: 3 })
             {
                 if (leftTile.Category == "Gap")
                 {
-                    if (rightTile.Category == "Gap")
-                        middleTile.Type = middleGroundTile;
-                    else
-                        middleTile.Type = leftGroundTile;
+                    middleTile.Type = rightTile.Category == "Gap" ? middleGroundTile : leftGroundTile;
                 }
                 else
                 {
-                    if(rightTile.Category == "Gap")
-                        middleTile.Type = rightGroundTile;
-                    else
-                        middleTile.Type = middleGroundTile;
+                    middleTile.Type = rightTile.Category == "Gap" ? rightGroundTile : middleGroundTile;
                 }
             }
             
@@ -198,11 +199,6 @@ public static class GenerateLevel
             {
                 rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
                 middleTile.Type = middleGroundTile;
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
             }
             else
             {
@@ -211,72 +207,57 @@ public static class GenerateLevel
                 Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
                 middleTile = rightTile;
                 rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
             }
+
+            UpdateHeightBasedOnType(ref middleTile);
+            Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+            UpdateHeightBasedOnType(ref rightTile);
+            Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+            playerEnd = rightTile.Position;
+            return;
         }
 
         if (middleTile.Category == "Slope Left")
         {
             if (middleTile.Height == 4)
             {
-                rightTile = (middleTile.Position + Vector3.right, grasslessGroundx4Tile, "Ground", 4);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
             }
             else
             {
-                rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
+                rightTile = (middleTile.Position + Vector3.right, slopeRightx5Tile, "Slope Right", 5);
                 UpdateHeightBasedOnType(ref middleTile);
                 Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
                 middleTile = rightTile;
-                rightTile = (middleTile.Position + Vector3.right, grasslessGroundx4Tile, "Ground", 4);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
-                
             }
+
+            rightTile = (middleTile.Position + Vector3.right, grasslessGroundx4Tile, "Ground", 4);
+            UpdateHeightBasedOnType(ref middleTile);
+            Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+            UpdateHeightBasedOnType(ref rightTile);
+            Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+            playerEnd = rightTile.Position;
+            return;
         }
-        
-        if (middleTile.Category == "Slope Right")
+
+        if (middleTile.Category != "Slope Right") return;
+        if (middleTile.Height == 4)
         {
-            if (middleTile.Height == 4)
-            {
-                rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
-            }
-            else
-            {
-                rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                middleTile = rightTile;
-                rightTile = (middleTile.Position + Vector3.right, leftGroundTile, "Ground", 3);
-                UpdateHeightBasedOnType(ref middleTile);
-                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                UpdateHeightBasedOnType(ref rightTile);
-                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
-                playerEnd = rightTile.Position;
-                
-            }
+            rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
+        }
+        else
+        {
+            rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
+            UpdateHeightBasedOnType(ref middleTile);
+            Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+            middleTile = rightTile;
+            rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
         }
 
-        // TO DO: Add the last tiles for the finish flag 
-        // Think about the fact that the height of the tile's position when generated needs to be modified for different tiles 
-        // Can't generate them all on height 0 
-
+        UpdateHeightBasedOnType(ref middleTile);
+        Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+        UpdateHeightBasedOnType(ref rightTile);
+        Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+        playerEnd = rightTile.Position;
     }
 
     // 0 for gap, 1 for ground with x3 height, 2 for slope left x4 - for Normal Ground of Height 3
@@ -286,170 +267,133 @@ public static class GenerateLevel
     // 40 for slope right x5, 41 for gap - for Slope Left of Height 5
     // 50 for slope left x5, 51 for slope right x4, 52 for gap - for Slope Right of Height 5
 
-    // 0 for gap, 1 for ground with x3 height, 2 for slope left x4, 3 for slope right x4, 4 for slope left x5, 5 for slope right x5, 6 for ground with 4x height - for gap
-    private static (Vector3 Position, GameObject Type, String Category, Int16 Height) GenerateRandomTile(
-        (Vector3 Position, GameObject Type, String Category, Int16 Height) neighbourTile)
+    //1 for ground with x3 height, 2 for slope left x4, 3 for slope right x4, 4 for slope left x5, 5 for ground with 4x height - for gap
+    private static (Vector3 Position, GameObject Type, string Category, short Height) GenerateRandomTile(
+        (Vector3 Position, GameObject Type, string Category, short Height) neighbourTile)
     {
-        if (neighbourTile.Category == "Ground")
+        switch (neighbourTile.Category)
         {
-            if (neighbourTile.Height == 3)
+            case "Ground" when neighbourTile.Height == 3:
             {
                 var randomNumber = Random.Range(0, 3);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 0:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                            Height: Int16.MinValue);
-                    case 1:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: null, Category: "Ground",
-                            Height: 3);
-                    case 2:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile,
-                            Category: "Slope Left", 4);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for ground tile with height 3");
-                }
+                    0 => (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
+                        short.MinValue),
+                    1 => (Position: neighbourTile.Position + Vector3.right, Type: null, Category: "Ground", 3),
+                    2 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile,
+                        Category: "Slope Left", 4),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for ground tile with height 3")
+                };
             }
-            else
+            case "Ground":
             {
                 var randomNumber = Random.Range(10, 14);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 10:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile, Category: "Ground",
-                            Height: 4);
-                    case 11:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
-                            Category: "Slope Right", Height: 4);
-                    case 12:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
-                            Category: "Slope Left", Height: 5);
-                    case 13:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                            Height: Int16.MinValue);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for ground tile with height 4");
-                }
+                    10 => (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile,
+                        Category: "Ground", Height: 4),
+                    11 => (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
+                        Category: "Slope Right", Height: 4),
+                    12 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
+                        Category: "Slope Left", Height: 5),
+                    13 => (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
+                        Height: short.MinValue),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for ground tile with height 4")
+                };
             }
-        }
-
-        if (neighbourTile.Category == "Slope Left")
-        {
-            if (neighbourTile.Height == 4)
+            case "Slope Left" when neighbourTile.Height == 4:
             {
                 var randomNumber = Random.Range(20, 23);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 20:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile, Category: "Ground",
-                            Height: 4);
-                    case 21:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
-                            Category: "Slope Right", Height: 4);
-                    case 22:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile, Category: "Slope Left",
-                            Height: 5);
-                    case 23:
-                        return (neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap", Int16.MinValue);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for slope left tile with height 4");
-                }
+                    20 => (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile,
+                        Category: "Ground", Height: 4),
+                    21 => (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
+                        Category: "Slope Right", Height: 4),
+                    22 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
+                        Category: "Slope Left", Height: 5),
+                    23 => (neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap", short.MinValue),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for slope left tile with height 4")
+                };
             }
-            else
+            case "Slope Left":
             {
                 var randomNumber = Random.Range(40, 42);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 40:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx5Tile,
-                            Category: "Slope Right", Height: 5);
-                    case 41:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                            Height: Int16.MinValue);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for slope left tile with height 5");
-                }
+                    40 => (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx5Tile,
+                        Category: "Slope Right", Height: 5),
+                    41 => (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
+                        Height: short.MinValue),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for slope left tile with height 5")
+                };
             }
-        }
-
-        if (neighbourTile.Category == "Slope Right")
-        {
-            if (neighbourTile.Height == 4)
+            case "Slope Right" when neighbourTile.Height == 4:
             {
                 var randomNumber = Random.Range(30, 33);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 30:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: null, Category: "Ground",
-                            Height: 3);
-                    case 31:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile,
-                            Category: "Slope Left", Height: 4);
-                    case 32:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                            Height: Int16.MinValue);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for slope right tile with height 4");
-                }
+                    30 => (Position: neighbourTile.Position + Vector3.right, Type: null, Category: "Ground", Height: 3),
+                    31 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile,
+                        Category: "Slope Left", Height: 4),
+                    32 => (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
+                        Height: short.MinValue),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for slope right tile with height 4")
+                };
             }
-            else
+            case "Slope Right":
             {
                 var randomNumber = Random.Range(50, 53);
-                switch (randomNumber)
+                return randomNumber switch
                 {
-                    case 50:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
-                            Category: "Slope Left", Height: 5);
-                    case 51:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
-                            Category: "Slope Right", Height: 4);
-                    case 52:
-                        return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                            Height: Int16.MinValue);
-                    default:
-                        throw new TileGenerationException(
-                            "Invalid random number generated for slope right tile with height 5");
-                }
+                    50 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
+                        Category: "Slope Left", Height: 5),
+                    51 => (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
+                        Category: "Slope Right", Height: 4),
+                    52 => (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
+                        Height: short.MinValue),
+                    _ => throw new TileGenerationException(
+                        "Invalid random number generated for slope right tile with height 5")
+                };
             }
-        }
-
-        if (neighbourTile.Category == "Gap")
-        {
-            var randomNumber = Random.Range(0, 7);
-            switch (randomNumber)
+            case "Gap":
             {
-                case 0:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap",
-                        Height: Int16.MinValue);
-                case 1:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: null,
-                        Category: "Ground", Height: 3);
-                case 2:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile,
-                        Category: "Slope Left", Height: 4);
-                case 3:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile,
-                        Category: "Slope Right", Height: 4);
-                case 4:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile,
-                        Category: "Slope Left", Height: 5);
-                case 5:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx5Tile,
-                        Category: "Slope Right", Height: 5);
-                case 6:
-                    return (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile, Category: "Ground",
-                        Height: 4);
-                default:
-                    throw new TileGenerationException(
-                        "Invalid random number generated for gap tile");
+                var gapChance = gapsInARow switch
+                {
+                    1 => 0.75f,
+                    2 => 0.5f,
+                    3 => 0.25f,
+                    _ => 0f
+                };
+
+                if (Random.value <= gapChance)
+                {
+                    return (Position: neighbourTile.Position + Vector3.right, Type: waterSize1, Category: "Gap", Height: short.MinValue);
+                }
+                var randomNumber = Random.Range(1, 6);
+                return randomNumber switch
+                {
+                    1 => (Position: neighbourTile.Position + Vector3.right, Type: null, Category: "Ground", Height: 3),
+                    2 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx4Tile, Category: "Slope Left",
+                        Height: 4),
+                    3 => (Position: neighbourTile.Position + Vector3.right, Type: slopeRightx4Tile, Category: "Slope Right",
+                        Height: 4),
+                    4 => (Position: neighbourTile.Position + Vector3.right, Type: slopeLeftx5Tile, Category: "Slope Left",
+                        Height: 5),
+                    5 => (Position: neighbourTile.Position + Vector3.right, Type: grasslessGroundx4Tile, Category: "Ground",
+                        Height: 4),
+                    _ => throw new TileGenerationException("Invalid random number generated for gap tile")
+                };
             }
+            default:
+                throw new TileGenerationException("Invalid mapping for middle tile");
         }
-        throw new TileGenerationException("Invalid mapping for middle tile");
     }
 
     private static void UpdateHeightBasedOnType(ref (Vector3 Position, GameObject Type, String Category, Int16 Height) tile)

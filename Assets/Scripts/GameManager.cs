@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject DiedMenuUI;
     [SerializeField] private GameObject FinishedLevelUI;
     [SerializeField] private GameObject LevelClearPanel;
-    [SerializeField] private Transform playerPosition;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject finishFlagObject;
 
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private FinishFlag finishFlag;
@@ -59,11 +60,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        finishFlagObject = GameObject.FindGameObjectWithTag("Finish");
         if (SceneManager.GetActiveScene().buildIndex == 10)
+        {
             GenerateLevel.StartLevelGeneration(10);
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+            player.transform.position = GenerateLevel.playerStart;
+            finishFlagObject.transform.position = GenerateLevel.playerEnd;
+        }
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        initialPositionOnX = playerPosition.position.x;
+        initialPositionOnX = player.transform.position.x;
         totalDistanceToTravel = GameObject.Find("FinishFlag").transform.position.x - initialPositionOnX;
         if (!UserSession.isBgmEnabled)
         {
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
         //     audioManager.StopBGM();
         // }
 
-        progress = playerPosition.position.x - initialPositionOnX;
+        progress = player.transform.position.x - initialPositionOnX;
         ProgressBar.value = progress / totalDistanceToTravel;
     }
     
@@ -109,7 +115,7 @@ public class GameManager : MonoBehaviour
         }
         LevelClearPanel.SetActive(true);
         audioManager.PauseBGM();
-        var playerMovement = playerPosition.GetComponent<PlayerMovement>();
+        var playerMovement = player.transform.GetComponent<PlayerMovement>();
         playerMovement.Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
@@ -364,7 +370,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject PlayerDiedPanel => playerDiedPanel;
 
-    public Transform PlayerPosition => playerPosition;
+    public Transform PlayerPosition => player.transform;
 
     public GameObject GetDiedMenuUI => DiedMenuUI;
 }

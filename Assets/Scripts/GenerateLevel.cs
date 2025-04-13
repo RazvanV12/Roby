@@ -44,8 +44,7 @@ public static class GenerateLevel
     private static GameObject waterSize3;
 
     private static GameObject waterSize4;
-
-    // default tile height is 3
+    
     private static GameObject leftGroundTile;
     private static GameObject middleGroundTile;
     private static GameObject rightGroundTile;

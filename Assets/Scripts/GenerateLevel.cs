@@ -141,6 +141,8 @@ public static class GenerateLevel
     {
         // To implement
         var seedNumber = level;
+        AssignPrefabsForMapGeneration();
+        GenerateMapTiles(seedNumber);
     }
 
     private static void GenerateMapTiles(int seedNumber)
@@ -184,15 +186,37 @@ public static class GenerateLevel
             
             Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
         }
-
-        leftTile = middleTile;
+        
         middleTile = rightTile;
 
         if (middleTile.Category == "Ground")
         {
             if (middleTile.Height == 3)
             {
-                rightTile = (middleTile.Position + Vector3.right, middleGroundTile, "Ground", 3);
+                rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
+                middleTile.Type = middleGroundTile;
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+            }
+            else
+            {
+                rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
+                middleTile.Type = grasslessGroundx4Tile;
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                middleTile = rightTile;
+                rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+            }
+        }
+
+        if (middleTile.Category == "Slope Left")
+        {
+            if (middleTile.Height == 4)
+            {
+                rightTile = (middleTile.Position + Vector3.right, grasslessGroundx4Tile, "Ground", 4);
                 Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
                 Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
                 playerEnd = rightTile.Position;
@@ -201,12 +225,34 @@ public static class GenerateLevel
             {
                 rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
                 Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
-                leftTile = middleTile;
+                middleTile = rightTile;
+                rightTile = (middleTile.Position + Vector3.right, grasslessGroundx4Tile, "Ground", 4);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+                
+            }
+        }
+        
+        if (middleTile.Category == "Slope Right")
+        {
+            if (middleTile.Height == 4)
+            {
+                rightTile = (middleTile.Position + Vector3.right, rightGroundTile, "Ground", 3);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
+                Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
+                playerEnd = rightTile.Position;
+            }
+            else
+            {
+                rightTile = (middleTile.Position + Vector3.right, slopeRightx4Tile, "Slope Right", 4);
+                Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
                 middleTile = rightTile;
                 rightTile = (middleTile.Position + Vector3.right, leftGroundTile, "Ground", 3);
                 Object.Instantiate(middleTile.Type, middleTile.Position, Quaternion.identity);
                 Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
                 playerEnd = rightTile.Position;
+                
             }
         }
 

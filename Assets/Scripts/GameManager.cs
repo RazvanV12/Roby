@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 10)
+            GenerateLevel.StartLevelGeneration(10);
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         initialPositionOnX = playerPosition.position.x;

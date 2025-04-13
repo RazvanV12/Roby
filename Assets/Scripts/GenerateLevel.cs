@@ -9,13 +9,10 @@ using Random = UnityEngine.Random;
 
 public static class GenerateLevel
 {
-    private static GameObject backGroundImage;
     private static GameObject coin;
     internal static Vector3 playerStart;
     internal static Vector3 playerEnd;
     private static int gapsInARow;
-    private static GameObject player;
-    private static GameObject finishFlag;
 
     private static GameObject spikeObstacle;
     private static GameObject bigSpikeObstacle;
@@ -59,19 +56,11 @@ public static class GenerateLevel
     private static GameObject slopeRightx5Tile;
     private static GameObject whiteCloudFlatTile;
     private static GameObject whiteCloudRoundTile;
-
-    private static void SetPlayerStartPosition()
-    {
-        player.transform.position = playerStart;
-    }
-
+    
     private static void AssignGameElementsPrefabs()
     {
         playerStart = Vector3.down;
-        backGroundImage = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Background.prefab");
         coin = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Coin.prefab");
-        player = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Player.prefab");
-        finishFlag = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Flag.prefab");
     }
 
     private static void AssignObstaclesPrefabs()
@@ -118,8 +107,7 @@ public static class GenerateLevel
         leftGroundTile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Left Ground.prefab");
         rightGroundTile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Right Ground.prefab");
         middleGroundTile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Middle Ground.prefab");
-        grasslessGroundx4Tile =
-            AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/GrasslessGround - 4 Tiles.prefab");
+        grasslessGroundx4Tile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/GrasslessGround - 4 Tiles.prefab");
         slopeLeftx4Tile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Slope Left x4.prefab");
         slopeLeftx5Tile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Slope Left x5.prefab");
         slopeRightx4Tile = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Slope Right x4.prefab");
@@ -147,6 +135,9 @@ public static class GenerateLevel
 
     private static void GenerateMapTiles(int seedNumber)
     {
+        Object.Instantiate(waterSize4, new Vector3(-5, -4, 0), Quaternion.identity);
+        Object.Instantiate(waterSize4, new Vector3(-9, -4, 0), Quaternion.identity);
+        Object.Instantiate(waterSize4, new Vector3(-13, -4, 0), Quaternion.identity);
         Random.InitState(seedNumber);
         var mapLength = Random.Range(75, 200);
 
@@ -214,6 +205,9 @@ public static class GenerateLevel
             UpdateHeightBasedOnType(ref rightTile);
             Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
             playerEnd = rightTile.Position;
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 1, -4, 0), Quaternion.identity);
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 5, -4, 0), Quaternion.identity);
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 9, -4, 0), Quaternion.identity);
             return;
         }
 
@@ -236,6 +230,9 @@ public static class GenerateLevel
             UpdateHeightBasedOnType(ref rightTile);
             Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
             playerEnd = rightTile.Position;
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 1, -4, 0), Quaternion.identity);
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 5, -4, 0), Quaternion.identity);
+            Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 9, -4, 0), Quaternion.identity);
             return;
         }
 
@@ -258,6 +255,9 @@ public static class GenerateLevel
         UpdateHeightBasedOnType(ref rightTile);
         Object.Instantiate(rightTile.Type, rightTile.Position, Quaternion.identity);
         playerEnd = rightTile.Position;
+        Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 1, -4, 0), Quaternion.identity);
+        Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 5, -4, 0), Quaternion.identity);
+        Object.Instantiate(waterSize4, new Vector3(playerEnd.x + 9, -4, 0), Quaternion.identity);
     }
 
     // 0 for gap, 1 for ground with x3 height, 2 for slope left x4 - for Normal Ground of Height 3

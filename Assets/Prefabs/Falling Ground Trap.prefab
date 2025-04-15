@@ -82,6 +82,7 @@ MonoBehaviour:
   rbSecondTile: {fileID: 1327043161488491328}
   distance: 10
   RaycastOrigin: {fileID: 8342802496429721897}
+  audioManager: {fileID: 0}
 --- !u!1 &5914867003505731853
 GameObject:
   m_ObjectHideFlags: 0

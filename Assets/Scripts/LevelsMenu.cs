@@ -15,6 +15,9 @@ public class LevelsMenu : MonoBehaviour
     private Image star2Image;
     private Image star3Image;
     private Image lockedImage;
+    [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject aheadButton;
+    private int currentLevelsSet = 0;
     
     private void Awake()
     {
@@ -23,7 +26,7 @@ public class LevelsMenu : MonoBehaviour
 
     public void ReloadLevelsPanel()
     {
-        var unlockedLevel = UserSession.levelsCompleted == 10 ? 9 : (UserSession.levelsCompleted + 1);
+        var unlockedLevel = UserSession.levelsCompleted == 0 ? 1 : UserSession.levelsCompleted + 1;
         foreach (var button in buttons)
         {
             button.interactable = false;
@@ -37,13 +40,15 @@ public class LevelsMenu : MonoBehaviour
             lockedImage.gameObject.SetActive(true);
         }
 
-        for (var i = 0; i < unlockedLevel; i++)
+        var loopLimit = (unlockedLevel > (9 * (currentLevelsSet + 1)) ? (9 * (currentLevelsSet + 1)) : unlockedLevel);
+        for (var i = 9 * currentLevelsSet; i < loopLimit; i++)
         {
-            buttons[i].interactable = true;
-            star1Image = buttons[i].GameObject().transform.GetChild(1).GetComponent<Image>();
-            star2Image = buttons[i].GameObject().transform.GetChild(2).GetComponent<Image>();
-            star3Image = buttons[i].GameObject().transform.GetChild(3).GetComponent<Image>();
-            lockedImage = buttons[i].GameObject().transform.GetChild(4).GetComponent<Image>();
+            var buttonNumber = i % 9;
+            buttons[buttonNumber].interactable = true;
+            star1Image = buttons[buttonNumber].GameObject().transform.GetChild(1).GetComponent<Image>();
+            star2Image = buttons[buttonNumber].GameObject().transform.GetChild(2).GetComponent<Image>();
+            star3Image = buttons[buttonNumber].GameObject().transform.GetChild(3).GetComponent<Image>();
+            lockedImage = buttons[buttonNumber].GameObject().transform.GetChild(4).GetComponent<Image>();
             if(i < UserSession.maxStars.Count)
                 switch(UserSession.maxStars[i])
                 {
@@ -66,7 +71,40 @@ public class LevelsMenu : MonoBehaviour
 
     public void LoadLevel(int levelId)
     {
-        var levelName = "Level " + levelId;
-        SceneManager.LoadScene(levelName);
+        var levelToLoad = levelId + 9 * currentLevelsSet;
+        if(levelToLoad < 10){
+            var levelName = "Level " + levelId;
+            SceneManager.LoadScene(levelName);
+        }
+
+        LevelLoader.levelToLoad = levelToLoad;
+        SceneManager.LoadScene("Level 10");
+    }
+
+    public void ResetLevelSets()
+    {
+        currentLevelsSet = 0;
+        backButton.SetActive(false);
+        if(UserSession.levelsCompleted < 9)
+            aheadButton.SetActive(false);
+        ReloadLevelsPanel();
+    }
+    
+    public void NextLevelSet()
+    {
+        currentLevelsSet++;
+        if(UserSession.levelsCompleted < 9 * (currentLevelsSet + 1))
+            aheadButton.SetActive(false);
+        backButton.SetActive(true);
+        ReloadLevelsPanel();
+    }
+    
+    public void PreviousLevelSet()
+    {
+        currentLevelsSet--;
+        if(currentLevelsSet == 0)
+            backButton.SetActive(false);
+        aheadButton.SetActive(true);
+        ReloadLevelsPanel();
     }
 }

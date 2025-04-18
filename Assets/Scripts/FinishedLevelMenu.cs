@@ -8,12 +8,27 @@ public class FinishedLevelMenu : MonoBehaviour
 {
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex < 10)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 9)
+                LevelLoader.levelToLoad = 10;
+            else
+            {
+                LevelLoader.levelToLoad += 1;
+            }
+            SceneManager.LoadScene("Level 10");
+        }
+
         Debug.Log("Next level loaded");
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (SceneManager.GetActiveScene().buildIndex < 10)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        else
+            SceneManager.LoadScene("Level 10");
         Debug.Log("Game restarted");
     }
     public void QuitGame()

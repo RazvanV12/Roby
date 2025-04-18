@@ -134,6 +134,7 @@ public static class GenerateLevel
         GenerateMapTiles(level);
         GenerateObstaclesAndEnemies(level);
         GenerateCoins(level);
+        mapTiles.Clear();
     }
 
 
@@ -172,7 +173,7 @@ public static class GenerateLevel
     private static void GenerateObstaclesAndEnemies(int seedNumber)
     {
         Random.InitState(seedNumber);
-        for (var i = 0; i < mapTiles.Count - 1; i++)
+        for (var i = 10; i < mapTiles.Count - 1; i++)
         {
             if (mapTiles[i].Category == "Ground")
             {

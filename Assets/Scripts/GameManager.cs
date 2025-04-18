@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         finishFlagObject = GameObject.FindGameObjectWithTag("Finish");
         if (SceneManager.GetActiveScene().buildIndex == 10)
         {
-            GenerateLevel.StartLevelGeneration(10);
+            GenerateLevel.StartLevelGeneration(LevelLoader.levelToLoad);
             player.transform.position = GenerateLevel.playerStart;
             finishFlagObject.transform.position = GenerateLevel.playerEnd;
         }
@@ -177,9 +177,8 @@ public class GameManager : MonoBehaviour
     
     private void UnlockNewLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == UserSession.levelsCompleted + 1)//PlayerPrefs.GetInt("ReachedIndex")))
+        if(SceneManager.GetActiveScene().buildIndex == UserSession.levelsCompleted + 1)
         {
-            //PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
             UserSession.levelsCompleted += 1;
             DbRepository.UpdateUserStats();
         }

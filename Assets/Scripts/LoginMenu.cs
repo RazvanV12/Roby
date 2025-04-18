@@ -33,6 +33,7 @@ public class LoginMenu : MonoBehaviour
     [SerializeField] private GameObject newPasswordInput;
     [SerializeField] private GameObject changePasswordInputButton;
     [SerializeField] private GameObject returnFromChangePasswordButton;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     public void OpenRegisterMenu()
     {
@@ -124,7 +125,7 @@ public class LoginMenu : MonoBehaviour
     {
         if (string.IsNullOrEmpty(usernameInputField) || string.IsNullOrEmpty(passwordInputField))
         {
-            Debug.Log("Username or password is empty");
+            infoText.text = "Username or password is empty";
             return;
         }
         if (DbRepository.AreCredentialsValid(usernameInputField, passwordInputField))
@@ -137,7 +138,7 @@ public class LoginMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("Invalid username or password");
+            infoText.text = "Invalid username or password";
         }
     }
 
@@ -145,21 +146,22 @@ public class LoginMenu : MonoBehaviour
     {
         if (string.IsNullOrEmpty(usernameInputField) || string.IsNullOrEmpty(passwordInputField))
         {
-            Debug.Log("Username or password is empty");
+            infoText.text = "Username or password is empty";
             return;
         }
         if(DbRepository.UsernameExists(usernameInputField))
         {
-            Debug.Log("Username already exists");
+            infoText.text = "Username already exists";
             return;
         }
         if(!PasswordMatch(passwordInputField, passwordConfirmInputField))
         {
-            Debug.Log("Passwords do not match");
+            infoText.text = "Passwords do not match";
             return;
         }
 
         DbRepository.AddUserToDatabase(usernameInputField, DbRepository.HashPassword(passwordInputField));
+        infoText.text = "Account created successfully";
         CloseRegisterMenu();
         RestoreRegisterInputFields();
         OpenLoginMenu();
@@ -170,20 +172,20 @@ public class LoginMenu : MonoBehaviour
         if (string.IsNullOrEmpty(usernameInputField) || string.IsNullOrEmpty(oldPasswordInputField) || 
             string.IsNullOrEmpty(newPasswordInputField))
         {
-            Debug.Log("Username, old password or new password is empty");
+            infoText.text = "Username, old password or new password is empty";
             return;
         }
         if (DbRepository.UsernameExists(usernameInputField) && DbRepository.AreCredentialsValid(usernameInputField, oldPasswordInputField))
         {
             DbRepository.UpdatePasswordInDatabase(usernameInputField, DbRepository.HashPassword(newPasswordInputField));
-            Debug.Log("Password changed successfully");
+            infoText.text = "Password changed successfully";
             CloseChangePasswordMenu();
             RestoreChangePasswordInputFields();
             OpenLoginMenu();
         }
         else
         {
-            Debug.Log("Invalid username or password");
+            infoText.text = "Invalid username or password";
         }
     }
 
@@ -215,5 +217,10 @@ public class LoginMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Game closed");
+    }
+
+    public void ResetInfoText()
+    {
+        infoText.text = "";
     }
 }

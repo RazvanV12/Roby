@@ -2424,7 +2424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6757395002463568953, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6757395002463568953, guid: 81ef787eea119fe4d8599720ee368b31, type: 3}
       propertyPath: m_SpriteState.m_DisabledSprite

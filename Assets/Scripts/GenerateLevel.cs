@@ -167,7 +167,7 @@ public static class GenerateLevel
     }
 
     // 0 for spike obstacle, 1 for shooting enemy, 2 for launching saw - if tile is ground 
-    // with 25% chance to spawn an obstacle
+    // with 10% chance to spawn an obstacle
     // 0 for spike dropper - for each tile that isn't a gap with 2% change to spawn
     // 0 for falling ground trap with 2% chance to spawn
     private static void GenerateObstaclesAndEnemies(int seedNumber)
@@ -177,7 +177,7 @@ public static class GenerateLevel
         {
             if (mapTiles[i].Category == "Ground")
             {
-                var number = Random.Range(0, 12);
+                var number = Random.Range(0, 30);
                 switch(number)
                 {
                     case 0:

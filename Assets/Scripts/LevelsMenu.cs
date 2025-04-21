@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -27,8 +28,11 @@ public class LevelsMenu : MonoBehaviour
     public void ReloadLevelsPanel()
     {
         var unlockedLevel = UserSession.levelsCompleted == 0 ? 1 : UserSession.levelsCompleted + 1;
-        foreach (var button in buttons)
+        for (var index = 0; index < buttons.Length; index++)
         {
+            buttons[index].GameObject().transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                ((index + 1) + 9 * currentLevelsSet).ToString();
+            var button = buttons[index];
             button.interactable = false;
             star1Image = button.GameObject().transform.GetChild(1).GetComponent<Image>();
             star2Image = button.GameObject().transform.GetChild(2).GetComponent<Image>();

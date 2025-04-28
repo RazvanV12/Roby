@@ -80,9 +80,11 @@ public class LevelsMenu : MonoBehaviour
             var levelName = "Level " + levelId;
             SceneManager.LoadScene(levelName);
         }
-
-        LevelLoader.levelToLoad = levelToLoad;
-        SceneManager.LoadScene("Level 10");
+        else
+        {
+            LevelLoader.levelToLoad = levelToLoad;
+            SceneManager.LoadScene("Level 10");
+        }
     }
 
     public void ResetLevelSets()

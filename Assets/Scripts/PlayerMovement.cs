@@ -71,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (Mathf.Approximately(_verticalInput, -1) && _isGrounded && !isDucked)
             {
-                transform.localScale = new Vector3(1, 0.5f, 1);
+                transform.localScale = new Vector3(1.5f, 0.75f, 1);
                 moveForce = 0f;
                 isDucked = true;
             }
             if(!Mathf.Approximately(_verticalInput,-1) && isDucked) // && _isGrounded
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1.5f, 1.5f, 1);
                 moveForce = 100f;
                 isDucked = false;
             }

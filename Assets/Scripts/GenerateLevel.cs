@@ -177,7 +177,7 @@ public static class GenerateLevel
         {
             if (mapTiles[i].Category == "Ground")
             {
-                var number = Random.Range(0, 30);
+                var number = Random.Range(0, 10);
                 switch(number)
                 {
                     case 0:
@@ -192,12 +192,12 @@ public static class GenerateLevel
                         else
                             Object.Instantiate(shootingEnemy, mapTiles[i].Position + Vector3.up, Quaternion.identity);
                         continue;
-                    case 2:
-                        if(mapTiles[i].Type == grasslessGroundx4Tile)
-                            Object.Instantiate(launchingSawTrap, mapTiles[i].Position, Quaternion.identity);
-                        else 
-                            Object.Instantiate(launchingSawTrap, mapTiles[i].Position + Vector3.up, Quaternion.identity);
-                        continue;
+                    // case 2:
+                    //     if(mapTiles[i].Type == grasslessGroundx4Tile)
+                    //         Object.Instantiate(launchingSawTrap, mapTiles[i].Position, Quaternion.identity);
+                    //     else 
+                    //         Object.Instantiate(launchingSawTrap, mapTiles[i].Position + Vector3.up, Quaternion.identity);
+                    //     continue;
                     default:
                         continue;
                 }

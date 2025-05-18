@@ -147,7 +147,9 @@ public static class GenerateLevel
         {
             if (coinsGenerated == 3)
                 return;
-            var number = Random.Range(0, 100 - i);
+            if (i > mapTiles.Count / 3 * (coinsGenerated - 1) && i < mapTiles.Count / 3 * coinsGenerated)
+                continue;
+            var number = Random.Range(0, (mapTiles.Count / 3) - i % (mapTiles.Count / 3) - 2); 
             if (number != 0) continue;
             if (mapTiles[i].Category == "Ground")
             {
